@@ -1,0 +1,389 @@
+{
+  "id": "capture-portal-bearer-token-via-browser-login;obtain-bearer-token-by-intercepting-the-login-network-request",
+  "name": "Obtain bearer token by intercepting the login network request",
+  "title": "Obtain bearer token by intercepting the login network request",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Before",
+      "startTime": "2026-07-13T23:17:44.536Z",
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 4,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 2,
+      "description": "Given the user opens the Portal site",
+      "startTime": "2026-07-13T23:17:44.541Z",
+      "children": [
+        {
+          "number": 3,
+          "description": "User opens the site at &quot;https://portal.primofabric.com&quot;",
+          "startTime": "2026-07-13T23:17:44.546Z",
+          "children": [
+            {
+              "number": 4,
+              "description": "User navigates to &quot;https://portal.primofabric.com&quot;",
+              "startTime": "2026-07-13T23:17:44.548Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-linux-chromium-145.0.7632.6-user-navigates-to-https-portal.pr-0091f01465.png",
+                  "screenshotName": "photo-linux-chromium-145.0.7632.6-user-navigates-to-https-portal.pr-0091f01465.png",
+                  "timeStamp": 1783984665338
+                }
+              ],
+              "duration": 677,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 804,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 819,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 5,
+      "description": "When the user logs in with credentials",
+      "startTime": "2026-07-13T23:17:45.361Z",
+      "children": [
+        {
+          "number": 6,
+          "description": "User logs in as &quot;primo-it@heyprimo.com&quot;",
+          "startTime": "2026-07-13T23:17:45.363Z",
+          "children": [
+            {
+              "number": 7,
+              "description": "User enters &quot;primo-it@heyprimo.com&quot; into Email Field",
+              "startTime": "2026-07-13T23:17:45.375Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-linux-chromium-145.0.7632.6-user-enters-primo-it-heyprimo.com-b2d36c91a8.png",
+                  "screenshotName": "photo-linux-chromium-145.0.7632.6-user-enters-primo-it-heyprimo.com-b2d36c91a8.png",
+                  "timeStamp": 1783984665940
+                }
+              ],
+              "duration": 516,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 8,
+              "description": "User clicks on Login Button",
+              "startTime": "2026-07-13T23:17:45.943Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-linux-chromium-145.0.7632.6-user-clicks-on-login-button-e4636028cb.png",
+                  "screenshotName": "photo-linux-chromium-145.0.7632.6-user-clicks-on-login-button-e4636028cb.png",
+                  "timeStamp": 1783984666290
+                }
+              ],
+              "duration": 292,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 9,
+              "description": "User enters &quot;Test1234#&quot; into Password Field",
+              "startTime": "2026-07-13T23:17:46.299Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-linux-chromium-145.0.7632.6-user-enters-test1234-into-passwor-95326e0f84.png",
+                  "screenshotName": "photo-linux-chromium-145.0.7632.6-user-enters-test1234-into-passwor-95326e0f84.png",
+                  "timeStamp": 1783984666357
+                }
+              ],
+              "duration": 19,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 10,
+              "description": "User clicks on Login Button",
+              "startTime": "2026-07-13T23:17:46.360Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-linux-chromium-145.0.7632.6-user-clicks-on-login-button-21850b5bb0.png",
+                  "screenshotName": "photo-linux-chromium-145.0.7632.6-user-clicks-on-login-button-21850b5bb0.png",
+                  "timeStamp": 1783984666854
+                }
+              ],
+              "duration": 407,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1501,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 1514,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 11,
+      "description": "When the actor captures the Portal bearer token via login",
+      "startTime": "2026-07-13T23:17:46.876Z",
+      "children": [
+        {
+          "number": 12,
+          "description": "User obtains the Portal bearer token from browser storage after login",
+          "startTime": "2026-07-13T23:17:46.887Z",
+          "children": [
+            {
+              "number": 13,
+              "description": "User waits until the Portal OIDC access_token in localStorage does not equal &quot;&quot;",
+              "startTime": "2026-07-13T23:17:46.887Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-linux-chromium-145.0.7632.6-user-waits-until-the-portal-oidc-acc-740b483e44.png",
+                  "screenshotName": "photo-linux-chromium-145.0.7632.6-user-waits-until-the-portal-oidc-acc-740b483e44.png",
+                  "timeStamp": 1783984667456
+                }
+              ],
+              "duration": 537,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 14,
+              "description": "User stores the Portal bearer token in notes and .env",
+              "startTime": "2026-07-13T23:17:47.465Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-linux-chromium-145.0.7632.6-user-stores-the-portal-bearer-token-740b483e44.png",
+                  "screenshotName": "photo-linux-chromium-145.0.7632.6-user-stores-the-portal-bearer-token-740b483e44.png",
+                  "timeStamp": 1783984667511
+                }
+              ],
+              "duration": 4,
+              "result": "ERROR",
+              "exception": {
+                "errorType": "Error",
+                "message": "ENOENT: no such file or directory, open '/home/vsts/work/1/s/.env'",
+                "stackTrace": [
+                  {
+                    "declaringClass": "",
+                    "methodName": "Object.readFileSync()",
+                    "fileName": "node:fs",
+                    "lineNumber": 440
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "writeTokenToEnv()",
+                    "fileName": "/home/vsts/work/1/s/src/tasks/ui/ObtainBearerTokenViaLogin.ts",
+                    "lineNumber": 25
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "DynamicallyGeneratedInteraction.interaction()",
+                    "fileName": "/home/vsts/work/1/s/src/tasks/ui/ObtainBearerTokenViaLogin.ts",
+                    "lineNumber": 52
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async PerformActivities.perform()",
+                    "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+                    "lineNumber": 60
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async PerformActivities.perform()",
+                    "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+                    "lineNumber": 60
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async World.<anonymous>()",
+                    "fileName": "/home/vsts/work/1/s/features/ui/login/login.steps.ts",
+                    "lineNumber": 35
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async wrapPromiseWithTimeout()",
+                    "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/time.ts",
+                    "lineNumber": 55
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async Object.run()",
+                    "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/user_code_runner.ts",
+                    "lineNumber": 86
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async Object.run()",
+                    "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/runtime/step_runner.ts",
+                    "lineNumber": 58
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async TestCaseRunner.invokeStep()",
+                    "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/runtime/test_case_runner.ts",
+                    "lineNumber": 151
+                  }
+                ]
+              }
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 634,
+          "result": "ERROR"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 657,
+      "result": "ERROR"
+    },
+    {
+      "number": 15,
+      "description": "And the bearer token should be captured",
+      "startTime": "2026-07-13T23:17:47.534Z",
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 0,
+      "result": "SKIPPED"
+    }
+  ],
+  "userStory": {
+    "id": "capture-portal-bearer-token-via-browser-login",
+    "storyName": "Capture Portal bearer token via browser login",
+    "displayName": "Capture Portal bearer token via browser login",
+    "path": "ui/login/tokencapture",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "ui",
+        "description": "Ui"
+      },
+      {
+        "name": "login",
+        "description": "Login"
+      },
+      {
+        "name": "tokencapture",
+        "description": "Tokencapture"
+      }
+    ]
+  },
+  "startTime": "2026-07-13T23:17:44.533Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Ui",
+      "type": "theme",
+      "displayName": "Ui"
+    },
+    {
+      "name": "Ui/Login",
+      "type": "capability",
+      "displayName": "Login"
+    },
+    {
+      "name": "Ui/Login/Capture Portal bearer token via browser login",
+      "type": "feature",
+      "displayName": "Capture Portal bearer token via browser login"
+    },
+    {
+      "name": "token-capture",
+      "type": "tag",
+      "displayName": "token-capture"
+    },
+    {
+      "name": "browser:token-capture",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Ui/Login/Capture Portal bearer token via browser login",
+    "type": "feature",
+    "displayName": "Capture Portal bearer token via browser login"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "BrowseTheWeb (BrowseTheWebWithPlaywright)",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    }
+  ],
+  "result": "ERROR",
+  "testFailureCause": {
+    "errorType": "Error",
+    "message": "ENOENT: no such file or directory, open '/home/vsts/work/1/s/.env'",
+    "stackTrace": [
+      {
+        "declaringClass": "",
+        "methodName": "Object.readFileSync()",
+        "fileName": "node:fs",
+        "lineNumber": 440
+      },
+      {
+        "declaringClass": "",
+        "methodName": "writeTokenToEnv()",
+        "fileName": "/home/vsts/work/1/s/src/tasks/ui/ObtainBearerTokenViaLogin.ts",
+        "lineNumber": 25
+      },
+      {
+        "declaringClass": "",
+        "methodName": "DynamicallyGeneratedInteraction.interaction()",
+        "fileName": "/home/vsts/work/1/s/src/tasks/ui/ObtainBearerTokenViaLogin.ts",
+        "lineNumber": 52
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async PerformActivities.perform()",
+        "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+        "lineNumber": 60
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async PerformActivities.perform()",
+        "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+        "lineNumber": 60
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async World.<anonymous>()",
+        "fileName": "/home/vsts/work/1/s/features/ui/login/login.steps.ts",
+        "lineNumber": 35
+      }
+    ]
+  },
+  "testFailureClassname": "Error",
+  "testFailureMessage": "ENOENT: no such file or directory, open '/home/vsts/work/1/s/.env'",
+  "testFailureSummary": "ERROR;Error;ENOENT: no such file or directory, open '/home/vsts/work/1/s/.env';/home/vsts/work/1/s/src/tasks/ui/ObtainBearerTokenViaLogin.ts",
+  "duration": 3034,
+  "context": "TOKEN-CAPTURE"
+}
