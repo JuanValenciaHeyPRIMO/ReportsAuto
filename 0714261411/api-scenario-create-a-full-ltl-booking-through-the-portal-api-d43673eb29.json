@@ -1,0 +1,616 @@
+{
+  "id": "portal-ltl-booking-via-api;create-a-full-ltl-booking-through-the-portal-api",
+  "name": "Create a full LTL booking through the Portal API",
+  "title": "Create a full LTL booking through the Portal API",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Create a full LTL booking through the Portal API #1 - CaseID: Random",
+      "startTime": "2026-07-14T14:11:00.384Z",
+      "children": [
+        {
+          "number": 2,
+          "description": "Before",
+          "startTime": "2026-07-14T14:11:00.386Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 4,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "Given the actor is configured to call Portal APIs",
+          "startTime": "2026-07-14T14:11:00.391Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 4,
+          "description": "And I load the Excel file from &quot;src/models/TestCasesAPI.xlsx&quot;",
+          "startTime": "2026-07-14T14:11:00.392Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 160,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 5,
+          "description": "And I get test data for &quot;Random&quot;",
+          "startTime": "2026-07-14T14:11:00.552Z",
+          "children": [
+            {
+              "number": 6,
+              "description": "PRIMO Actor takes notes:\n- testData: { CaseID: &quot;TC-055&quot;, Mode: &quot;LTL&quot;, OriginZip: &quot;32801&quot;, DestinationZip: &quot;84101&quot;, OriginCompany: &quot;CargoCore Logistics&quot;, DestinationCompany: &quot;Atlas Logistics&quot;, OriginAddress1: &quot;948 Main St&quot;, OriginAddress2: &quot;Suite 258&quot;, DeliveryAddress1: &quot;676 Market St&quot;, PickupContact: &quot;David Smith&quot;, PickupPhone: &quot;5551355211&quot;, PickupEmail: &quot;david.smith@freightmail.com&quot;, DeliveryContact: &quot;Harper Garcia&quot;, DeliveryPhone: &quot;5557809196&quot;, DeliveryEmail: &quot;harper.garcia@transmail.com&quot;, Reference#: &quot;26241&quot;, SelectedRate: &quot;Rate-1&quot;, C1_Qty: 4, C1_Name: &quot;Auto Parts&quot;, C1_Package: &quot;Pallet&quot;, C1_Length: 52, C1_Width: 28, C1_Height: 37, C1_Weight: 230, C1_Stackable: &quot;Yes&quot;, C1_Levels: 4, C2_Qty: 4, C2_Name: &quot;Metal Sheets&quot;, C2_Package: &quot;Pallet&quot;, C2_Length: 45, C2_Width: 14, C2_Height: 44, C2_Weight: 210, C2_NMFC: &quot;56040&quot;, C2_Stackable: &quot;Yes&quot;, C2_Levels: 4, C3_Qty: 2, C3_Name: &quot;Medical Supplies&quot;, C3_Package: &quot;Tote&quot;, C3_Length: 32, C3_Width: 33, C3_Height: 40, C3_Weight: 115, C3_NMFC: &quot;79300&quot;, C3_Stackable: &quot;No&quot;, C3_Levels: 2, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &quot;08:00&quot;, PickupWindowTo: &quot;17:00&quot;, DeliveryWindowFrom: &quot;08:00&quot;, DeliveryWindowTo: &quot;17:00&quot;, HazmatContactName: &quot;Hazmat Contact&quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }",
+              "startTime": "2026-07-14T14:11:00.560Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 20,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 7,
+          "description": "When the actor resolves city and state for origin and destination",
+          "startTime": "2026-07-14T14:11:00.573Z",
+          "children": [
+            {
+              "number": 8,
+              "description": "PRIMO Actor resolves city and state for origin and destination",
+              "startTime": "2026-07-14T14:11:00.576Z",
+              "children": [
+                {
+                  "number": 9,
+                  "description": "PRIMO Actor resolves zip codes",
+                  "startTime": "2026-07-14T14:11:00.576Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 394,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v1/address-search",
+                    "content": "{\"searchValue\":\"84101\",\"country\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDAzODI1MywiaWF0IjoxNzg0MDM4MjUzLCJleHAiOjE3ODY2MzAyNTMsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0MDM4MjUzLCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiMDM3Q0E3RDc4RDlGMEUyNDQ5OUE1MDc2NDlCNzMzQ0IiLCJqdGkiOiJFQjQ1QjQ1MjQyNzFBRDYwODc2NTIzOTJBRkVDRkFFMSJ9.mvidwU9kDIBDgEwJjMlOldC86_1_v7vAElLVicVGzKPP2b6nH-L-BRE-1AOSj6HS7eJskL7fZuP3AO72dYzG2q0tk8UDXWIsKLYqttHzd7RZ9_Z8T2MKg1DeX0-OkFC7tRdWMtp34agR37SWl8gTMdx9Z5BgcaG6bwPJCn6pPlW26FY4GXj23N-2TZVPY1ZI4q8ihBvlVT8tJpP9X8bF5V7T2hf5vvmF5gI81H4SwuyVaLS43F8QWAySi-VGRWvAobVMwrqGkf4dzvGZ_SQcW1ZtfruStr0bUZHQwXcmWrRAInzzCvXomQDQtUbLEYxNJq6XKyF39-Vtf_824JtD_Q\nUser-Agent: axios/1.13.5\nContent-Length: 38\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Tue, 14 Jul 2026 14:11:00 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": [\n        {\n            \"companyName\": null,\n            \"displayName\": \"SALT LAKE CITY, UT 84101 US\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"SALT LAKE CITY\",\n            \"state\": \"UT\",\n            \"postalCode\": \"84101\",\n            \"country\": \"US\",\n            \"bsn\": null,\n            \"shippingAddressId\": null\n        },\n        {\n            \"companyName\": null,\n            \"displayName\": \"SALT LAKE CTY, UT 84101 US\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"SALT LAKE CTY\",\n            \"state\": \"UT\",\n            \"postalCode\": \"84101\",\n            \"country\": \"US\",\n            \"bsn\": null,\n            \"shippingAddressId\": null\n        },\n        {\n            \"companyName\": null,\n            \"displayName\": \"SLC, UT 84101 US\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"SLC\",\n            \"state\": \"UT\",\n            \"postalCode\": \"84101\",\n            \"country\": \"US\",\n            \"bsn\": null,\n            \"shippingAddressId\": null\n        }\n    ],\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 404,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 418,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 10,
+          "description": "And the actor resolves density and class for each commodity",
+          "startTime": "2026-07-14T14:11:00.992Z",
+          "children": [
+            {
+              "number": 11,
+              "description": "PRIMO Actor resolves volume, density and class for each commodity",
+              "startTime": "2026-07-14T14:11:00.994Z",
+              "children": [
+                {
+                  "number": 12,
+                  "description": "PRIMO Actor calls density endpoint per commodity",
+                  "startTime": "2026-07-14T14:11:00.994Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 100,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/rating/v1/density",
+                    "content": "{\"Length\":\"32\",\"Width\":\"33\",\"Height\":\"40\",\"Weight\":\"115\",\"Volume\":0,\"UOM\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDAzODI1MywiaWF0IjoxNzg0MDM4MjUzLCJleHAiOjE3ODY2MzAyNTMsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0MDM4MjUzLCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiMDM3Q0E3RDc4RDlGMEUyNDQ5OUE1MDc2NDlCNzMzQ0IiLCJqdGkiOiJFQjQ1QjQ1MjQyNzFBRDYwODc2NTIzOTJBRkVDRkFFMSJ9.mvidwU9kDIBDgEwJjMlOldC86_1_v7vAElLVicVGzKPP2b6nH-L-BRE-1AOSj6HS7eJskL7fZuP3AO72dYzG2q0tk8UDXWIsKLYqttHzd7RZ9_Z8T2MKg1DeX0-OkFC7tRdWMtp34agR37SWl8gTMdx9Z5BgcaG6bwPJCn6pPlW26FY4GXj23N-2TZVPY1ZI4q8ihBvlVT8tJpP9X8bF5V7T2hf5vvmF5gI81H4SwuyVaLS43F8QWAySi-VGRWvAobVMwrqGkf4dzvGZ_SQcW1ZtfruStr0bUZHQwXcmWrRAInzzCvXomQDQtUbLEYxNJq6XKyF39-Vtf_824JtD_Q\nUser-Agent: axios/1.13.5\nContent-Length: 79\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Tue, 14 Jul 2026 14:11:01 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:37dfdde3-e557-4d73-979a-ec3f047915bc\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"totalCube\": 24.44,\n        \"totalWeight\": 115,\n        \"totalDensity\": 4.7,\n        \"freightClass\": \"175\",\n        \"cbm\": 0.6922\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 110,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 123,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 13,
+          "description": "And the actor resolves NMFC codes for all commodities",
+          "startTime": "2026-07-14T14:11:01.115Z",
+          "children": [
+            {
+              "number": 14,
+              "description": "PRIMO Actor resolves NMFC codes for commodities",
+              "startTime": "2026-07-14T14:11:01.119Z",
+              "children": [
+                {
+                  "number": 15,
+                  "description": "PRIMO Actor calls NMFC search and calculate endpoints",
+                  "startTime": "2026-07-14T14:11:01.119Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 134,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "GET",
+                    "path": "https://api.primofabric.com/portal/v1/flow/nmfc/79300/calculate?density=4.7&nmfcDescription=Furniture%20or%20Furniture%20Parts",
+                    "content": "",
+                    "contentType": "",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDAzODI1MywiaWF0IjoxNzg0MDM4MjUzLCJleHAiOjE3ODY2MzAyNTMsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0MDM4MjUzLCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiMDM3Q0E3RDc4RDlGMEUyNDQ5OUE1MDc2NDlCNzMzQ0IiLCJqdGkiOiJFQjQ1QjQ1MjQyNzFBRDYwODc2NTIzOTJBRkVDRkFFMSJ9.mvidwU9kDIBDgEwJjMlOldC86_1_v7vAElLVicVGzKPP2b6nH-L-BRE-1AOSj6HS7eJskL7fZuP3AO72dYzG2q0tk8UDXWIsKLYqttHzd7RZ9_Z8T2MKg1DeX0-OkFC7tRdWMtp34agR37SWl8gTMdx9Z5BgcaG6bwPJCn6pPlW26FY4GXj23N-2TZVPY1ZI4q8ihBvlVT8tJpP9X8bF5V7T2hf5vvmF5gI81H4SwuyVaLS43F8QWAySi-VGRWvAobVMwrqGkf4dzvGZ_SQcW1ZtfruStr0bUZHQwXcmWrRAInzzCvXomQDQtUbLEYxNJq6XKyF39-Vtf_824JtD_Q\nUser-Agent: axios/1.13.5\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Tue, 14 Jul 2026 14:11:00 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"nmfcSubCode\": \"04\",\n        \"class\": \"175\"\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 145,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 159,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 16,
+          "description": "And the actor resolves hazmat information for hazardous commodities",
+          "startTime": "2026-07-14T14:11:01.275Z",
+          "children": [
+            {
+              "number": 17,
+              "description": "PRIMO Actor resolves hazmat information for hazardous commodities",
+              "startTime": "2026-07-14T14:11:01.276Z",
+              "children": [
+                {
+                  "number": 18,
+                  "description": "PRIMO Actor calls hazmat search endpoint per hazardous commodity",
+                  "startTime": "2026-07-14T14:11:01.277Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 12,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 24,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 19,
+          "description": "And the actor resolves accessorials for the quote",
+          "startTime": "2026-07-14T14:11:01.299Z",
+          "children": [
+            {
+              "number": 20,
+              "description": "PRIMO Actor resolves accessorials for the quote",
+              "startTime": "2026-07-14T14:11:01.302Z",
+              "children": [
+                {
+                  "number": 21,
+                  "description": "PRIMO Actor calls accessorials endpoint",
+                  "startTime": "2026-07-14T14:11:01.302Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 11,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 25,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 22,
+          "description": "And the actor creates an LTL quote from origin to destination",
+          "startTime": "2026-07-14T14:11:01.324Z",
+          "children": [
+            {
+              "number": 23,
+              "description": "PRIMO Actor creates an LTL quote",
+              "startTime": "2026-07-14T14:11:01.330Z",
+              "children": [
+                {
+                  "number": 24,
+                  "description": "PRIMO Actor sends a POST request to &apos;/portal/v2/quote&apos;",
+                  "startTime": "2026-07-14T14:11:01.330Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 13844,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v2/quote",
+                    "content": "{\"customerReference\":1237100099,\"customerNumber\":1235100202,\"customerName\":\"Primo TEST\",\"requestingUser\":\"primo-it@heyprimo.com\",\"modes\":[\"LTL\"],\"declaredValue\":0,\"insurance\":{\"cargoValue\":0,\"isNewGoods\":true,\"goodsValue\":\"NEW\",\"addFreightCost\":false,\"addExtraCoverage\":false,\"insuredName\":\"\",\"insuredCountry\":\"\"},\"pickupDate\":null,\"origin\":{\"name\":null,\"address1\":null,\"address2\":null,\"city\":\"ORLANDO\",\"state\":\"FL\",\"postalCode\":\"32801\",\"country\":\"US\"},\"destination\":{\"name\":null,\"address1\":null,\"address2\":null,\"city\":\"SALT LAKE CITY\",\"state\":\"UT\",\"postalCode\":\"84101\",\"country\":\"US\"},\"items\":[{\"itemName\":\"Auto Parts\",\"packageType\":100,\"quantity\":4,\"length\":52,\"width\":28,\"height\":37,\"weight\":230,\"volume\":31.18,\"NMFC\":null,\"commodityClass\":\"125\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":4,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":true},{\"itemName\":\"Metal Sheets\",\"packageType\":100,\"quantity\":4,\"length\":45,\"width\":14,\"height\":44,\"weight\":210,\"volume\":16.04,\"NMFC\":\"56040-08\",\"commodityClass\":\"85\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":4,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":true},{\"itemName\":\"Medical Supplies\",\"packageType\":100,\"quantity\":2,\"length\":32,\"width\":33,\"height\":40,\"weight\":115,\"volume\":24.44,\"NMFC\":\"79300-04\",\"commodityClass\":\"175\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":2,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":false}],\"selectedAccessorials\":[],\"service\":null,\"equipment\":null,\"equipmentLength\":null,\"UOM\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDAzODI1MywiaWF0IjoxNzg0MDM4MjUzLCJleHAiOjE3ODY2MzAyNTMsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0MDM4MjUzLCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiMDM3Q0E3RDc4RDlGMEUyNDQ5OUE1MDc2NDlCNzMzQ0IiLCJqdGkiOiJFQjQ1QjQ1MjQyNzFBRDYwODc2NTIzOTJBRkVDRkFFMSJ9.mvidwU9kDIBDgEwJjMlOldC86_1_v7vAElLVicVGzKPP2b6nH-L-BRE-1AOSj6HS7eJskL7fZuP3AO72dYzG2q0tk8UDXWIsKLYqttHzd7RZ9_Z8T2MKg1DeX0-OkFC7tRdWMtp34agR37SWl8gTMdx9Z5BgcaG6bwPJCn6pPlW26FY4GXj23N-2TZVPY1ZI4q8ihBvlVT8tJpP9X8bF5V7T2hf5vvmF5gI81H4SwuyVaLS43F8QWAySi-VGRWvAobVMwrqGkf4dzvGZ_SQcW1ZtfruStr0bUZHQwXcmWrRAInzzCvXomQDQtUbLEYxNJq6XKyF39-Vtf_824JtD_Q\nUser-Agent: axios/1.13.5\nContent-Length: 1509\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Tue, 14 Jul 2026 14:11:15 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"quoteNumber\": 8920172,\n        \"mileage\": 2320.7711311373523,\n        \"referenceQuoteNumber\": \"13952148\",\n        \"carrierReferenceQuoteNumber\": \"10000393572336\",\n        \"carrierQuotes\": [\n            {\n                \"rateNumber\": 1525,\n                \"carrierNumber\": 58653,\n                \"carrierName\": \"XPO Logistics\",\n                \"carrierQuoteNumber\": \"10000393572336\",\n                \"laneName\": \"XPO freight\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/xpo-freight.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"CNWY\",\n                \"carrierRemarks\": [\n                    \"68.6D10000393572336 Quote good for 2 days\"\n                ],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than truckload\",\n                \"totalAmount\": 387.77,\n                \"quoteExpirationDate\": \"2026-07-16T14:11:14.5222301+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 387.77,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": \"13952148\",\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1550,\n                \"carrierNumber\": 58644,\n                \"carrierName\": \"Roadrunner Transportation\",\n                \"carrierQuoteNumber\": \"96920253\",\n                \"laneName\": \"Roadrunner Transportation.\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/roadrunner-transportation.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"RDFS\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 433.42,\n                \"quoteExpirationDate\": \"2026-07-21T14:11:14.5220958+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 433.42,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1575,\n                \"carrierNumber\": 58653,\n                \"carrierName\": \"XPO Logistics\",\n                \"carrierQuoteNumber\": \"10000393572117\",\n                \"laneName\": \"XPO freight\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/xpo-freight.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"CNWY\",\n                \"carrierRemarks\": [\n                    \"68.6D10000393572117 Quote good for 2 days\"\n                ],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed Service (G!)\",\n                \"totalAmount\": 484.7,\n                \"quoteExpirationDate\": \"2026-07-16T14:11:14.5230297+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 484.7,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1600,\n                \"carrierNumber\": 80336,\n                \"carrierName\": \"Forward Air\",\n                \"carrierQuoteNumber\": \"\",\n                \"laneName\": \"FORWARD AIR INC\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/forward-air.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"FWDN\",\n                \"carrierRemarks\": [\n                    \"<span style=\\\"font-family: Calibri, sans-serif; font-size: 14.6667px;\\\">TSA CARRIER</span><br>This rate is not valid for liquid drums. Return fees may apply\"\n                ],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 550.85,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5226451+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 550.85,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 4\n            },\n            {\n                \"rateNumber\": 1625,\n                \"carrierNumber\": 58653,\n                \"carrierName\": \"XPO Logistics\",\n                \"carrierQuoteNumber\": \"10000393572353\",\n                \"laneName\": \"XPO freight\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/xpo-freight.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"CNWY\",\n                \"carrierRemarks\": [\n                    \"68.6D10000393572353 Quote good for 2 days\"\n                ],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed By Noon (G!12)\",\n                \"totalAmount\": 619.37,\n                \"quoteExpirationDate\": \"2026-07-16T14:11:14.5046423+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 619.37,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1650,\n                \"carrierNumber\": 80336,\n                \"carrierName\": \"Forward Air\",\n                \"carrierQuoteNumber\": \"\",\n                \"laneName\": \"FORWARD AIR INC\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/forward-air.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"FWDN\",\n                \"carrierRemarks\": [\n                    \"<span style=\\\"font-family: Calibri, sans-serif; font-size: 14.6667px;\\\">TSA CARRIER</span><br>This rate is not valid for liquid drums. Return fees may apply\"\n                ],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload - Guaranteed Service\",\n                \"totalAmount\": 687.59,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.521841+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 687.59,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 4\n            },\n            {\n                \"rateNumber\": 1675,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"L28R3RG\",\n                \"laneName\": \"Estes Express\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"LTL Standard Transit\",\n                \"totalAmount\": 692.2,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5227817+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 692.2,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1725,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"128R3RG\",\n                \"laneName\": \"Estes Express\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed LTL Standard Transit: 5PM\",\n                \"totalAmount\": 840.73,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5233379+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 840.73,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1700,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"R28R3RG\",\n                \"laneName\": \"Estes Express\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Estes Retail Guarantee\",\n                \"totalAmount\": 840.73,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5229126+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 840.73,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1750,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"228R3RG\",\n                \"laneName\": \"Estes Express\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed LTL Standard Transit: 12PM\",\n                \"totalAmount\": 890.25,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5231868+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 890.25,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1775,\n                \"carrierNumber\": 87082,\n                \"carrierName\": \"Central Transport\",\n                \"carrierQuoteNumber\": \"47511885\",\n                \"laneName\": \"CENTRAL TRANSPORT\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/central-transport.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"CTII\",\n                \"carrierRemarks\": [\n                    \"Oversize Pallets. Please double check rate with the carrier directly\",\n                    \"Freight re-classed in accordance with the vendor's density rules\"\n                ],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 905.14,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5018164+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 905.14,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1800,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"328R3RG\",\n                \"laneName\": \"Estes Express\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed LTL Standard Transit: 10AM\",\n                \"totalAmount\": 939.76,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.4969206+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 939.76,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1825,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"V28R3RJ\",\n                \"laneName\": \"Estes express Volume\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Volume\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Volume and Truckload Basic\",\n                \"totalAmount\": 2282.88,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5042508+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 2282.88,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1850,\n                \"carrierNumber\": 58628,\n                \"carrierName\": \"Averitt Express\",\n                \"carrierQuoteNumber\": \"DPDMCMOSDG\",\n                \"laneName\": \"AVERITT\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/averitt-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"AVRT\",\n                \"carrierRemarks\": [\n                    \"Detention charges may be added if loading or unloading free time (30 minutes) is exceeded\"\n                ],\n                \"transitDays\": 3,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Standard\",\n                \"totalAmount\": 2396.61,\n                \"quoteExpirationDate\": \"2026-07-24T14:11:14.5035065+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 2396.61,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 3\n            },\n            {\n                \"rateNumber\": 1875,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"E28R3RJ\",\n                \"laneName\": \"Estes express Volume\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Volume\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed Volume and Truckload Economy\",\n                \"totalAmount\": 2750.88,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5016896+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 2750.88,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1900,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"S28R3RJ\",\n                \"laneName\": \"Estes express Volume\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Volume\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed Volume and Truckload Standard\",\n                \"totalAmount\": 2979.16,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.5015297+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 2979.16,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1925,\n                \"carrierNumber\": 58624,\n                \"carrierName\": \"AAA Cooper\",\n                \"carrierQuoteNumber\": \"1123749200\",\n                \"laneName\": \"AAA COOPER TRANSPORTATION \",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/aaa-cooper.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"AACT\",\n                \"carrierRemarks\": [\n                    \"<span style=\\\"font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;\\r\\nmso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:\\r\\n&quot;Times New Roman&quot;;mso-ansi-language:ES-CO;mso-fareast-language:ES-CO;\\r\\nmso-bidi-language:AR-SA\\\">TSA CARRIER</span>\"\n                ],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 4805.66,\n                \"quoteExpirationDate\": \"2026-07-19T14:11:14.6579655+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 4805.66,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 4\n            },\n            {\n                \"rateNumber\": 1950,\n                \"carrierNumber\": 58624,\n                \"carrierName\": \"AAA Cooper\",\n                \"carrierQuoteNumber\": \"1123749200\",\n                \"laneName\": \"AAA COOPER TRANSPORTATION \",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/aaa-cooper.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"AACT\",\n                \"carrierRemarks\": [\n                    \"<span style=\\\"font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;\\r\\nmso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:\\r\\n&quot;Times New Roman&quot;;mso-ansi-language:ES-CO;mso-fareast-language:ES-CO;\\r\\nmso-bidi-language:AR-SA\\\">TSA CARRIER</span>\"\n                ],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed\",\n                \"totalAmount\": 4878.31,\n                \"quoteExpirationDate\": \"2026-07-19T14:11:14.6581413+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 4878.31,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 4\n            },\n            {\n                \"rateNumber\": 1975,\n                \"carrierNumber\": 58634,\n                \"carrierName\": \"Estes Express Lines\",\n                \"carrierQuoteNumber\": \"X28R3RJ\",\n                \"laneName\": \"Estes express Volume\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/estes-express.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"EXLA\",\n                \"carrierRemarks\": [],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Guaranteed Exclusive Use\",\n                \"totalAmount\": 21566.72,\n                \"quoteExpirationDate\": \"2026-07-29T14:11:14.6630474+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 21566.72,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            }\n        ]\n    },\n    \"errors\": null\n}"
+                  }
+                },
+                {
+                  "number": 25,
+                  "description": "PRIMO Actor validates the quote response",
+                  "startTime": "2026-07-14T14:11:15.185Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 26,
+                  "description": "PRIMO Actor takes notes:\n- quoteNumber: 8920172",
+                  "startTime": "2026-07-14T14:11:15.197Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 27,
+                  "description": "PRIMO Actor takes notes:\n- selectedCarrier: 1525",
+                  "startTime": "2026-07-14T14:11:15.209Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 13890,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 13907,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 28,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-14T14:11:15.231Z",
+          "children": [
+            {
+              "number": 29,
+              "description": "PRIMO Actor ensures that the status of the last response does equal 200",
+              "startTime": "2026-07-14T14:11:15.235Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 16,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 30,
+          "description": "And the response contains a valid quote number",
+          "startTime": "2026-07-14T14:11:15.247Z",
+          "children": [
+            {
+              "number": 31,
+              "description": "PRIMO Actor ensures that quote number does have value greater than 0",
+              "startTime": "2026-07-14T14:11:15.251Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 16,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 32,
+          "description": "When the actor books the Portal shipment",
+          "startTime": "2026-07-14T14:11:15.264Z",
+          "children": [
+            {
+              "number": 33,
+              "description": "PRIMO Actor books the LTL shipment",
+              "startTime": "2026-07-14T14:11:15.267Z",
+              "children": [
+                {
+                  "number": 34,
+                  "description": "PRIMO Actor records the book request payload",
+                  "startTime": "2026-07-14T14:11:15.267Z",
+                  "children": [],
+                  "reportData": [
+                    {
+                      "id": "report-data-fd88bafaec6c87f7ecd9677c91225fa0976ed7f1",
+                      "isEvidence": false,
+                      "path": "",
+                      "title": "Book Request Payload",
+                      "contents": "{\n    \"customerNumber\": 1235100202,\n    \"customerBsn\": 1237100099,\n    \"bookDate\": \"2026-07-14T14:11:15.273Z\",\n    \"bolInstructions\": \"\",\n    \"bolRemarks\": \"\",\n    \"freightDirection\": 2,\n    \"referenceNumbers\": null,\n    \"quote\": {\n        \"lfsQuoteNumber\": 8920172,\n        \"selectedCarrier\": 1525\n    },\n    \"movement\": {\n        \"declaredValue\": null,\n        \"estimatedPickupDate\": \"2026-07-15\",\n        \"estimatedDeliveryDate\": \"2026-07-19\",\n        \"hazardousContact\": null,\n        \"hazardousMaterial\": null,\n        \"pickupAddress\": {\n            \"name\": \"CargoCore Logistics\",\n            \"address1\": \"948 Main St\",\n            \"address2\": \"Suite 258\",\n            \"city\": \"ORLANDO\",\n            \"state\": \"FL\",\n            \"postalCode\": \"32801\",\n            \"country\": \"US\",\n            \"customerBsn\": null\n        },\n        \"deliveryAddress\": {\n            \"name\": \"Atlas Logistics\",\n            \"address1\": \"676 Market St\",\n            \"address2\": null,\n            \"city\": \"SALT LAKE CITY\",\n            \"state\": \"UT\",\n            \"postalCode\": \"84101\",\n            \"country\": \"US\",\n            \"customerBsn\": null\n        },\n        \"stopAddress\": null,\n        \"pickupInformation\": {\n            \"instructions\": null,\n            \"referenceNumber\": \"\",\n            \"contact\": {\n                \"name\": \"David Smith\",\n                \"phone\": \"5551355211\",\n                \"phonePrefix\": \"+1\",\n                \"email\": \"david.smith@freightmail.com\"\n            },\n            \"shippingWindowTimeFrom\": \"08:00\",\n            \"shippingWindowTimeTo\": \"17:00\"\n        },\n        \"deliveryInformation\": {\n            \"instructions\": null,\n            \"referenceNumber\": \"\",\n            \"contact\": {\n                \"name\": \"Harper Garcia\",\n                \"phone\": \"5557809196\",\n                \"phonePrefix\": \"+1\",\n                \"email\": \"harper.garcia@transmail.com\"\n            },\n            \"shippingWindowTimeFrom\": \"08:00\",\n            \"shippingWindowTimeTo\": \"17:00\"\n        },\n        \"items\": [\n            {\n                \"itemName\": \"Auto Parts\",\n                \"packageType\": 100,\n                \"quantity\": 4,\n                \"length\": 52,\n                \"width\": 28,\n                \"height\": 37,\n                \"weight\": 230,\n                \"volume\": 31.18,\n                \"commodityClass\": \"125\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 4,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": true\n            },\n            {\n                \"itemName\": \"Metal Sheets\",\n                \"packageType\": 100,\n                \"quantity\": 4,\n                \"length\": 45,\n                \"width\": 14,\n                \"height\": 44,\n                \"weight\": 210,\n                \"volume\": 16.04,\n                \"commodityClass\": \"85\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 4,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": true\n            },\n            {\n                \"itemName\": \"Medical Supplies\",\n                \"packageType\": 100,\n                \"quantity\": 2,\n                \"length\": 32,\n                \"width\": 33,\n                \"height\": 40,\n                \"weight\": 115,\n                \"volume\": 24.44,\n                \"commodityClass\": \"175\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 2,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": false\n            }\n        ]\n    },\n    \"glCoding\": {\n        \"EnterpriseTag\": null,\n        \"District\": null,\n        \"GlCode\": null\n    },\n    \"isInsured\": false,\n    \"thirdParty\": null,\n    \"brokerInformation\": {\n        \"brokerName\": null,\n        \"brokerPhone\": null,\n        \"brokerContactName\": null,\n        \"brokerInstructions\": null\n    },\n    \"shippingService\": null,\n    \"notificationEmails\": \"david.smith@freightmail.com\"\n}"
+                    }
+                  ],
+                  "screenshots": [],
+                  "duration": 6,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 35,
+                  "description": "PRIMO Actor sends a POST request to &apos;/portal/v1/book&apos;",
+                  "startTime": "2026-07-14T14:11:15.284Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 23138,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v1/book",
+                    "content": "{\n    \"_overheadLength\": 223,\n    \"_valueLength\": 2340,\n    \"_valuesToMeasure\": [],\n    \"writable\": false,\n    \"readable\": true,\n    \"dataSize\": 0,\n    \"maxDataSize\": 2097152,\n    \"pauseStreams\": true,\n    \"_released\": true,\n    \"_streams\": [],\n    \"_currentStream\": null,\n    \"_insideLoop\": false,\n    \"_pendingNext\": false,\n    \"_boundary\": \"--------------------------b8e199e65ffb058098f6770f\",\n    \"_events\": {},\n    \"_eventsCount\": 3\n}",
+                    "contentType": "multipart/form-data; boundary=--------------------------b8e199e65ffb058098f6770f",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: multipart/form-data; boundary=--------------------------b8e199e65ffb058098f6770f\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDAzODI1MywiaWF0IjoxNzg0MDM4MjUzLCJleHAiOjE3ODY2MzAyNTMsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0MDM4MjUzLCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiMDM3Q0E3RDc4RDlGMEUyNDQ5OUE1MDc2NDlCNzMzQ0IiLCJqdGkiOiJFQjQ1QjQ1MjQyNzFBRDYwODc2NTIzOTJBRkVDRkFFMSJ9.mvidwU9kDIBDgEwJjMlOldC86_1_v7vAElLVicVGzKPP2b6nH-L-BRE-1AOSj6HS7eJskL7fZuP3AO72dYzG2q0tk8UDXWIsKLYqttHzd7RZ9_Z8T2MKg1DeX0-OkFC7tRdWMtp34agR37SWl8gTMdx9Z5BgcaG6bwPJCn6pPlW26FY4GXj23N-2TZVPY1ZI4q8ihBvlVT8tJpP9X8bF5V7T2hf5vvmF5gI81H4SwuyVaLS43F8QWAySi-VGRWvAobVMwrqGkf4dzvGZ_SQcW1ZtfruStr0bUZHQwXcmWrRAInzzCvXomQDQtUbLEYxNJq6XKyF39-Vtf_824JtD_Q\nX-Organization-Slug: portal.primofabric.com\nUser-Agent: axios/1.13.5\nContent-Length: 2619\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Tue, 14 Jul 2026 14:11:37 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"orderNumber\": 20022910,\n        \"referenceQuoteNumber\": \"13952148\",\n        \"documents\": [\n            {\n                \"displayName\": \"Bill of Lading\",\n                \"docType\": \"BillOfLading\",\n                \"url\": \"https://dev.shipprimus.com//Documents.php?id=OTgzOTgy&t=N7MLUv7nJyfyrz-MW6iaQeMt5IUzk_4NLhXILZIvFAk\",\n                \"fileName\": \"BOL_1355586.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/x-download\"\n            },\n            {\n                \"displayName\": \"Shipping Label\",\n                \"docType\": \"ShippingLabel\",\n                \"url\": \"https://dev.shipprimus.com//Documents.php?idLabel=OTgzOTgy&t=ODC-JDj0oMzCrnTtDkPZQpXKG9bUXproWIF7kJ4-_CY\",\n                \"fileName\": \"LABEL_1355586.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/x-download\"\n            },\n            {\n                \"displayName\": \"Quotation 13952148\",\n                \"docType\": \"Other\",\n                \"url\": \"https://lfsdatabrokerstoragedev.blob.core.windows.net/primo-documents/BookingDocuments/1235100202/20022910/Quotation_13952148.pdf\",\n                \"fileName\": \"Quotation_13952148.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/pdf\"\n            }\n        ],\n        \"bolNumber\": \"1355586\",\n        \"trackingNumber\": \"NOF-14-17\",\n        \"messageDispatch\": \"\"\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 23165,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 23179,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 36,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-14T14:11:38.443Z",
+          "children": [
+            {
+              "number": 37,
+              "description": "PRIMO Actor ensures that the status of the last response does equal 200",
+              "startTime": "2026-07-14T14:11:38.449Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 18,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 38,
+          "description": "And the response contains a BOL number",
+          "startTime": "2026-07-14T14:11:38.462Z",
+          "children": [
+            {
+              "number": 39,
+              "description": "PRIMO Actor ensures that BOL number does become present",
+              "startTime": "2026-07-14T14:11:38.466Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 3,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 18,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 40,
+          "description": "And the response contains an order number",
+          "startTime": "2026-07-14T14:11:38.480Z",
+          "children": [
+            {
+              "number": 41,
+              "description": "PRIMO Actor ensures that booking order number does have value greater than 0",
+              "startTime": "2026-07-14T14:11:38.485Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 18,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 38129,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "portal-ltl-booking-via-api",
+    "storyName": "Portal LTL booking via API",
+    "displayName": "Portal LTL booking via API",
+    "path": "api/portal/booking",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "api",
+        "description": "Api"
+      },
+      {
+        "name": "portal",
+        "description": "Portal"
+      },
+      {
+        "name": "booking",
+        "description": "Booking"
+      }
+    ]
+  },
+  "dataTable": {
+    "scenarioOutline": "Given the actor is configured to call Portal APIs\nAnd I load the Excel file from \"src/models/TestCasesAPI.xlsx\"\nAnd I get test data for \"<CaseID>\"\nWhen the actor resolves city and state for origin and destination\nAnd the actor resolves density and class for each commodity\nAnd the actor resolves NMFC codes for all commodities\nAnd the actor resolves hazmat information for hazardous commodities\nAnd the actor resolves accessorials for the quote\nAnd the actor creates an LTL quote from origin to destination\nThen the response status should be 200\nAnd the response contains a valid quote number\nWhen the actor books the Portal shipment\nThen the response status should be 200\nAnd the response contains a BOL number\nAnd the response contains an order number",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 1
+      }
+    ],
+    "headers": [
+      "CaseID"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Random"
+        ],
+        "result": "SUCCESS"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": "2026-07-14T14:11:00.384Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Api",
+      "type": "theme",
+      "displayName": "Api"
+    },
+    {
+      "name": "Api/Portal",
+      "type": "capability",
+      "displayName": "Portal"
+    },
+    {
+      "name": "Api/Portal/Portal LTL booking via API",
+      "type": "feature",
+      "displayName": "Portal LTL booking via API"
+    },
+    {
+      "name": "api",
+      "type": "tag",
+      "displayName": "api"
+    },
+    {
+      "name": "portal",
+      "type": "tag",
+      "displayName": "portal"
+    },
+    {
+      "name": "browser:api",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Api/Portal/Portal LTL booking via API",
+    "type": "feature",
+    "displayName": "Portal LTL booking via API"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    },
+    {
+      "name": "PRIMO Actor",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: { testData: { CaseID: \"TC-055\", Mode: \"LTL\", OriginZip: \"32801\", DestinationZip: \"84101\", OriginCompany: \"CargoCore Logistics\", DestinationCompany: \"Atlas Logistics\", OriginAddress1: \"948 Main St\", OriginAddress2: \"Suite 258\", DeliveryAddress1: \"676 Market St\", PickupContact: \"David Smith\", PickupPhone: \"5551355211\", PickupEmail: \"david.smith@freightmail.com\", DeliveryContact: \"Harper Garcia\", DeliveryPhone: \"5557809196\", DeliveryEmail: \"harper.garcia@transmail.com\", \"Reference#\": \"26241\", SelectedRate: \"Rate-1\", C1_Qty: 4, C1_Name: \"Auto Parts\", C1_Package: \"Pallet\", C1_Length: 52, C1_Width: 28, C1_Height: 37, C1_Weight: 230, C1_Stackable: \"Yes\", C1_Levels: 4, C2_Qty: 4, C2_Name: \"Metal Sheets\", C2_Package: \"Pallet\", C2_Length: 45, C2_Width: 14, C2_Height: 44, C2_Weight: 210, C2_NMFC: \"56040\", C2_Stackable: \"Yes\", C2_Levels: 4, C3_Qty: 2, C3_Name: \"Medical Supplies\", C3_Package: \"Tote\", C3_Length: 32, C3_Width: 33, C3_Height: 40, C3_Weight: 115, C3_NMFC: \"79300\", C3_Stackable: \"No\", C3_Levels: 2, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: \"08:00\", PickupWindowTo: \"17:00\", DeliveryWindowFrom: \"08:00\", DeliveryWindowTo: \"17:00\", HazmatContactName: \"Hazmat Contact\", HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }, enrichedData: { commodityDetails: [ { volume: 31.18, density: 7.38, freightClass: \"125\", hazmatInfo: null, nmfc: null }, { volume: 16.04, density: 13.09, freightClass: \"85\", hazmatInfo: null, nmfc: \"56040-08\" }, { volume: 24.44, density: 4.7, freightClass: \"175\", hazmatInfo: null, nmfc: \"79300-04\" } ], selectedAccessorials: [], originCity: \"ORLANDO\", originState: \"FL\", destinationCity: \"SALT LAKE CITY\", destinationState: \"UT\" }, quoteNumber: 8920172, selectedCarrier: 1525 } }"
+      ]
+    }
+  ],
+  "duration": 38129,
+  "context": "API"
+}
