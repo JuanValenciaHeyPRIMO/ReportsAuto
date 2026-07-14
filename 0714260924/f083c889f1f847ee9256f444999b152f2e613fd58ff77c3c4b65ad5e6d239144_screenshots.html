@@ -1,0 +1,1114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Screenshots</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+
+    <!-- Swiper.js local styles and script -->
+    <link rel="stylesheet" href="swiper/swiper-bundle.min.css" />
+    <script src="swiper/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const startIndex = parseInt(urlParams.get("screenshot")) || 0;
+
+            new Swiper('.swiper', {
+                initialSlide: startIndex,
+                effect: 'fade',
+                speed: 200,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + (index + 1) + "</span>";
+                    },
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .swiper {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            color: #000;
+            opacity: 1;
+            background: lightgrey;
+        }
+
+        .swiper-pagination-bullet-active {
+            color: #fff;
+            background: #007aff;
+        }
+    </style>
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+                <a href="index.html">Home</a>
+                > <span class="truncate-40"><a
+                    href="cdb535c2f5d562891ee6ce240019e251acf3795e473e2dbad96269cef63853b8.html">Quoting</a></span>
+                > <span class="truncate-60"><a
+                    href="f083c889f1f847ee9256f444999b152f2e613fd58ff77c3c4b65ad5e6d239144.html">LTL quote is created in Shipwell </a></span>
+                > Screenshots
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 14-07-2026 14:17</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 class="discreet-story-header">
+                                    <i class="fs-2 bi bi-chat-left-quote large-icon"></i>
+                                    <span class="story-header-title">LTL Quote Created In Portal Is Successfully Registered In Shipwell </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
+                                </h3>
+
+                                <div class="discreet-requirement-narrative-title">
+                                As a user,<br />
+I want an LTL quote created in Portal to be registered in Shipwell<br />
+So that the shipment information is synchronized between systems
+                                </div>
+                            </div>
+
+                        </td>
+                        <td valign="top" align="right">
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="cccad0371db408eb9b5ddb8563971f3caef519987cd8a8d9f98fa3522a1604fe.html">Ui
+                                        (theme)
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="7401db1d47ec4655149e04e254b0c9f23f2c0daf18ee556e62c1254d3bbfb2b5.html">Ui
+                                        (theme)
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="34658a1663fcf042bd7acb3325affbe4e647c8acd84d0228be2f52e1381e61b9.html">10 To 30 Seconds
+                                        (Duration)
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="7171f74b0b8b239f717fbf61b6e4ff927ce0f7f8f8084e1a6048ba73c97aa7a5.html">Browser:Webkit
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="65a2df077748f74ccd607af4e962738958bdf672b0d6b0150ae42bcfa475044e.html">Smoke
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="29376ee19450cce8cfd0d93d64fe121cd5358db614e2c74a52d8b115cf875e35.html">Quoting/LTL Quote Created In Portal Is Successfully Registered In Shipwell
+                                        (feature)
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="5698da923f295f46ce5ab64ced2311fc60caa4e36b32112606d3adcfdce3f60b.html">30 To 60 Seconds
+                                        (Duration)
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="9a9bdb0777609d055bdc6a352be9b5fd8c2db61563efd75ebfd27889bc0dd47f.html">Ui/Quoting/LTL Quote Created In Portal Is Successfully Registered In Shipwell
+                                        (feature)
+                                </a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon fa-2x' title='FAILURE'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="failing-color">LTL quote is created in Shipwell
+                                    <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+    <div class="story-title">
+        <h3>Scenario:</h3>
+        <div class="scenario">Given I load the Excel file from "src/models/TestCasesAPI.xlsx"<br>And I get test data for "&lt;CaseID&gt;"<br>When the user wants to create a new LTL quote<br>And the user fills booking a new LTL quote using Excel data<br>Then the user can see all the rates displayed successfully</div>
+    </div>
+
+    <div id="beforetable"></div>
+    <div id="contenttilttle">
+            <div class="screenshotFailure panel panel-danger">
+    <div style="display:block">
+        <div class="table">
+            <div class="row">
+                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
+                    <span class="error-message error-message-title">Assertion error: Timeout of 5s has expired while waiting for Menu to become visibleExpectation: isVisible()Expected boolean:   trueReceived PlaywrightPageElementPlaywrightPageElement {  locator: PlaywrightLocator {    parent: PlaywrightRootLocator { }    selector: ByXPath {  value: '//*[@id='root']//*[@class='MuiBox-root css-9uivp0 e1de0imv0']'    }  }}    at C:/agent/_work/2/sode_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts:60:28</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-overall"
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="bi bi-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-overall">
+            <div class="card">
+                <div class="card-header">
+                    <h4>AssertionError </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>.(C:/agent/_work/2/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts:60)<br />.ErrorFactory.create()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\errors\ErrorFactory.ts:36)<br />.Stage.createError()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\stage\Stage.ts:341)<br />.RaiseErrors.create()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\errors\RaiseErrors.ts:59)<br />.Object.errorHandler()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\activities\Wait.ts:284)<br />.ScheduledOperation.invoke()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:180)<br />.ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:142)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.ScheduledOperation.invoke()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:168)<br />.ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:142)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts:151)<br /></pre>
+                    </div>
+
+                    <h4>
+                        Caused by: TimeoutExpiredError
+                    </h4>
+                    <div>
+                            <pre>Timeout of 5s has expired</pre>
+                        <pre>.ScheduledOperation.invoke()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :168)<br />.ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :142)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br />.async ScheduledOperation.poll()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\time\models\Scheduler.ts :151)<br /></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+    <!-- Swiper Carousel -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-144ad10404.png" title=" LTL quote is created in Shipwell #1 - CaseID: TC-001" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-144ad10404.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-144ad10404.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-144ad10404.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-001&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-001&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;95050&amp;quot;, DestinationZip: &amp;quot;33602&amp;quot;, OriginCompany: &amp;quot;IronHorse Logistics&amp;quot;, DestinationCompany: &amp;quot;Atlas Logistics&amp;quot;, OriginAddress1: &amp;quot;519 Main St&amp;quot;, DeliveryAddress1: &amp;quot;237 Market St&amp;quot;, PickupRef: &amp;quot;PU-1179&amp;quot;, PickupContact: &amp;quot;Sophia White&amp;quot;, PickupPhone: &amp;quot;5559167539&amp;quot;, PickupEmail: &amp;quot;sophia.white@transmail.com&amp;quot;, DeliveryContact: &amp;quot;Amelia Taylor&amp;quot;, DeliveryPhone: &amp;quot;5554160583&amp;quot;, DeliveryEmail: &amp;quot;amelia.taylor@freightmail.com&amp;quot;, ThirdPartyReference: &amp;quot;TP-REF&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, Reference#: &amp;quot;27166&amp;quot;, SelectedRate: &amp;quot;Rate-4&amp;quot;, C1_Qty: 1, C1_Name: &amp;quot;Metal Sheets&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 49, C1_Width: 60, C1_Height: 21, C1_Weight: 154, C1_Stackable: &amp;quot;Yes&amp;quot;, C1_Levels: 1, C2_Qty: 1, C2_Name: &amp;quot;Electronics&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 63, C2_Width: 43, C2_Height: 14, C2_Weight: 322, C2_Stackable: &amp;quot;Yes&amp;quot;, C2_Levels: 1, C3_Qty: 1, C3_Name: &amp;quot;Furniture&amp;quot;, C3_Package: &amp;quot;Pallet&amp;quot;, C3_Length: 50, C3_Width: 28, C3_Height: 41, C3_Weight: 362, C3_Stackable: &amp;quot;No&amp;quot;, C3_Levels: 1, C4_Qty: 1, C4_Name: &amp;quot;Hardware&amp;quot;, C4_Package: &amp;quot;Pallet&amp;quot;, C4_Length: 42, C4_Width: 28, C4_Height: 11, C4_Weight: 499, C4_Stackable: &amp;quot;Yes&amp;quot;, C4_Levels: 1, C5_Qty: 1, C5_Name: &amp;quot;Metal Sheets&amp;quot;, C5_Package: &amp;quot;Pallet&amp;quot;, C5_Length: 10, C5_Width: 23, C5_Height: 23, C5_Weight: 840, C5_NMFC: &amp;quot;124000&amp;quot;, C5_Stackable: &amp;quot;No&amp;quot;, C5_Levels: 1, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-81712a6c62.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-81712a6c62.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-81712a6c62.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-bee37c29a5.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-b2520c043f.png" title=" LTL quote is created in Shipwell #2 - CaseID: TC-002" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-b2520c043f.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-b2520c043f.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-b2520c043f.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-002&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-002&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;21201&amp;quot;, DestinationZip: &amp;quot;38103&amp;quot;, OriginCompany: &amp;quot;CargoBridge Logistics&amp;quot;, DestinationCompany: &amp;quot;Evergreen Logistics&amp;quot;, OriginAddress1: &amp;quot;447 Main St&amp;quot;, DeliveryAddress1: &amp;quot;587 Market St&amp;quot;, DeliveryAddress2: &amp;quot;Dock 17&amp;quot;, PickupRef: &amp;quot;PU-4136&amp;quot;, PickupContact: &amp;quot;David Clark&amp;quot;, PickupPhone: &amp;quot;5551493490&amp;quot;, PickupEmail: &amp;quot;david.clark@freightmail.com&amp;quot;, DeliveryRef: &amp;quot;DL-5263&amp;quot;, DeliveryContact: &amp;quot;Sophia Harris&amp;quot;, DeliveryPhone: &amp;quot;5551382284&amp;quot;, DeliveryEmail: &amp;quot;sophia.harris@transmail.com&amp;quot;, ThirdPartyReference: &amp;quot;TP-REF&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, SelectedRate: &amp;quot;Rate-3&amp;quot;, C1_Qty: 5, C1_Name: &amp;quot;Consumer Goods&amp;quot;, C1_Package: &amp;quot;Drum&amp;quot;, C1_Length: 45, C1_Width: 50, C1_Height: 20, C1_Weight: 98, C1_Stackable: &amp;quot;Yes&amp;quot;, C1_Levels: 5, C2_Qty: 4, C2_Name: &amp;quot;Industrial Tools&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 43, C2_Width: 27, C2_Height: 46, C2_Weight: 52, C2_Stackable: &amp;quot;Yes&amp;quot;, C2_Levels: 4, C3_Qty: 5, C3_Name: &amp;quot;Furniture&amp;quot;, C3_Package: &amp;quot;Pallet&amp;quot;, C3_Length: 35, C3_Width: 44, C3_Height: 61, C3_Weight: 239, C3_NMFC: &amp;quot;109700&amp;quot;, C3_Stackable: &amp;quot;No&amp;quot;, C3_Levels: 5, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-a764ddd023.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-a764ddd023.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-a764ddd023.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-49b43ebe2a.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" LTL quote is created in Shipwell #3 - CaseID: TC-003" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-003&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-003&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;63101&amp;quot;, DestinationZip: &amp;quot;87101&amp;quot;, OriginCompany: &amp;quot;SkyBridge Logistics&amp;quot;, DestinationCompany: &amp;quot;QuantumFreight Logistics&amp;quot;, OriginAddress1: &amp;quot;726 Main St&amp;quot;, DeliveryAddress1: &amp;quot;338 Market St&amp;quot;, PickupContact: &amp;quot;William Martin&amp;quot;, PickupPhone: &amp;quot;5554266275&amp;quot;, PickupEmail: &amp;quot;william.martin@shipco.com&amp;quot;, DeliveryContact: &amp;quot;Chris White&amp;quot;, DeliveryPhone: &amp;quot;5554263872&amp;quot;, DeliveryEmail: &amp;quot;chris.white@transmail.com&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, Reference#: &amp;quot;41371&amp;quot;, SelectedRate: &amp;quot;Rate-1&amp;quot;, C1_Qty: 2, C1_Name: &amp;quot;Consumer Goods&amp;quot;, C1_Package: &amp;quot;Carton&amp;quot;, C1_Length: 49, C1_Width: 26, C1_Height: 55, C1_Weight: 1493, C1_Stackable: &amp;quot;Yes&amp;quot;, C1_Levels: 2, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-73f488bccc.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-73f488bccc.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-73f488bccc.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-086f3cbc33.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" LTL quote is created in Shipwell #4 - CaseID: TC-004" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-751be09455.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-9ee6b79e12.png" title=" And I get test data for &amp;quot;TC-004&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-9ee6b79e12.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-004&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;72201&amp;quot;, DestinationZip: &amp;quot;92101&amp;quot;, OriginCompany: &amp;quot;FusionFreight Logistics&amp;quot;, DestinationCompany: &amp;quot;TransEdge Logistics&amp;quot;, OriginAddress1: &amp;quot;179 Main St&amp;quot;, OriginAddress2: &amp;quot;Suite 392&amp;quot;, DeliveryAddress1: &amp;quot;500 Market St&amp;quot;, DeliveryAddress2: &amp;quot;Dock 15&amp;quot;, PickupRef: &amp;quot;PU-6809&amp;quot;, PickupContact: &amp;quot;Chris Jackson&amp;quot;, PickupPhone: &amp;quot;5557260484&amp;quot;, PickupEmail: &amp;quot;chris.jackson@shipco.com&amp;quot;, DeliveryContact: &amp;quot;Charlotte Clark&amp;quot;, DeliveryPhone: &amp;quot;5551685813&amp;quot;, DeliveryEmail: &amp;quot;charlotte.clark@freightmail.com&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, Reference#: &amp;quot;69500&amp;quot;, SelectedRate: &amp;quot;Rate-3&amp;quot;, C1_Qty: 1, C1_Name: &amp;quot;Industrial Tools&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 53, C1_Width: 61, C1_Height: 11, C1_Weight: 1194, C1_NMFC: &amp;quot;150400&amp;quot;, C1_Stackable: &amp;quot;No&amp;quot;, C1_Levels: 1, C2_Qty: 1, C2_Name: &amp;quot;Metal Sheets&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 53, C2_Width: 63, C2_Height: 22, C2_Weight: 252, C2_NMFC: &amp;quot;79300&amp;quot;, C2_Stackable: &amp;quot;Yes&amp;quot;, C2_Levels: 1, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-425766823c.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-425766823c.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-425766823c.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-89f82d0b95.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" LTL quote is created in Shipwell #5 - CaseID: TC-005" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-005&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-005&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;64101&amp;quot;, DestinationZip: &amp;quot;21201&amp;quot;, OriginCompany: &amp;quot;TrueLine Logistics&amp;quot;, DestinationCompany: &amp;quot;AuroraTransit Logistics&amp;quot;, OriginAddress1: &amp;quot;887 Main St&amp;quot;, OriginAddress2: &amp;quot;Suite 110&amp;quot;, DeliveryAddress1: &amp;quot;865 Market St&amp;quot;, DeliveryAddress2: &amp;quot;Dock 9&amp;quot;, PickupRef: &amp;quot;PU-3468&amp;quot;, PickupContact: &amp;quot;Chris Harris&amp;quot;, PickupPhone: &amp;quot;5556459148&amp;quot;, PickupEmail: &amp;quot;chris.harris@cargoexpress.com&amp;quot;, DeliveryContact: &amp;quot;Mia Martin&amp;quot;, DeliveryPhone: &amp;quot;5554084782&amp;quot;, DeliveryEmail: &amp;quot;mia.martin@cargoexpress.com&amp;quot;, ThirdPartyReference: &amp;quot;TP-REF&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, Reference#: &amp;quot;22716&amp;quot;, SelectedRate: &amp;quot;Rate-3&amp;quot;, C1_Qty: 5, C1_Name: &amp;quot;Industrial Tools&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 53, C1_Width: 56, C1_Height: 46, C1_Weight: 162, C1_Stackable: &amp;quot;Yes&amp;quot;, C1_Levels: 5, C2_Qty: 1, C2_Name: &amp;quot;Medical Supplies&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 12, C2_Width: 50, C2_Height: 13, C2_Weight: 50, C2_NMFC: &amp;quot;63321&amp;quot;, C2_Stackable: &amp;quot;Yes&amp;quot;, C2_Levels: 1, C3_Qty: 3, C3_Name: &amp;quot;Metal Sheets&amp;quot;, C3_Package: &amp;quot;Pallet&amp;quot;, C3_Length: 20, C3_Width: 45, C3_Height: 25, C3_Weight: 145, C3_NMFC: &amp;quot;150400&amp;quot;, C3_Stackable: &amp;quot;Yes&amp;quot;, C3_Levels: 3, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-350f8c7cb8.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-350f8c7cb8.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-350f8c7cb8.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-867a10691d.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" LTL quote is created in Shipwell #6 - CaseID: TC-006" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-006&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-006&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;85001&amp;quot;, DestinationZip: &amp;quot;38103&amp;quot;, OriginCompany: &amp;quot;MetroLink Logistics&amp;quot;, DestinationCompany: &amp;quot;HorizonCargo Logistics&amp;quot;, OriginAddress1: &amp;quot;484 Main St&amp;quot;, OriginAddress2: &amp;quot;Suite 351&amp;quot;, DeliveryAddress1: &amp;quot;309 Market St&amp;quot;, DeliveryAddress2: &amp;quot;Dock 13&amp;quot;, PickupRef: &amp;quot;PU-5784&amp;quot;, PickupContact: &amp;quot;Charlotte Anderson&amp;quot;, PickupPhone: &amp;quot;5551993328&amp;quot;, PickupEmail: &amp;quot;charlotte.anderson@transmail.com&amp;quot;, DeliveryRef: &amp;quot;DL-8724&amp;quot;, DeliveryContact: &amp;quot;David Thomas&amp;quot;, DeliveryPhone: &amp;quot;5552926237&amp;quot;, DeliveryEmail: &amp;quot;david.thomas@logistics.com&amp;quot;, ThirdPartyReference: &amp;quot;TP-REF&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, SelectedRate: &amp;quot;Rate-4&amp;quot;, C1_Qty: 1, C1_Name: &amp;quot;Auto Parts&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 67, C1_Width: 30, C1_Height: 15, C1_Weight: 385, C1_NMFC: &amp;quot;124000&amp;quot;, C1_Stackable: &amp;quot;No&amp;quot;, C1_Levels: 1, C2_Qty: 3, C2_Name: &amp;quot;Auto Parts&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 35, C2_Width: 32, C2_Height: 31, C2_Weight: 324, C2_Stackable: &amp;quot;No&amp;quot;, C2_Levels: 3, C3_Qty: 1, C3_Name: &amp;quot;Metal Sheets&amp;quot;, C3_Package: &amp;quot;Other&amp;quot;, C3_Length: 61, C3_Width: 34, C3_Height: 63, C3_Weight: 50, C3_Stackable: &amp;quot;No&amp;quot;, C3_Levels: 1, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-3cd55a71d1.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-3cd55a71d1.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-3cd55a71d1.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-797ed72d26.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" LTL quote is created in Shipwell #7 - CaseID: TC-007" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-007&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-007&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;30301&amp;quot;, DestinationZip: &amp;quot;38103&amp;quot;, OriginCompany: &amp;quot;Evergreen Logistics&amp;quot;, DestinationCompany: &amp;quot;FrontierCargo Logistics&amp;quot;, OriginAddress1: &amp;quot;640 Main St&amp;quot;, DeliveryAddress1: &amp;quot;381 Market St&amp;quot;, PickupContact: &amp;quot;Isabella Clark&amp;quot;, PickupPhone: &amp;quot;5558929684&amp;quot;, PickupEmail: &amp;quot;isabella.clark@logistics.com&amp;quot;, DeliveryRef: &amp;quot;DL-7087&amp;quot;, DeliveryContact: &amp;quot;Laura Johnson&amp;quot;, DeliveryPhone: &amp;quot;5555136476&amp;quot;, DeliveryEmail: &amp;quot;laura.johnson@freightmail.com&amp;quot;, Reference#: &amp;quot;30616&amp;quot;, SelectedRate: &amp;quot;Rate-3&amp;quot;, C1_Qty: 4, C1_Name: &amp;quot;Hardware&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 47, C1_Width: 25, C1_Height: 48, C1_Weight: 317, C1_Stackable: &amp;quot;No&amp;quot;, C1_Levels: 4, C2_Qty: 4, C2_Name: &amp;quot;Medical Supplies&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 70, C2_Width: 62, C2_Height: 45, C2_Weight: 291, C2_Stackable: &amp;quot;Yes&amp;quot;, C2_Levels: 4, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-8d3aa8403b.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-8d3aa8403b.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-8d3aa8403b.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-775024677c.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-hovers-the-mouse-over-menu-89a647f7bd.png" title=" User hovers the mouse over Menu" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-quotingoption-does-become-vis-2d116bdc18.png" title=" User waits until QuotingOption does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-quotingoption-40338f4ed8.png" title=" User clicks on QuotingOption" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-ltl-ftl-452f3b6d5e.png" title=" User clicks on LTL/FTL" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-into-origin-input-f2413e8835.png" title=" And the user fills booking a new LTL quote using Excel data" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-into-origin-input-f2413e8835.png" title=" User fills the quote using Excel data" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-into-origin-input-f2413e8835.png" title=" Fill ZIP &amp;apos;30301&amp;apos; using autocomplete" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-into-origin-input-f2413e8835.png" title=" User enters &amp;quot;&amp;quot; into Origin Input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-30301-into-origin-input-da25538bf8.png" title=" User enters &amp;quot;30301&amp;quot; into Origin Input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-2s-ecaf6317dd.png" title=" User waits for 2s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-arrowdown-66aa196c8c.png" title=" User presses key ArrowDown" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-enter-5d0f8403c7.png" title=" User presses key Enter" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-fill-zip-30301-using-autocomplete-5d0f8403c7.png" title=" Fill ZIP &amp;apos;30301&amp;apos; using autocomplete (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-into-destination-input-5d0f8403c7.png" title=" Fill ZIP &amp;apos;38103&amp;apos; using autocomplete" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-into-destination-input-5d0f8403c7.png" title=" User enters &amp;quot;&amp;quot; into Destination Input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-38103-into-destination-input-8aa49cea97.png" title=" User enters &amp;quot;38103&amp;quot; into Destination Input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-2s-8aa49cea97.png" title=" User waits for 2s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-into-destination-input-38d2ff1036.png" title=" User enters &amp;quot;&amp;quot; into Destination Input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-38103-into-destination-input-8aa49cea97.png" title=" User enters &amp;quot;38103&amp;quot; into Destination Input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-2s-ddd97b5f8b.png" title=" User waits for 2s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-arrowdown-d64c74d603.png" title=" User presses key ArrowDown" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-enter-f700ef58db.png" title=" User presses key Enter" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-fill-zip-38103-using-autocomplete-f700ef58db.png" title=" Fill ZIP &amp;apos;38103&amp;apos; using autocomplete (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-3s-f700ef58db.png" title=" User waits for 3s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-tab-d21048ca26.png" title=" User presses key Tab" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-executes-a-synchronous-script-with-argume-afaef8d90f.png" title=" User executes a synchronous script with arguments: [ the 1st of Item name input ]" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-hardware-into-the-1st-of-item-na-a539504797.png" title=" User enters &amp;quot;Hardware&amp;quot; into the 1st of Item name input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-tab-2e650c3dfc.png" title=" User presses key Tab" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-47-into-the-1st-of-item-length-i-f1983f5f84.png" title=" User enters &amp;quot;47&amp;quot; into the 1st of Item length input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-tab-14f0974f88.png" title=" User presses key Tab" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-25-into-the-1st-of-item-width-in-59d56fc119.png" title=" User enters &amp;quot;25&amp;quot; into the 1st of Item width input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-tab-b19ef36a0f.png" title=" User presses key Tab" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-48-into-the-1st-of-item-height-i-fe897a8f15.png" title=" User enters &amp;quot;48&amp;quot; into the 1st of Item height input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-tab-9965cc0d3a.png" title=" User presses key Tab" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-317-into-the-1st-of-item-weight-75a695a731.png" title=" User enters &amp;quot;317&amp;quot; into the 1st of Item weight input" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-tab-78fc1e48d9.png" title=" User presses key Tab" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-add-item-button-dc5d2b0997.png" title=" User clicks on Add Item button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-1s-01fdea97b9.png" title=" User waits for 1s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-add-item-button-e46bca7339.png" title=" User clicks on Add Item button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-presses-key-tab-089752aa83.png" title=" User presses key Tab" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-the-number-of-item-name-input-7fa3def73a.png" title=" User waits until the number of Item name input does equal 2" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-751be09455.png" title=" LTL quote is created in Shipwell #8 - CaseID: TC-008" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-751be09455.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-751be09455.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-751be09455.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-008&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-008&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;85001&amp;quot;, DestinationZip: &amp;quot;33602&amp;quot;, OriginCompany: &amp;quot;QuantumFreight Logistics&amp;quot;, DestinationCompany: &amp;quot;NimbusFreight Logistics&amp;quot;, OriginAddress1: &amp;quot;405 Main St&amp;quot;, OriginAddress2: &amp;quot;Suite 489&amp;quot;, DeliveryAddress1: &amp;quot;501 Market St&amp;quot;, PickupRef: &amp;quot;PU-5201&amp;quot;, PickupContact: &amp;quot;Anthony White&amp;quot;, PickupPhone: &amp;quot;5557317457&amp;quot;, PickupEmail: &amp;quot;anthony.white@logistics.com&amp;quot;, DeliveryRef: &amp;quot;DL-2795&amp;quot;, DeliveryContact: &amp;quot;Sarah Johnson&amp;quot;, DeliveryPhone: &amp;quot;5555593721&amp;quot;, DeliveryEmail: &amp;quot;sarah.johnson@freightmail.com&amp;quot;, Reference#: &amp;quot;53471&amp;quot;, SelectedRate: &amp;quot;Rate-4&amp;quot;, C1_Qty: 1, C1_Name: &amp;quot;Metal Sheets&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 53, C1_Width: 39, C1_Height: 57, C1_Weight: 1646, C1_NMFC: &amp;quot;79300&amp;quot;, C1_Stackable: &amp;quot;Yes&amp;quot;, C1_Levels: 1, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-fddc05faa6.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-fddc05faa6.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-fddc05faa6.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-60e8f2b2d6.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" LTL quote is created in Shipwell #9 - CaseID: TC-009" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" And I get test data for &amp;quot;TC-009&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-00-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-009&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;80202&amp;quot;, DestinationZip: &amp;quot;60007&amp;quot;, OriginCompany: &amp;quot;RedRock Logistics&amp;quot;, DestinationCompany: &amp;quot;EagleTransit Logistics&amp;quot;, OriginAddress1: &amp;quot;780 Main St&amp;quot;, DeliveryAddress1: &amp;quot;481 Market St&amp;quot;, PickupRef: &amp;quot;PU-9452&amp;quot;, PickupContact: &amp;quot;Michael Taylor&amp;quot;, PickupPhone: &amp;quot;5556048835&amp;quot;, PickupEmail: &amp;quot;michael.taylor@cargoexpress.com&amp;quot;, DeliveryContact: &amp;quot;Sarah White&amp;quot;, DeliveryPhone: &amp;quot;5555644517&amp;quot;, DeliveryEmail: &amp;quot;sarah.white@logistics.com&amp;quot;, ThirdPartyReference: &amp;quot;TP-REF&amp;quot;, SelectedRate: &amp;quot;Rate-4&amp;quot;, C1_Qty: 5, C1_Name: &amp;quot;Industrial Tools&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 54, C1_Width: 45, C1_Height: 22, C1_Weight: 163, C1_NMFC: 56040, C1_Stackable: &amp;quot;No&amp;quot;, C1_Levels: 5, C2_Qty: 3, C2_Name: &amp;quot;Metal Sheets&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 55, C2_Width: 66, C2_Height: 18, C2_Weight: 361, C2_Stackable: &amp;quot;Yes&amp;quot;, C2_Levels: 3, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-6ccc9c0993.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-6ccc9c0993.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-6ccc9c0993.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-f61f5c30c6.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-8a9049edf5.png" title=" LTL quote is created in Shipwell #10 - CaseID: TC-010" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-8a9049edf5.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-8a9049edf5.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-8a9049edf5.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" And I get test data for &amp;quot;TC-010&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-010&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;23219&amp;quot;, DestinationZip: &amp;quot;70112&amp;quot;, OriginCompany: &amp;quot;PacificHaul Logistics&amp;quot;, DestinationCompany: &amp;quot;ZenithCargo Logistics&amp;quot;, OriginAddress1: &amp;quot;799 Main St&amp;quot;, OriginAddress2: &amp;quot;Suite 168&amp;quot;, DeliveryAddress1: &amp;quot;976 Market St&amp;quot;, PickupContact: &amp;quot;Daniel Johnson&amp;quot;, PickupPhone: &amp;quot;5558056384&amp;quot;, PickupEmail: &amp;quot;daniel.johnson@logistics.com&amp;quot;, DeliveryContact: &amp;quot;Chris Martinez&amp;quot;, DeliveryPhone: &amp;quot;5555512053&amp;quot;, DeliveryEmail: &amp;quot;chris.martinez@cargoexpress.com&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, SelectedRate: &amp;quot;Rate-3&amp;quot;, C1_Qty: 4, C1_Name: &amp;quot;Electronics&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 42, C1_Width: 59, C1_Height: 53, C1_Weight: 459, C1_NMFC: &amp;quot;79300&amp;quot;, C1_Stackable: &amp;quot;No&amp;quot;, C1_Levels: 4, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-81ca7b5dcc.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-81ca7b5dcc.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-81ca7b5dcc.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-6a3090f270.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" LTL quote is created in Shipwell #11 - CaseID: TC-011" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" And I get test data for &amp;quot;TC-011&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-011&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;33101&amp;quot;, DestinationZip: &amp;quot;32202&amp;quot;, OriginCompany: &amp;quot;IronGate Logistics&amp;quot;, DestinationCompany: &amp;quot;TitanFreight Logistics&amp;quot;, OriginAddress1: &amp;quot;121 Main St&amp;quot;, OriginAddress2: &amp;quot;Suite 405&amp;quot;, DeliveryAddress1: &amp;quot;948 Market St&amp;quot;, PickupContact: &amp;quot;Chris White&amp;quot;, PickupPhone: &amp;quot;5552116546&amp;quot;, PickupEmail: &amp;quot;chris.white@freightmail.com&amp;quot;, DeliveryContact: &amp;quot;David Clark&amp;quot;, DeliveryPhone: &amp;quot;5554658575&amp;quot;, DeliveryEmail: &amp;quot;david.clark@cargoexpress.com&amp;quot;, Reference#: &amp;quot;75187&amp;quot;, SelectedRate: &amp;quot;Rate-2&amp;quot;, C1_Qty: 3, C1_Name: &amp;quot;Electronics&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 56, C1_Width: 47, C1_Height: 52, C1_Weight: 921, C1_NMFC: &amp;quot;79300&amp;quot;, C1_Stackable: &amp;quot;No&amp;quot;, C1_Levels: 3, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-353e49c63f.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-353e49c63f.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-353e49c63f.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-7d6932cce2.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" LTL quote is created in Shipwell #12 - CaseID: TC-012" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" And I get test data for &amp;quot;TC-012&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-012&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;23219&amp;quot;, DestinationZip: &amp;quot;92101&amp;quot;, OriginCompany: &amp;quot;TriStarLogistics Logistics&amp;quot;, DestinationCompany: &amp;quot;NorthStar Logistics&amp;quot;, OriginAddress1: &amp;quot;277 Main St&amp;quot;, DeliveryAddress1: &amp;quot;984 Market St&amp;quot;, DeliveryAddress2: &amp;quot;Dock 4&amp;quot;, PickupRef: &amp;quot;PU-1175&amp;quot;, PickupContact: &amp;quot;Chris Martinez&amp;quot;, PickupPhone: &amp;quot;5552837585&amp;quot;, PickupEmail: &amp;quot;chris.martinez@logistics.com&amp;quot;, DeliveryRef: &amp;quot;DL-7169&amp;quot;, DeliveryContact: &amp;quot;John Brown&amp;quot;, DeliveryPhone: &amp;quot;5559909952&amp;quot;, DeliveryEmail: &amp;quot;john.brown@transmail.com&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, Reference#: &amp;quot;74675&amp;quot;, SelectedRate: &amp;quot;Rate-5&amp;quot;, C1_Qty: 1, C1_Name: &amp;quot;Plastic Components&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 56, C1_Width: 40, C1_Height: 59, C1_Weight: 117, C1_Stackable: &amp;quot;No&amp;quot;, C1_Levels: 1, C2_Qty: 1, C2_Name: &amp;quot;Medical Supplies&amp;quot;, C2_Package: &amp;quot;Drum&amp;quot;, C2_Length: 44, C2_Width: 17, C2_Height: 59, C2_Weight: 316, C2_Stackable: &amp;quot;No&amp;quot;, C2_Levels: 1, C3_Qty: 5, C3_Name: &amp;quot;Plastic Components&amp;quot;, C3_Package: &amp;quot;Pallet&amp;quot;, C3_Length: 59, C3_Width: 25, C3_Height: 25, C3_Weight: 485, C3_NMFC: &amp;quot;79300&amp;quot;, C3_Stackable: &amp;quot;Yes&amp;quot;, C3_Levels: 5, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-e65d7107d8.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-e65d7107d8.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-e65d7107d8.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-750b85fece.png" title=" User waits until Menu does become visible" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" LTL quote is created in Shipwell #13 - CaseID: TC-013" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" Given the user opens the Portal site" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User opens the site at &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-fcbf505620.png" title=" User navigates to &amp;quot;https://portal.primofabric.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" When the user logs in with credentials" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User logs in as &amp;quot;primo-it@heyprimo.com&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-primo-it-heyprimo.com-into-email-557a181626.png" title=" User enters &amp;quot;primo-it@heyprimo.com&amp;quot; into Email Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-d7fab54c68.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-enters-test1234-into-password-field-04b46c0d1a.png" title=" User enters &amp;quot;Test1234#&amp;quot; into Password Field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-clicks-on-login-button-87144b4dde.png" title=" User clicks on Login Button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" And I get test data for &amp;quot;TC-013&amp;quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-takes-notes-testdata-caseid-tc-01-87144b4dde.png" title=" User takes notes:
+- testData: { CaseID: &amp;quot;TC-013&amp;quot;, Mode: &amp;quot;LTL&amp;quot;, OriginZip: &amp;quot;45202&amp;quot;, DestinationZip: &amp;quot;70801&amp;quot;, OriginCompany: &amp;quot;OmegaHaul Logistics&amp;quot;, DestinationCompany: &amp;quot;TitanFreight Logistics&amp;quot;, OriginAddress1: &amp;quot;632 Main St&amp;quot;, DeliveryAddress1: &amp;quot;850 Market St&amp;quot;, DeliveryAddress2: &amp;quot;Dock 1&amp;quot;, PickupRef: &amp;quot;PU-2719&amp;quot;, PickupContact: &amp;quot;Michael Jackson&amp;quot;, PickupPhone: &amp;quot;5556993160&amp;quot;, PickupEmail: &amp;quot;michael.jackson@shipco.com&amp;quot;, DeliveryRef: &amp;quot;DL-5035&amp;quot;, DeliveryContact: &amp;quot;Anthony Johnson&amp;quot;, DeliveryPhone: &amp;quot;5557189017&amp;quot;, DeliveryEmail: &amp;quot;anthony.johnson@freightmail.com&amp;quot;, AdditionalReference: &amp;quot;ADD-REF&amp;quot;, Reference#: &amp;quot;87258&amp;quot;, SelectedRate: &amp;quot;Rate-2&amp;quot;, C1_Qty: 3, C1_Name: &amp;quot;Metal Sheets&amp;quot;, C1_Package: &amp;quot;Pallet&amp;quot;, C1_Length: 52, C1_Width: 68, C1_Height: 36, C1_Weight: 122, C1_Stackable: &amp;quot;Yes&amp;quot;, C1_Levels: 3, C2_Qty: 5, C2_Name: &amp;quot;Medical Supplies&amp;quot;, C2_Package: &amp;quot;Pallet&amp;quot;, C2_Length: 29, C2_Width: 27, C2_Height: 57, C2_Weight: 50, C2_Stackable: &amp;quot;No&amp;quot;, C2_Levels: 5, C3_Qty: 5, C3_Name: &amp;quot;Electronics&amp;quot;, C3_Package: &amp;quot;Pallet&amp;quot;, C3_Length: 17, C3_Width: 13, C3_Height: 29, C3_Weight: 86, C3_NMFC: &amp;quot;150400&amp;quot;, C3_Stackable: &amp;quot;No&amp;quot;, C3_Levels: 5, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &amp;quot;08:00&amp;quot;, PickupWindowTo: &amp;quot;17:00&amp;quot;, DeliveryWindowFrom: &amp;quot;08:00&amp;quot;, DeliveryWindowTo: &amp;quot;17:00&amp;quot;, HazmatContactName: &amp;quot;Hazmat Contact&amp;quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-bee37c29a5.png" title=" When the user wants to create a new LTL quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-bee37c29a5.png" title=" User enters to creation quote" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-for-15s-bee37c29a5.png" title=" User waits for 15s" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="photo-win32-webkit-26.0-user-waits-until-menu-does-become-visible-936644bf83.png" title=" User waits until Menu does become visible: <span class='failing-color'>FAILURE</span>" width="0" />
+                </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 4.2.34</span>
+</div>
+</body>
+</html>

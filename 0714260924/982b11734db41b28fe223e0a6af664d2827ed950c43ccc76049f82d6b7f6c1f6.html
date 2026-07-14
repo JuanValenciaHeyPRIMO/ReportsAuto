@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create a full LTL booking through the Connect Customer API</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jquery-ui/1.14.1/jquery-ui.css" rel="Stylesheet" />
+<script type="text/javascript" src="jquery-ui/1.14.1/jquery-ui.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="#">
+            Api
+        </a>
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="b8d4159371cef0ad506e8c86b813a3f5aad261161578cf6619773d346a522782.html">
+            Connect
+        </a>
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="e40d852020181c540780ec5700ca218dda783aef9fa5843ac23a0416c6824b28.html">
+            Connect Customer LTL booking via API
+        </a>
+        >
+            Create a full LTL booking through the connect customer API
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 14-07-2026 14:10</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fs-2 bi bi-chat-left-quote title-icon"></i>
+                                        <span class="story-header-title">Connect Customer LTL Booking Via API </span>
+                                    </h3>
+
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                            <p class="tag">
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="#">Connect
+                                              (capability)
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="374c89a35517c963f9f94e15b5397b7f1d5e8a3941ccde527e6938867f8b9cdf.html">Browser:Api
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="2a5b6a7be0f08df02d8ab0b4d4c68648c2695c6c7ef0658c71de4d42b1415b18.html">Under 1 Second
+                                              (Duration)
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="#">Connect/Connect Customer LTL Booking Via API
+                                              (feature)
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="43ff0155ae17e00b135d21f463a04b9cea123904e0a5f4abb57aff79c7837741.html">Connect
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="097b48750ce2987b1b8c5e1601936339bb36214e1269675cfdfc5a35c6b9f8f9.html">Api
+                                              (theme)
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="03c38abc150ec1d5070f58913415ff083b86c70994705a423d87e59bdc0f9a7e.html">Api
+                                        </a>
+                                </span>
+                                    <span class='context-icon'>API</span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-exclamation-triangle-fill error-icon fa-2x' title='ERROR'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="error-color">
+                                    Create a full LTL booking through the Connect Customer API
+                                        <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <!-- CAST MEMBERS -->
+            <div>&nbsp;</div>
+            <div>
+                <h3 class="discreet-story-header">
+                    <i class="fs-2 bi bi-people large-icon"></i>
+                    <span class="story-header-title">
+                        <a class="btn btn-primary" data-toggle="collapse" href="#castDetails"
+                           role="button" aria-expanded="true" aria-controls="castDetails">Cast</a>
+                    </span>
+                </h3>
+            </div>
+            <div class="collapse multi-collapse" id="castDetails">
+                <table class="cast">
+                    <tr>
+                            <td width="50%">
+                                <h4>
+                                    <i class="fs-2 bi bi-person"></i>&nbsp;
+                                    <span>
+                                        <a data-toggle="collapse" href="#abilities-User"
+                                           aria-expanded="false" aria-controls="abilities">User</a>
+                                        
+                                    </span>
+                                </h4>
+                                <div class="collapse multi-collapse" id="abilities-User">
+                                        <div>
+                                            <span class="cast-description">User can:</span>
+                                            <ul>
+                                                    <li>PerformActivities</li>
+                                                    <li>AnswerQuestions</li>
+                                                    <li>RaiseErrors</li>
+                                                    <li>ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }</li>
+                                                    <li>CallAnApi { baseURL: "https://api.primofabric.com", headers: { common: { Accept: "application/json, text/plain, */*" } }, timeout: 10000 }</li>
+                                                    <li>TakeNotes { notepad: {} }</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </td>
+                            <td width="50%">
+                                <h4>
+                                    <i class="fs-2 bi bi-person"></i>&nbsp;
+                                    <span>
+                                        <a data-toggle="collapse" href="#abilities-Connect Actor"
+                                           aria-expanded="false" aria-controls="abilities">Connect Actor</a>
+                                        
+                                    </span>
+                                </h4>
+                                <div class="collapse multi-collapse" id="abilities-Connect Actor">
+                                        <div>
+                                            <span class="cast-description">Connect Actor can:</span>
+                                            <ul>
+                                                    <li>PerformActivities</li>
+                                                    <li>AnswerQuestions</li>
+                                                    <li>RaiseErrors</li>
+                                                    <li>ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }</li>
+                                                    <li>CallAnApi { baseURL: "", headers: { common: { Accept: "application/json, text/plain, */*" } }, timeout: 10000 }</li>
+                                                    <li>TakeNotes { notepad: { testData: { CaseID: "TC-001", Mode: "LTL", OriginZip: "95050", DestinationZip: "33602", OriginCompany: "IronHorse Logistics", DestinationCompany: "Atlas Logistics", OriginAddress1: "519 Main St", DeliveryAddress1: "237 Market St", PickupRef: "PU-1179", PickupContact: "Sophia White", PickupPhone: "5559167539", PickupEmail: "sophia.white@transmail.com", DeliveryContact: "Amelia Taylor", DeliveryPhone: "5554160583", DeliveryEmail: "amelia.taylor@freightmail.com", ThirdPartyReference: "TP-REF", AdditionalReference: "ADD-REF", "Reference#": "27166", SelectedRate: "Rate-4", C1_Qty: 1, C1_Name: "Metal Sheets", C1_Package: "Pallet", C1_Length: 49, C1_Width: 60, C1_Height: 21, C1_Weight: 154, C1_Stackable: "Yes", C1_Levels: 1, C2_Qty: 1, C2_Name: "Electronics", C2_Package: "Pallet", C2_Length: 63, C2_Width: 43, C2_Height: 14, C2_Weight: 322, C2_Stackable: "Yes", C2_Levels: 1, C3_Qty: 1, C3_Name: "Furniture", C3_Package: "Pallet", C3_Length: 50, C3_Width: 28, C3_Height: 41, C3_Weight: 362, C3_Stackable: "No", C3_Levels: 1, C4_Qty: 1, C4_Name: "Hardware", C4_Package: "Pallet", C4_Length: 42, C4_Width: 28, C4_Height: 11, C4_Weight: 499, C4_Stackable: "Yes", C4_Levels: 1, C5_Qty: 1, C5_Name: "Metal Sheets", C5_Package: "Pallet", C5_Length: 10, C5_Width: 23, C5_Height: 23, C5_Weight: 840, C5_NMFC: "124000", C5_Stackable: "No", C5_Levels: 1, PickupWindowFrom: "08:00", PickupWindowTo: "17:00", DeliveryWindowFrom: "08:00", DeliveryWindowTo: "17:00", HazmatContactName: "Hazmat Contact", HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 } } }</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </td>
+        </tr>
+        </table>
+    </div>
+    <!-- END CAST MEMBERS -->
+
+
+</div>
+</div>
+
+<div class="clr"></div>
+
+    <div class="story-title">
+        <h3 class="story-header">Scenario Outline</h3>
+
+        <div class="scenario">Given the actor is configured to call Connect Customer APIs<br>And I load the Excel file from "src/models/TestCasesAPI.xlsx"<br>And I get test data for "&lt;CaseID&gt;"<br>When the actor obtains a Connect API token<br>And the actor resolves city and state for origin and destination<br>And the actor resolves density and class for each commodity<br>And the actor resolves NMFC codes for all commodities<br>And the actor resolves hazmat information for hazardous commodities<br>And the actor resolves accessorials for the quote<br>And the actor creates a Connect LTL quote<br>Then the response status should be 200<br>And the response contains a valid quote number<br>When the actor books the Connect Customer shipment<br>Then the response status should be 200<br>And the response contains a BOL number<br>And the response contains an order number</div>
+
+    </div>
+
+<div id="beforetable"></div>
+
+
+        <h3 class="story-header">Examples:&nbsp;</h3>
+            <div class="requirementNarrative"></div>
+
+
+            <p class="example-tag">
+            </p>
+
+        <div class="example-table test-report">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                        <th>Case</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="test-ERROR"><a href="#0">1</a></td>
+                            <td class="test-ERROR"><a
+                                        href="#0">TC-001</a>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+<div id="tablecontents">
+    <div>
+        <table class="step-table">
+            <tr class="step-titles">
+                <th width="65">
+                </th>
+                <th class="step-description-column greentext">
+                    Steps
+                </th>
+
+                <th width="130" class="greentext">Outcome</th>
+                <th width="100" class="greentext"><i title="Duration" class="bi bi-stopwatch"></i></th>
+            </tr>
+            <tr class="step-table-separator">
+                <td colspan="5"></td>
+            </tr>
+
+                <tr class="test-ERROR">
+
+                    <td width="50" class="step-icon">
+                        <a name="0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0 error-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Create a full LTL booking through the Connect Customer API #1 - CaseID: TC-001
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">ERROR</span></td>
+                    <td width="100"><span class="top-level-step">364ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Before
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">008ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-1"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Given the actor is configured to call Connect Customer APIs
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">002ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-2"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And I load the Excel file from &quot;src/models/TestCasesAPI.xlsx&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">172ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-3"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-3')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-3 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-3')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                And I get test data for &quot;TC-001&quot;
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">036ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-3" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-3-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Connect Actor takes notes:<br>- testData: { CaseID: &quot;TC-001&quot;, Mode: &quot;LTL&quot;, OriginZip: &quot;95050&quot;, DestinationZip: &quot;33602&quot;, OriginCompany: &quot;IronHorse Logistics&quot;, DestinationCompany: &quot;Atlas Logistics&quot;, OriginAddress1: &quot;519 Main St&quot;, DeliveryAddress1: &quot;237 Market St&quot;, PickupRef: &quot;PU-1179&quot;, PickupContact: &quot;Sophia White&quot;, PickupPhone: &quot;5559167539&quot;, PickupEmail: &quot;sophia.white@transmail.com&quot;, DeliveryContact: &quot;Amelia Taylor&quot;, DeliveryPhone: &quot;5554160583&quot;, DeliveryEmail: &quot;amelia.taylor@freightmail.com&quot;, ThirdPartyReference: &quot;TP-REF&quot;, AdditionalReference: &quot;ADD-REF&quot;, Reference#: &quot;27166&quot;, SelectedRate: &quot;Rate-4&quot;, C1_Qty: 1, C1_Name: &quot;Metal Sheets&quot;, C1_Package: &quot;Pallet&quot;, C1_Length: 49, C1_Width: 60, C1_Height: 21, C1_Weight: 154, C1_Stackable: &quot;Yes&quot;, C1_Levels: 1, C2_Qty: 1, C2_Name: &quot;Electronics&quot;, C2_Package: &quot;Pallet&quot;, C2_Length: 63, C2_Width: 43, C2_Height: 14, C2_Weight: 322, C2_Stackable: &quot;Yes&quot;, C2_Levels: 1, C3_Qty: 1, C3_Name: &quot;Furniture&quot;, C3_Package: &quot;Pallet&quot;, C3_Length: 50, C3_Width: 28, C3_Height: 41, C3_Weight: 362, C3_Stackable: &quot;No&quot;, C3_Levels: 1, C4_Qty: 1, C4_Name: &quot;Hardware&quot;, C4_Package: &quot;Pallet&quot;, C4_Length: 42, C4_Width: 28, C4_Height: 11, C4_Weight: 499, C4_Stackable: &quot;Yes&quot;, C4_Levels: 1, C5_Qty: 1, C5_Name: &quot;Metal Sheets&quot;, C5_Package: &quot;Pallet&quot;, C5_Length: 10, C5_Width: 23, C5_Height: 23, C5_Weight: 840, C5_NMFC: &quot;124000&quot;, C5_Stackable: &quot;No&quot;, C5_Levels: 1, PickupWindowFrom: &quot;08:00&quot;, PickupWindowTo: &quot;17:00&quot;, DeliveryWindowFrom: &quot;08:00&quot;, DeliveryWindowTo: &quot;17:00&quot;, HazmatContactName: &quot;Hazmat Contact&quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">003ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-ERROR">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-4"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-4')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-4 error-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-4')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                When the actor obtains a Connect API token
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">ERROR</span></td>
+                    <td width="100"><span class="nested-step">112ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-4" class="step-table-nested" style="display:none;">
+                <tr class="test-ERROR">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-4-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-4-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-4-0 error-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-4-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Connect Actor obtains a client API token
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">ERROR</span></td>
+                    <td width="100"><span class="nested-step">088ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-4-0" class="step-table-nested" style="display:none;">
+                <tr class="test-ERROR">
+
+                    <td width="110" class="step-icon">
+                        <a name="0-4-0-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-exclamation-triangle-fill error-icon ' title='ERROR'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Connect Actor calls the auth login endpoint
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">ERROR</span></td>
+                    <td width="100"><span class="nested-group-step">065ms</span></td>
+                </tr>
+                    <tr class="test-ERROR">
+                        <td width="40">&nbsp</td>
+                        <td width="%" colspan="3" class="error-message-cell">
+
+
+    <div style="display:block">
+        <div class="table">
+            <div class="row">
+                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
+                    <span class="error-message error-message-title">ConfigurationError: Looks like there was an issue with Axios configuration; Invalid URL</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-9"
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="bi bi-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4>ConfigurationError </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>.CallAnApi.request()(C:\agent\_work\2\s\node_modules\@serenity-js\rest\src\screenplay\abilities\CallAnApi.ts:476)<br />.async DynamicallyGeneratedInteraction.interaction()(C:\agent\_work\2\s\src\tasks\api\ObtainClientToken.ts:29)<br />.async PerformActivities.perform()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\abilities\PerformActivities.ts:60)<br />.async PerformActivities.perform()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\abilities\PerformActivities.ts:60)<br />.async World.<anonymous>()(C:\agent\_work\2\s\features\api\common\api.steps.ts:40)<br />.async wrapPromiseWithTimeout()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\time.ts:55)<br />.async Object.run()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\user_code_runner.ts:86)<br />.async Object.run()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\runtime\step_runner.ts:58)<br />.async TestCaseRunner.invokeStep()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\runtime\test_case_runner.ts:151)<br />.async TestCaseRunner.runStep()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\runtime\test_case_runner.ts:377)<br />.new URL()(node:internal/url:818)<br />.dispatchHttpRequest()(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js:413)<br />.(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js:253)<br />.wrapAsync()(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js:233)<br />.http()(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js:319)<br />.Axios.dispatchRequest()(C:\agent\_work\2\s\node_modules\axios\lib\core\dispatchRequest.js:51)<br />.Axios._request()(C:\agent\_work\2\s\node_modules\axios\lib\core\Axios.js:194)<br />.Axios.request()(C:\agent\_work\2\s\node_modules\axios\lib\core\Axios.js:41)<br />.Function.wrap [as request]()(C:\agent\_work\2\s\node_modules\axios\lib\helpers\bind.js:12)<br />.Axios.request()(C:\agent\_work\2\s\node_modules\axios\lib\core\Axios.js:46)<br />.async CallAnApi.request()(C:\agent\_work\2\s\node_modules\@serenity-js\rest\src\screenplay\abilities\CallAnApi.ts:461)<br />.async DynamicallyGeneratedInteraction.interaction()(C:\agent\_work\2\s\src\tasks\api\ObtainClientToken.ts:29)<br />.async PerformActivities.perform()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\abilities\PerformActivities.ts:60)<br />.async PerformActivities.perform()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\abilities\PerformActivities.ts:60)<br />.async World.<anonymous>()(C:\agent\_work\2\s\features\api\common\api.steps.ts:40)<br />.async wrapPromiseWithTimeout()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\time.ts:55)<br />.async Object.run()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\user_code_runner.ts:86)<br />.async Object.run()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\runtime\step_runner.ts:58)<br />.async TestCaseRunner.invokeStep()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\runtime\test_case_runner.ts:151)<br /></pre>
+                    </div>
+
+                    <h4>
+                        Caused by: TypeError
+                    </h4>
+                    <div>
+                            <pre>Invalid URL</pre>
+                        <pre>.new URL()(node:internal/url :818)<br />.dispatchHttpRequest()(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js :413)<br />.(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js :253)<br />.wrapAsync()(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js :233)<br />.http()(C:\agent\_work\2\s\node_modules\axios\lib\adapters\http.js :319)<br />.Axios.dispatchRequest()(C:\agent\_work\2\s\node_modules\axios\lib\core\dispatchRequest.js :51)<br />.Axios._request()(C:\agent\_work\2\s\node_modules\axios\lib\core\Axios.js :194)<br />.Axios.request()(C:\agent\_work\2\s\node_modules\axios\lib\core\Axios.js :41)<br />.Function.wrap [as request]()(C:\agent\_work\2\s\node_modules\axios\lib\helpers\bind.js :12)<br />.Axios.request()(C:\agent\_work\2\s\node_modules\axios\lib\core\Axios.js :46)<br />.async CallAnApi.request()(C:\agent\_work\2\s\node_modules\@serenity-js\rest\src\screenplay\abilities\CallAnApi.ts :461)<br />.async DynamicallyGeneratedInteraction.interaction()(C:\agent\_work\2\s\src\tasks\api\ObtainClientToken.ts :29)<br />.async PerformActivities.perform()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\abilities\PerformActivities.ts :60)<br />.async PerformActivities.perform()(C:\agent\_work\2\s\node_modules\@serenity-js\core\src\screenplay\abilities\PerformActivities.ts :60)<br />.async World.<anonymous>()(C:\agent\_work\2\s\features\api\common\api.steps.ts :40)<br />.async wrapPromiseWithTimeout()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\time.ts :55)<br />.async Object.run()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\user_code_runner.ts :86)<br />.async Object.run()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\runtime\step_runner.ts :58)<br />.async TestCaseRunner.invokeStep()(C:\agent\_work\2\s\node_modules\@cucumber\cucumber\src\runtime\test_case_runner.ts :151)<br /></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-5"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the actor resolves city and state for origin and destination
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-6"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the actor resolves density and class for each commodity
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-7"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the actor resolves NMFC codes for all commodities
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-8"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the actor resolves hazmat information for hazardous commodities
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-9"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the actor resolves accessorials for the quote
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-10"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the actor creates a Connect LTL quote
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-11"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Then the response status should be 200
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-12"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the response contains a valid quote number
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-13"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                When the actor books the Connect Customer shipment
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-14"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Then the response status should be 200
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-15"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the response contains a BOL number
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SKIPPED">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-16"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-skip-forward skipped-icon ' title='SKIPPED'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                And the response contains an order number
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SKIPPED</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+            <tr class="test-ERROR">
+                    <td colspan="2"></td>
+                <td width="130"><span class="top-level-step"><em>ERROR</em></span></td>
+                <td width="100"><span class="top-level-step"><em>0.36s</em></span></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div id="beforefooter"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 4.2.34</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function toggleDiv(divId) {
+        $("#" + divId).toggle();
+        var $icon = $(".img" + divId);
+        $icon.toggleClass("bi-caret-right-square");
+        $icon.toggleClass("bi-caret-down-square");
+    }
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(document).ready(function () {
+        $('img.screenshot').imgPreview({
+            imgCSS: {
+                width: '500px'
+            },
+            distanceFromCursor: {top: 10, left: -200}
+        });
+    });
+
+    //]]>
+</script>
+<div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+            src="" style="display: none; "></div>
+<div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+    <img style="width: 200px; display: none; " src=""></div>
+<div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+    <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+<div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+<div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>

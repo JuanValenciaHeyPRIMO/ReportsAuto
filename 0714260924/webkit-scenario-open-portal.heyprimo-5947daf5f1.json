@@ -1,0 +1,413 @@
+{
+  "id": "login-to-the-portal;open-portal-heyprimo",
+  "name": "open portal.heyprimo",
+  "title": "open portal.heyprimo",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "open portal.heyprimo #1 - email: andrea@a1fsinc.com, password: A1$2026",
+      "startTime": "2026-07-14T14:17:28.295Z",
+      "children": [
+        {
+          "number": 2,
+          "description": "Before",
+          "startTime": "2026-07-14T14:17:28.296Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 2,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "Given the user opens the Portal site",
+          "startTime": "2026-07-14T14:17:28.299Z",
+          "children": [
+            {
+              "number": 4,
+              "description": "User opens the site at &quot;https://portal.primofabric.com&quot;",
+              "startTime": "2026-07-14T14:17:28.302Z",
+              "children": [
+                {
+                  "number": 5,
+                  "description": "User navigates to &quot;https://portal.primofabric.com&quot;",
+                  "startTime": "2026-07-14T14:17:28.304Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [
+                    {
+                      "screenshot": "photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png",
+                      "screenshotName": "photo-win32-webkit-26.0-user-navigates-to-https-portal.primofabric.-c917325bac.png",
+                      "timeStamp": 1784038651139
+                    }
+                  ],
+                  "duration": 2764,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2852,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 2871,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 6,
+          "description": "When the user logs in with &quot;andrea@a1fsinc.com&quot; and &quot;A1$2026&quot;",
+          "startTime": "2026-07-14T14:17:31.171Z",
+          "children": [
+            {
+              "number": 7,
+              "description": "User logs in as &quot;andrea@a1fsinc.com&quot;",
+              "startTime": "2026-07-14T14:17:31.174Z",
+              "children": [
+                {
+                  "number": 8,
+                  "description": "User enters &quot;andrea@a1fsinc.com&quot; into Email Field",
+                  "startTime": "2026-07-14T14:17:31.183Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [
+                    {
+                      "screenshot": "photo-win32-webkit-26.0-user-enters-andrea-a1fsinc.com-into-email-fi-1ef21f031b.png",
+                      "screenshotName": "photo-win32-webkit-26.0-user-enters-andrea-a1fsinc.com-into-email-fi-1ef21f031b.png",
+                      "timeStamp": 1784038653361
+                    }
+                  ],
+                  "duration": 1664,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 9,
+                  "description": "User clicks on Login Button",
+                  "startTime": "2026-07-14T14:17:33.376Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [
+                    {
+                      "screenshot": "photo-win32-webkit-26.0-user-clicks-on-login-button-46e3541c36.png",
+                      "screenshotName": "photo-win32-webkit-26.0-user-clicks-on-login-button-46e3541c36.png",
+                      "timeStamp": 1784038653785
+                    }
+                  ],
+                  "duration": 366,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 10,
+                  "description": "User enters &quot;A1$2026&quot; into Password Field",
+                  "startTime": "2026-07-14T14:17:33.799Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [
+                    {
+                      "screenshot": "photo-win32-webkit-26.0-user-enters-a1-2026-into-password-field-2a765c9504.png",
+                      "screenshotName": "photo-win32-webkit-26.0-user-enters-a1-2026-into-password-field-2a765c9504.png",
+                      "timeStamp": 1784038654124
+                    }
+                  ],
+                  "duration": 279,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 11,
+                  "description": "User clicks on Login Button",
+                  "startTime": "2026-07-14T14:17:34.134Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [
+                    {
+                      "screenshot": "photo-win32-webkit-26.0-user-clicks-on-login-button-a93c0689df.png",
+                      "screenshotName": "photo-win32-webkit-26.0-user-clicks-on-login-button-a93c0689df.png",
+                      "timeStamp": 1784038654541
+                    }
+                  ],
+                  "duration": 365,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 3390,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 3409,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 12,
+          "description": "Then I should see the tittle &quot;PRIMO&quot;",
+          "startTime": "2026-07-14T14:17:34.580Z",
+          "children": [
+            {
+              "number": 13,
+              "description": "User ensures that User gets the page title does include &quot;PRIMO&quot;",
+              "startTime": "2026-07-14T14:17:34.583Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-webkit-26.0-user-ensures-that-user-gets-the-page-title-doe-a93c0689df.png",
+                  "screenshotName": "photo-win32-webkit-26.0-user-ensures-that-user-gets-the-page-title-doe-a93c0689df.png",
+                  "timeStamp": 1784038654629
+                }
+              ],
+              "duration": 7,
+              "result": "FAILURE",
+              "exception": {
+                "errorType": "AssertionError",
+                "message": "Expected #actor gets the page title to include \"PRIMO\"\n\nExpectation: includes('PRIMO')\n\nExpected string: PRIMO\nReceived string: Login\n\n    at C:/agent/_work/2/s/features/ui/login/login.steps.ts:19:49",
+                "stackTrace": [
+                  {
+                    "declaringClass": "",
+                    "methodName": "",
+                    "fileName": "C:/agent/_work/2/s/features/ui/login/login.steps.ts",
+                    "lineNumber": 19
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "ErrorFactory.create()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\errors\\ErrorFactory.ts",
+                    "lineNumber": 36
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "Stage.createError()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\stage\\Stage.ts",
+                    "lineNumber": 341
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "RaiseErrors.create()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\errors\\RaiseErrors.ts",
+                    "lineNumber": 59
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "Ensure.performAs()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\assertions\\src\\Ensure.ts",
+                    "lineNumber": 140
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async PerformActivities.perform()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\screenplay\\abilities\\PerformActivities.ts",
+                    "lineNumber": 60
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async World.<anonymous>()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\features\\ui\\login\\login.steps.ts",
+                    "lineNumber": 19
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async wrapPromiseWithTimeout()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@cucumber\\cucumber\\src\\time.ts",
+                    "lineNumber": 55
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async Object.run()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@cucumber\\cucumber\\src\\user_code_runner.ts",
+                    "lineNumber": 86
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async Object.run()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@cucumber\\cucumber\\src\\runtime\\step_runner.ts",
+                    "lineNumber": 58
+                  },
+                  {
+                    "declaringClass": "",
+                    "methodName": "async TestCaseRunner.invokeStep()",
+                    "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@cucumber\\cucumber\\src\\runtime\\test_case_runner.ts",
+                    "lineNumber": 151
+                  }
+                ]
+              }
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 64,
+          "result": "FAILURE"
+        },
+        {
+          "number": 14,
+          "description": "And user read the terms",
+          "startTime": "2026-07-14T14:17:34.645Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 6394,
+      "result": "FAILURE"
+    }
+  ],
+  "userStory": {
+    "id": "login-to-the-portal",
+    "storyName": "Login to the Portal",
+    "displayName": "Login to the Portal",
+    "path": "ui/login/loginterms",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "ui",
+        "description": "Ui"
+      },
+      {
+        "name": "login",
+        "description": "Login"
+      },
+      {
+        "name": "loginterms",
+        "description": "Loginterms"
+      }
+    ]
+  },
+  "dataTable": {
+    "scenarioOutline": "Given the user opens the Portal site\nWhen the user logs in with \"<email>\" and \"<password>\"\nThen I should see the tittle \"PRIMO\"\nAnd user read the terms",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 1
+      }
+    ],
+    "headers": [
+      "email",
+      "password"
+    ],
+    "rows": [
+      {
+        "values": [
+          "andrea@a1fsinc.com",
+          "A1$2026"
+        ],
+        "result": "FAILURE"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": "2026-07-14T14:17:28.295Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Ui",
+      "type": "theme",
+      "displayName": "Ui"
+    },
+    {
+      "name": "Ui/Login",
+      "type": "capability",
+      "displayName": "Login"
+    },
+    {
+      "name": "Ui/Login/Login to the Portal",
+      "type": "feature",
+      "displayName": "Login to the Portal"
+    },
+    {
+      "name": "logterms",
+      "type": "tag",
+      "displayName": "logterms"
+    },
+    {
+      "name": "browser:webkit",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Ui/Login/Login to the Portal",
+    "type": "feature",
+    "displayName": "Login to the Portal"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "BrowseTheWeb (BrowseTheWebWithPlaywright)",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    }
+  ],
+  "result": "FAILURE",
+  "testFailureCause": {
+    "errorType": "AssertionError",
+    "message": "Expected #actor gets the page title to include \"PRIMO\"\n\nExpectation: includes('PRIMO')\n\nExpected string: PRIMO\nReceived string: Login",
+    "stackTrace": [
+      {
+        "declaringClass": "",
+        "methodName": "",
+        "fileName": "C:/agent/_work/2/s/features/ui/login/login.steps.ts",
+        "lineNumber": 19
+      },
+      {
+        "declaringClass": "",
+        "methodName": "",
+        "fileName": "C:/agent/_work/2/s/features/ui/login/login.steps.ts",
+        "lineNumber": 19
+      },
+      {
+        "declaringClass": "",
+        "methodName": "ErrorFactory.create()",
+        "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\errors\\ErrorFactory.ts",
+        "lineNumber": 36
+      },
+      {
+        "declaringClass": "",
+        "methodName": "Stage.createError()",
+        "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\stage\\Stage.ts",
+        "lineNumber": 341
+      },
+      {
+        "declaringClass": "",
+        "methodName": "RaiseErrors.create()",
+        "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\errors\\RaiseErrors.ts",
+        "lineNumber": 59
+      },
+      {
+        "declaringClass": "",
+        "methodName": "Ensure.performAs()",
+        "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\assertions\\src\\Ensure.ts",
+        "lineNumber": 140
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async PerformActivities.perform()",
+        "fileName": "C:\\agent\\_work\\2\\s\\node_modules\\@serenity-js\\core\\src\\screenplay\\abilities\\PerformActivities.ts",
+        "lineNumber": 60
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async World.<anonymous>()",
+        "fileName": "C:\\agent\\_work\\2\\s\\features\\ui\\login\\login.steps.ts",
+        "lineNumber": 19
+      }
+    ]
+  },
+  "duration": 6394,
+  "context": "WEBKIT"
+}
