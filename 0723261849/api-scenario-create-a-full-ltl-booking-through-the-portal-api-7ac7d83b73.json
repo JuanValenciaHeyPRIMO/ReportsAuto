@@ -1,0 +1,616 @@
+{
+  "id": "portal-ltl-booking-via-api;create-a-full-ltl-booking-through-the-portal-api",
+  "name": "Create a full LTL booking through the Portal API",
+  "title": "Create a full LTL booking through the Portal API",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Create a full LTL booking through the Portal API #1 - CaseID: Random",
+      "startTime": "2026-07-23T18:49:07.013Z",
+      "children": [
+        {
+          "number": 2,
+          "description": "Before",
+          "startTime": "2026-07-23T18:49:07.016Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 4,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "Given the actor is configured to call Portal APIs",
+          "startTime": "2026-07-23T18:49:07.021Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 4,
+          "description": "And I load the Excel file from &quot;src/models/TestCasesAPI.xlsx&quot;",
+          "startTime": "2026-07-23T18:49:07.022Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 164,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 5,
+          "description": "And I get test data for &quot;Random&quot;",
+          "startTime": "2026-07-23T18:49:07.187Z",
+          "children": [
+            {
+              "number": 6,
+              "description": "PRIMO Actor takes notes:\n- testData: { CaseID: &quot;TC-095&quot;, Mode: &quot;LTL&quot;, OriginZip: &quot;80202&quot;, DestinationZip: &quot;29401&quot;, OriginCompany: &quot;VelocityFreight Logistics&quot;, DestinationCompany: &quot;VectorLogix Logistics&quot;, OriginAddress1: &quot;137 Main St&quot;, DeliveryAddress1: &quot;372 Market St&quot;, PickupRef: &quot;PU-7829&quot;, PickupContact: &quot;Anthony Garcia&quot;, PickupPhone: &quot;5559062371&quot;, PickupEmail: &quot;anthony.garcia@cargoexpress.com&quot;, DeliveryContact: &quot;Harper Martinez&quot;, DeliveryPhone: &quot;5554635863&quot;, DeliveryEmail: &quot;harper.martinez@transmail.com&quot;, ThirdPartyReference: &quot;TP-REF&quot;, SelectedRate: &quot;Rate-1&quot;, C1_Qty: 3, C1_Name: &quot;Industrial Tools&quot;, C1_Package: &quot;Pallet&quot;, C1_Length: 60, C1_Width: 32, C1_Height: 51, C1_Weight: 223, C1_NMFC: &quot;63321&quot;, C1_Stackable: &quot;No&quot;, C1_Levels: 3, C2_Qty: 1, C2_Name: &quot;Electronics&quot;, C2_Package: &quot;Pallet&quot;, C2_Length: 67, C2_Width: 45, C2_Height: 46, C2_Weight: 163, C2_Stackable: &quot;No&quot;, C2_Levels: 1, C3_Qty: 4, C3_Name: &quot;Industrial Tools&quot;, C3_Package: &quot;Pallet&quot;, C3_Length: 20, C3_Width: 68, C3_Height: 17, C3_Weight: 225, C3_NMFC: &quot;49260&quot;, C3_Stackable: &quot;Yes&quot;, C3_Levels: 4, C4_Qty: 4, C4_Name: &quot;Medical Supplies&quot;, C4_Package: &quot;Crate&quot;, C4_Length: 27, C4_Width: 62, C4_Height: 47, C4_Weight: 200, C4_NMFC: &quot;109700&quot;, C4_Stackable: &quot;Yes&quot;, C4_Levels: 4, C5_Qty: 3, C5_Name: &quot;Medical Supplies&quot;, C5_Package: &quot;Pallet&quot;, C5_Length: 40, C5_Width: 34, C5_Height: 56, C5_Weight: 154, C5_NMFC: 56040, C5_Stackable: &quot;No&quot;, C5_Levels: 3, PickupWindowFrom: &quot;08:00&quot;, PickupWindowTo: &quot;17:00&quot;, DeliveryWindowFrom: &quot;08:00&quot;, DeliveryWindowTo: &quot;17:00&quot;, HazmatContactName: &quot;Hazmat Contact&quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }",
+              "startTime": "2026-07-23T18:49:07.195Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 21,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 7,
+          "description": "When the actor resolves city and state for origin and destination",
+          "startTime": "2026-07-23T18:49:07.209Z",
+          "children": [
+            {
+              "number": 8,
+              "description": "PRIMO Actor resolves city and state for origin and destination",
+              "startTime": "2026-07-23T18:49:07.213Z",
+              "children": [
+                {
+                  "number": 9,
+                  "description": "PRIMO Actor resolves zip codes",
+                  "startTime": "2026-07-23T18:49:07.213Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1469,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v1/address-search",
+                    "content": "{\"searchValue\":\"29401\",\"country\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDgzMjU0MCwiaWF0IjoxNzg0ODMyNTQwLCJleHAiOjE3ODc0MjQ1NDAsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0ODMyNTM4LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiQTVBNzhBODg5NERBQjg2NzM0ODVBRjRCNEFDODY5QzQiLCJqdGkiOiJDMDcxNDE2RkM0QkYwOTg0MkM1MzVCQ0I2ODA5REFBNyJ9.Dr1OQrqsCQfO8Y59EsZWHEGo42U8P_zHe1L6gkn5b57BYY70OZ7WclWFn3RC2LPXhedVrhcLop0HKxs3FS4taah72CyaY-JqLnJ9sDBkKnawBKYqv4vB71lWIj-XCb3ndBJMbjyrtASw_B19Wbr_ug5gEqXmcN55jzKW7JVdKNZtedKoqDOukZtQX1uknyEY2cRQ2dHxJtL7v6rUXbKRtB8SdaLsxodFDl3C4ufVhbFKSFNL6iWXHMosoRsd-KtwmgDE7ULGXZlioPaDp4b82Nstwxx6jDew-TwjU43OxHr3f8MOqjwtfRD_l6Smae7Yc0szZPVtE_vPJsYZXk2QCg\nUser-Agent: axios/1.13.5\nContent-Length: 38\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Thu, 23 Jul 2026 18:49:08 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": [\n        {\n            \"companyName\": null,\n            \"displayName\": \"CHARLESTON, SC 29401 US\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"CHARLESTON\",\n            \"state\": \"SC\",\n            \"postalCode\": \"29401\",\n            \"country\": \"US\",\n            \"bsn\": null,\n            \"shippingAddressId\": null\n        },\n        {\n            \"companyName\": null,\n            \"displayName\": \"CHAS, SC 29401 US\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"CHAS\",\n            \"state\": \"SC\",\n            \"postalCode\": \"29401\",\n            \"country\": \"US\",\n            \"bsn\": null,\n            \"shippingAddressId\": null\n        }\n    ],\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1479,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1494,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 10,
+          "description": "And the actor resolves density and class for each commodity",
+          "startTime": "2026-07-23T18:49:08.703Z",
+          "children": [
+            {
+              "number": 11,
+              "description": "PRIMO Actor resolves volume, density and class for each commodity",
+              "startTime": "2026-07-23T18:49:08.706Z",
+              "children": [
+                {
+                  "number": 12,
+                  "description": "PRIMO Actor calls density endpoint per commodity",
+                  "startTime": "2026-07-23T18:49:08.706Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 2921,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/rating/v1/density",
+                    "content": "{\"Length\":\"40\",\"Width\":\"34\",\"Height\":\"56\",\"Weight\":\"154\",\"Volume\":0,\"UOM\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDgzMjU0MCwiaWF0IjoxNzg0ODMyNTQwLCJleHAiOjE3ODc0MjQ1NDAsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0ODMyNTM4LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiQTVBNzhBODg5NERBQjg2NzM0ODVBRjRCNEFDODY5QzQiLCJqdGkiOiJDMDcxNDE2RkM0QkYwOTg0MkM1MzVCQ0I2ODA5REFBNyJ9.Dr1OQrqsCQfO8Y59EsZWHEGo42U8P_zHe1L6gkn5b57BYY70OZ7WclWFn3RC2LPXhedVrhcLop0HKxs3FS4taah72CyaY-JqLnJ9sDBkKnawBKYqv4vB71lWIj-XCb3ndBJMbjyrtASw_B19Wbr_ug5gEqXmcN55jzKW7JVdKNZtedKoqDOukZtQX1uknyEY2cRQ2dHxJtL7v6rUXbKRtB8SdaLsxodFDl3C4ufVhbFKSFNL6iWXHMosoRsd-KtwmgDE7ULGXZlioPaDp4b82Nstwxx6jDew-TwjU43OxHr3f8MOqjwtfRD_l6Smae7Yc0szZPVtE_vPJsYZXk2QCg\nUser-Agent: axios/1.13.5\nContent-Length: 79\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Thu, 23 Jul 2026 18:49:10 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:37dfdde3-e557-4d73-979a-ec3f047915bc\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"totalCube\": 44.07,\n        \"totalWeight\": 154,\n        \"totalDensity\": 3.49,\n        \"freightClass\": \"250\",\n        \"cbm\": 1.248\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2931,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 2945,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 13,
+          "description": "And the actor resolves NMFC codes for all commodities",
+          "startTime": "2026-07-23T18:49:11.649Z",
+          "children": [
+            {
+              "number": 14,
+              "description": "PRIMO Actor resolves NMFC codes for commodities",
+              "startTime": "2026-07-23T18:49:11.652Z",
+              "children": [
+                {
+                  "number": 15,
+                  "description": "PRIMO Actor calls NMFC search and calculate endpoints",
+                  "startTime": "2026-07-23T18:49:11.652Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1537,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "GET",
+                    "path": "https://api.primofabric.com/portal/v1/flow/nmfc/56040/calculate?density=3.49&nmfcDescription=Plants%20%2F%20Decorative",
+                    "content": "",
+                    "contentType": "",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDgzMjU0MCwiaWF0IjoxNzg0ODMyNTQwLCJleHAiOjE3ODc0MjQ1NDAsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0ODMyNTM4LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiQTVBNzhBODg5NERBQjg2NzM0ODVBRjRCNEFDODY5QzQiLCJqdGkiOiJDMDcxNDE2RkM0QkYwOTg0MkM1MzVCQ0I2ODA5REFBNyJ9.Dr1OQrqsCQfO8Y59EsZWHEGo42U8P_zHe1L6gkn5b57BYY70OZ7WclWFn3RC2LPXhedVrhcLop0HKxs3FS4taah72CyaY-JqLnJ9sDBkKnawBKYqv4vB71lWIj-XCb3ndBJMbjyrtASw_B19Wbr_ug5gEqXmcN55jzKW7JVdKNZtedKoqDOukZtQX1uknyEY2cRQ2dHxJtL7v6rUXbKRtB8SdaLsxodFDl3C4ufVhbFKSFNL6iWXHMosoRsd-KtwmgDE7ULGXZlioPaDp4b82Nstwxx6jDew-TwjU43OxHr3f8MOqjwtfRD_l6Smae7Yc0szZPVtE_vPJsYZXk2QCg\nUser-Agent: axios/1.13.5\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Thu, 23 Jul 2026 18:49:12 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"nmfcSubCode\": \"03\",\n        \"class\": \"250\"\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1547,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1561,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 16,
+          "description": "And the actor resolves hazmat information for hazardous commodities",
+          "startTime": "2026-07-23T18:49:13.210Z",
+          "children": [
+            {
+              "number": 17,
+              "description": "PRIMO Actor resolves hazmat information for hazardous commodities",
+              "startTime": "2026-07-23T18:49:13.212Z",
+              "children": [
+                {
+                  "number": 18,
+                  "description": "PRIMO Actor calls hazmat search endpoint per hazardous commodity",
+                  "startTime": "2026-07-23T18:49:13.212Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 2,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 12,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 25,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 19,
+          "description": "And the actor resolves accessorials for the quote",
+          "startTime": "2026-07-23T18:49:13.235Z",
+          "children": [
+            {
+              "number": 20,
+              "description": "PRIMO Actor resolves accessorials for the quote",
+              "startTime": "2026-07-23T18:49:13.237Z",
+              "children": [
+                {
+                  "number": 21,
+                  "description": "PRIMO Actor calls accessorials endpoint",
+                  "startTime": "2026-07-23T18:49:13.238Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 0,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 11,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 24,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 22,
+          "description": "And the actor creates an LTL quote from origin to destination",
+          "startTime": "2026-07-23T18:49:13.260Z",
+          "children": [
+            {
+              "number": 23,
+              "description": "PRIMO Actor creates an LTL quote",
+              "startTime": "2026-07-23T18:49:13.265Z",
+              "children": [
+                {
+                  "number": 24,
+                  "description": "PRIMO Actor sends a POST request to &apos;/portal/v2/quote&apos;",
+                  "startTime": "2026-07-23T18:49:13.265Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 17702,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v2/quote",
+                    "content": "{\"customerReference\":1237100099,\"customerNumber\":1235100202,\"customerName\":\"Primo TEST\",\"requestingUser\":\"primo-it@heyprimo.com\",\"modes\":[\"LTL\"],\"declaredValue\":0,\"insurance\":{\"cargoValue\":0,\"isNewGoods\":true,\"goodsValue\":\"NEW\",\"addFreightCost\":false,\"addExtraCoverage\":false,\"insuredName\":\"\",\"insuredCountry\":\"\"},\"pickupDate\":null,\"origin\":{\"name\":null,\"address1\":null,\"address2\":null,\"city\":\"DENVER\",\"state\":\"CO\",\"postalCode\":\"80202\",\"country\":\"US\"},\"destination\":{\"name\":null,\"address1\":null,\"address2\":null,\"city\":\"CHARLESTON\",\"state\":\"SC\",\"postalCode\":\"29401\",\"country\":\"US\"},\"items\":[{\"itemName\":\"Industrial Tools\",\"packageType\":100,\"quantity\":3,\"length\":60,\"width\":32,\"height\":51,\"weight\":223,\"volume\":56.67,\"NMFC\":\"63321-02\",\"commodityClass\":\"250\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":3,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":false},{\"itemName\":\"Electronics\",\"packageType\":100,\"quantity\":1,\"length\":67,\"width\":45,\"height\":46,\"weight\":163,\"volume\":80.26,\"NMFC\":null,\"commodityClass\":\"250\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":1,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":false},{\"itemName\":\"Industrial Tools\",\"packageType\":100,\"quantity\":4,\"length\":20,\"width\":68,\"height\":17,\"weight\":225,\"volume\":13.38,\"NMFC\":\"49260-09\",\"commodityClass\":\"70\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":4,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":true},{\"itemName\":\"Medical Supplies\",\"packageType\":300,\"quantity\":4,\"length\":27,\"width\":62,\"height\":47,\"weight\":200,\"volume\":45.53,\"NMFC\":\"109700-04\",\"commodityClass\":\"175\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":4,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":true},{\"itemName\":\"Medical Supplies\",\"packageType\":100,\"quantity\":3,\"length\":40,\"width\":34,\"height\":56,\"weight\":154,\"volume\":44.07,\"NMFC\":\"56040-03\",\"commodityClass\":\"250\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":3,\"isHazardous\":false,\"UNOrTechnicalName\":\"\",\"isStackable\":false}],\"selectedAccessorials\":[],\"service\":null,\"equipment\":null,\"equipmentLength\":null,\"UOM\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDgzMjU0MCwiaWF0IjoxNzg0ODMyNTQwLCJleHAiOjE3ODc0MjQ1NDAsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0ODMyNTM4LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiQTVBNzhBODg5NERBQjg2NzM0ODVBRjRCNEFDODY5QzQiLCJqdGkiOiJDMDcxNDE2RkM0QkYwOTg0MkM1MzVCQ0I2ODA5REFBNyJ9.Dr1OQrqsCQfO8Y59EsZWHEGo42U8P_zHe1L6gkn5b57BYY70OZ7WclWFn3RC2LPXhedVrhcLop0HKxs3FS4taah72CyaY-JqLnJ9sDBkKnawBKYqv4vB71lWIj-XCb3ndBJMbjyrtASw_B19Wbr_ug5gEqXmcN55jzKW7JVdKNZtedKoqDOukZtQX1uknyEY2cRQ2dHxJtL7v6rUXbKRtB8SdaLsxodFDl3C4ufVhbFKSFNL6iWXHMosoRsd-KtwmgDE7ULGXZlioPaDp4b82Nstwxx6jDew-TwjU43OxHr3f8MOqjwtfRD_l6Smae7Yc0szZPVtE_vPJsYZXk2QCg\nUser-Agent: axios/1.13.5\nContent-Length: 2070\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Thu, 23 Jul 2026 18:49:30 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"quoteNumber\": 8921031,\n        \"mileage\": 1710.0464574269733,\n        \"referenceQuoteNumber\": \"13952524\",\n        \"carrierReferenceQuoteNumber\": \"48769091\",\n        \"carrierQuotes\": [\n            {\n                \"rateNumber\": 1525,\n                \"carrierNumber\": 87082,\n                \"carrierName\": \"Central Transport\",\n                \"carrierQuoteNumber\": \"48769091\",\n                \"laneName\": \"CENTRAL TRANSPORT\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/central-transport.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"CTII\",\n                \"carrierRemarks\": [\n                    \"Oversize Pallets. Please double check rate with the carrier directly\",\n                    \"Freight re-classed in accordance with the vendor's density rules\"\n                ],\n                \"transitDays\": 4,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 849.68,\n                \"quoteExpirationDate\": \"2026-08-07T18:49:28.4119495+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 849.68,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": \"13952524\",\n                \"score\": 0\n            },\n            {\n                \"rateNumber\": 1550,\n                \"carrierNumber\": 58625,\n                \"carrierName\": \"ABF Freight System\",\n                \"carrierQuoteNumber\": \"L6HN6S2046\",\n                \"laneName\": \"ABF FREIGHT SYSTEM INC\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/abf-freight.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"ABFS\",\n                \"carrierRemarks\": [\n                    \"<a target=\\\"_blank\\\" href=\\\"https://info.lfs-inc.com/ltl-lanes\\\" style=\\\"background-color: rgb(255, 255, 255);\\\">Check lanes</a><br><span style=\\\"font-size: 12px; background-color: rgb(255, 0, 255);\\\">Remarks</span><br><b style=\\\"font-size: 12px;\\\">ABC</b>\",\n                    \"Shipment weight needs to be calculated using 6 pounds per cubic foot\",\n                    \"Freight re-classed in accordance with the vendor's density rules\"\n                ],\n                \"transitDays\": 5,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 1672.71,\n                \"quoteExpirationDate\": \"2026-07-30T18:49:28.5547838+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Linehaul\",\n                        \"chargeCode\": 2500,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 1672.71,\n                        \"isWaived\": false\n                    }\n                ],\n                \"customerQuoteNumber\": null,\n                \"score\": 0\n            }\n        ]\n    },\n    \"errors\": null\n}"
+                  }
+                },
+                {
+                  "number": 25,
+                  "description": "PRIMO Actor validates the quote response",
+                  "startTime": "2026-07-23T18:49:30.977Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 3,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 26,
+                  "description": "PRIMO Actor takes notes:\n- quoteNumber: 8921031",
+                  "startTime": "2026-07-23T18:49:30.991Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 3,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 27,
+                  "description": "PRIMO Actor takes notes:\n- selectedCarrier: 1525",
+                  "startTime": "2026-07-23T18:49:31.005Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 2,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 17751,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 17767,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 28,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-23T18:49:31.027Z",
+          "children": [
+            {
+              "number": 29,
+              "description": "PRIMO Actor ensures that the status of the last response does equal 200",
+              "startTime": "2026-07-23T18:49:31.035Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 3,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 21,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 30,
+          "description": "And the response contains a valid quote number",
+          "startTime": "2026-07-23T18:49:31.049Z",
+          "children": [
+            {
+              "number": 31,
+              "description": "PRIMO Actor ensures that quote number does have value greater than 0",
+              "startTime": "2026-07-23T18:49:31.054Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 4,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 19,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 32,
+          "description": "When the actor books the Portal shipment",
+          "startTime": "2026-07-23T18:49:31.069Z",
+          "children": [
+            {
+              "number": 33,
+              "description": "PRIMO Actor books the LTL shipment",
+              "startTime": "2026-07-23T18:49:31.075Z",
+              "children": [
+                {
+                  "number": 34,
+                  "description": "PRIMO Actor records the book request payload",
+                  "startTime": "2026-07-23T18:49:31.075Z",
+                  "children": [],
+                  "reportData": [
+                    {
+                      "id": "report-data-3961b63f6835fdd3df1330394af7ab46a992f1ae",
+                      "isEvidence": false,
+                      "path": "",
+                      "title": "Book Request Payload",
+                      "contents": "{\n    \"customerNumber\": 1235100202,\n    \"customerBsn\": 1237100099,\n    \"bookDate\": \"2026-07-23T18:49:31.079Z\",\n    \"bolInstructions\": \"\",\n    \"bolRemarks\": \"\",\n    \"freightDirection\": 2,\n    \"referenceNumbers\": null,\n    \"quote\": {\n        \"lfsQuoteNumber\": 8921031,\n        \"selectedCarrier\": 1525\n    },\n    \"movement\": {\n        \"declaredValue\": null,\n        \"estimatedPickupDate\": \"2026-07-24\",\n        \"estimatedDeliveryDate\": \"2026-07-28\",\n        \"hazardousContact\": null,\n        \"hazardousMaterial\": null,\n        \"pickupAddress\": {\n            \"name\": \"VelocityFreight Logistics\",\n            \"address1\": \"137 Main St\",\n            \"address2\": null,\n            \"city\": \"DENVER\",\n            \"state\": \"CO\",\n            \"postalCode\": \"80202\",\n            \"country\": \"US\",\n            \"customerBsn\": null\n        },\n        \"deliveryAddress\": {\n            \"name\": \"VectorLogix Logistics\",\n            \"address1\": \"372 Market St\",\n            \"address2\": null,\n            \"city\": \"CHARLESTON\",\n            \"state\": \"SC\",\n            \"postalCode\": \"29401\",\n            \"country\": \"US\",\n            \"customerBsn\": null\n        },\n        \"stopAddress\": null,\n        \"pickupInformation\": {\n            \"instructions\": null,\n            \"referenceNumber\": \"PU-7829\",\n            \"contact\": {\n                \"name\": \"Anthony Garcia\",\n                \"phone\": \"5559062371\",\n                \"phonePrefix\": \"+1\",\n                \"email\": \"anthony.garcia@cargoexpress.com\"\n            },\n            \"shippingWindowTimeFrom\": \"08:00\",\n            \"shippingWindowTimeTo\": \"17:00\"\n        },\n        \"deliveryInformation\": {\n            \"instructions\": null,\n            \"referenceNumber\": \"\",\n            \"contact\": {\n                \"name\": \"Harper Martinez\",\n                \"phone\": \"5554635863\",\n                \"phonePrefix\": \"+1\",\n                \"email\": \"harper.martinez@transmail.com\"\n            },\n            \"shippingWindowTimeFrom\": \"08:00\",\n            \"shippingWindowTimeTo\": \"17:00\"\n        },\n        \"items\": [\n            {\n                \"itemName\": \"Industrial Tools\",\n                \"packageType\": 100,\n                \"quantity\": 3,\n                \"length\": 60,\n                \"width\": 32,\n                \"height\": 51,\n                \"weight\": 223,\n                \"volume\": 56.67,\n                \"commodityClass\": \"250\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 3,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": false\n            },\n            {\n                \"itemName\": \"Electronics\",\n                \"packageType\": 100,\n                \"quantity\": 1,\n                \"length\": 67,\n                \"width\": 45,\n                \"height\": 46,\n                \"weight\": 163,\n                \"volume\": 80.26,\n                \"commodityClass\": \"250\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 1,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": false\n            },\n            {\n                \"itemName\": \"Industrial Tools\",\n                \"packageType\": 100,\n                \"quantity\": 4,\n                \"length\": 20,\n                \"width\": 68,\n                \"height\": 17,\n                \"weight\": 225,\n                \"volume\": 13.38,\n                \"commodityClass\": \"70\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 4,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": true\n            },\n            {\n                \"itemName\": \"Medical Supplies\",\n                \"packageType\": 300,\n                \"quantity\": 4,\n                \"length\": 27,\n                \"width\": 62,\n                \"height\": 47,\n                \"weight\": 200,\n                \"volume\": 45.53,\n                \"commodityClass\": \"175\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 4,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": true\n            },\n            {\n                \"itemName\": \"Medical Supplies\",\n                \"packageType\": 100,\n                \"quantity\": 3,\n                \"length\": 40,\n                \"width\": 34,\n                \"height\": 56,\n                \"weight\": 154,\n                \"volume\": 44.07,\n                \"commodityClass\": \"250\",\n                \"numberOfPieces\": null,\n                \"pieceType\": null,\n                \"levels\": 3,\n                \"isHazardous\": false,\n                \"UNOrTechnicalName\": \"\",\n                \"isStackable\": false\n            }\n        ]\n    },\n    \"glCoding\": {\n        \"EnterpriseTag\": null,\n        \"District\": null,\n        \"GlCode\": null\n    },\n    \"isInsured\": false,\n    \"thirdParty\": null,\n    \"brokerInformation\": {\n        \"brokerName\": null,\n        \"brokerPhone\": null,\n        \"brokerContactName\": null,\n        \"brokerInstructions\": null\n    },\n    \"shippingService\": null,\n    \"notificationEmails\": \"anthony.garcia@cargoexpress.com\"\n}"
+                    }
+                  ],
+                  "screenshots": [],
+                  "duration": 5,
+                  "result": "SUCCESS"
+                },
+                {
+                  "number": 35,
+                  "description": "PRIMO Actor sends a POST request to &apos;/portal/v1/book&apos;",
+                  "startTime": "2026-07-23T18:49:31.090Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 14625,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v1/book",
+                    "content": "{\n    \"_overheadLength\": 223,\n    \"_valueLength\": 2895,\n    \"_valuesToMeasure\": [],\n    \"writable\": false,\n    \"readable\": true,\n    \"dataSize\": 0,\n    \"maxDataSize\": 2097152,\n    \"pauseStreams\": true,\n    \"_released\": true,\n    \"_streams\": [],\n    \"_currentStream\": null,\n    \"_insideLoop\": false,\n    \"_pendingNext\": false,\n    \"_boundary\": \"--------------------------663e9e68d48c67cb6e86af61\",\n    \"_events\": {},\n    \"_eventsCount\": 3\n}",
+                    "contentType": "multipart/form-data; boundary=--------------------------663e9e68d48c67cb6e86af61",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: multipart/form-data; boundary=--------------------------663e9e68d48c67cb6e86af61\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NDgzMjU0MCwiaWF0IjoxNzg0ODMyNTQwLCJleHAiOjE3ODc0MjQ1NDAsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg0ODMyNTM4LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiQTVBNzhBODg5NERBQjg2NzM0ODVBRjRCNEFDODY5QzQiLCJqdGkiOiJDMDcxNDE2RkM0QkYwOTg0MkM1MzVCQ0I2ODA5REFBNyJ9.Dr1OQrqsCQfO8Y59EsZWHEGo42U8P_zHe1L6gkn5b57BYY70OZ7WclWFn3RC2LPXhedVrhcLop0HKxs3FS4taah72CyaY-JqLnJ9sDBkKnawBKYqv4vB71lWIj-XCb3ndBJMbjyrtASw_B19Wbr_ug5gEqXmcN55jzKW7JVdKNZtedKoqDOukZtQX1uknyEY2cRQ2dHxJtL7v6rUXbKRtB8SdaLsxodFDl3C4ufVhbFKSFNL6iWXHMosoRsd-KtwmgDE7ULGXZlioPaDp4b82Nstwxx6jDew-TwjU43OxHr3f8MOqjwtfRD_l6Smae7Yc0szZPVtE_vPJsYZXk2QCg\nX-Organization-Slug: portal.primofabric.com\nUser-Agent: axios/1.13.5\nContent-Length: 3174\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Thu, 23 Jul 2026 18:49:45 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"orderNumber\": 20022936,\n        \"referenceQuoteNumber\": \"13952524\",\n        \"documents\": [\n            {\n                \"displayName\": \"Bill of Lading\",\n                \"docType\": \"BillOfLading\",\n                \"url\": \"https://dev.shipprimus.com//Documents.php?id=OTg0MTcy&t=DAZlig95UszzxFHqF7VBc7T7l-Hj8fPiPn4swr0R2tU\",\n                \"fileName\": \"BOL_1355599.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/x-download\"\n            },\n            {\n                \"displayName\": \"Shipping Label\",\n                \"docType\": \"ShippingLabel\",\n                \"url\": \"https://dev.shipprimus.com//Documents.php?idLabel=OTg0MTcy&t=A4yA087nIclU_3z2LxC3IUBypOcD0Dl-NmdFgM4TCzA\",\n                \"fileName\": \"LABEL_1355599.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/x-download\"\n            },\n            {\n                \"displayName\": \"Quotation 13952524\",\n                \"docType\": \"Other\",\n                \"url\": \"https://lfsdatabrokerstoragedev.blob.core.windows.net/primo-documents/BookingDocuments/1235100202/20022936/Quotation_13952524.pdf\",\n                \"fileName\": \"Quotation_13952524.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/pdf\"\n            }\n        ],\n        \"bolNumber\": \"1355599\",\n        \"trackingNumber\": \"9999\",\n        \"messageDispatch\": \"\"\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 14650,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 14667,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 36,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-23T18:49:45.736Z",
+          "children": [
+            {
+              "number": 37,
+              "description": "PRIMO Actor ensures that the status of the last response does equal 200",
+              "startTime": "2026-07-23T18:49:45.739Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 14,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 38,
+          "description": "And the response contains a BOL number",
+          "startTime": "2026-07-23T18:49:45.751Z",
+          "children": [
+            {
+              "number": 39,
+              "description": "PRIMO Actor ensures that BOL number does become present",
+              "startTime": "2026-07-23T18:49:45.754Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 16,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 40,
+          "description": "And the response contains an order number",
+          "startTime": "2026-07-23T18:49:45.767Z",
+          "children": [
+            {
+              "number": 41,
+              "description": "PRIMO Actor ensures that booking order number does have value greater than 0",
+              "startTime": "2026-07-23T18:49:45.771Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 15,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 38783,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "portal-ltl-booking-via-api",
+    "storyName": "Portal LTL booking via API",
+    "displayName": "Portal LTL booking via API",
+    "path": "api/portal/booking",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "api",
+        "description": "Api"
+      },
+      {
+        "name": "portal",
+        "description": "Portal"
+      },
+      {
+        "name": "booking",
+        "description": "Booking"
+      }
+    ]
+  },
+  "dataTable": {
+    "scenarioOutline": "Given the actor is configured to call Portal APIs\nAnd I load the Excel file from \"src/models/TestCasesAPI.xlsx\"\nAnd I get test data for \"<CaseID>\"\nWhen the actor resolves city and state for origin and destination\nAnd the actor resolves density and class for each commodity\nAnd the actor resolves NMFC codes for all commodities\nAnd the actor resolves hazmat information for hazardous commodities\nAnd the actor resolves accessorials for the quote\nAnd the actor creates an LTL quote from origin to destination\nThen the response status should be 200\nAnd the response contains a valid quote number\nWhen the actor books the Portal shipment\nThen the response status should be 200\nAnd the response contains a BOL number\nAnd the response contains an order number",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 1
+      }
+    ],
+    "headers": [
+      "CaseID"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Random"
+        ],
+        "result": "SUCCESS"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": "2026-07-23T18:49:07.013Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Api",
+      "type": "theme",
+      "displayName": "Api"
+    },
+    {
+      "name": "Api/Portal",
+      "type": "capability",
+      "displayName": "Portal"
+    },
+    {
+      "name": "Api/Portal/Portal LTL booking via API",
+      "type": "feature",
+      "displayName": "Portal LTL booking via API"
+    },
+    {
+      "name": "api",
+      "type": "tag",
+      "displayName": "api"
+    },
+    {
+      "name": "portal",
+      "type": "tag",
+      "displayName": "portal"
+    },
+    {
+      "name": "browser:api",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Api/Portal/Portal LTL booking via API",
+    "type": "feature",
+    "displayName": "Portal LTL booking via API"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    },
+    {
+      "name": "PRIMO Actor",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: { testData: { CaseID: \"TC-095\", Mode: \"LTL\", OriginZip: \"80202\", DestinationZip: \"29401\", OriginCompany: \"VelocityFreight Logistics\", DestinationCompany: \"VectorLogix Logistics\", OriginAddress1: \"137 Main St\", DeliveryAddress1: \"372 Market St\", PickupRef: \"PU-7829\", PickupContact: \"Anthony Garcia\", PickupPhone: \"5559062371\", PickupEmail: \"anthony.garcia@cargoexpress.com\", DeliveryContact: \"Harper Martinez\", DeliveryPhone: \"5554635863\", DeliveryEmail: \"harper.martinez@transmail.com\", ThirdPartyReference: \"TP-REF\", SelectedRate: \"Rate-1\", C1_Qty: 3, C1_Name: \"Industrial Tools\", C1_Package: \"Pallet\", C1_Length: 60, C1_Width: 32, C1_Height: 51, C1_Weight: 223, C1_NMFC: \"63321\", C1_Stackable: \"No\", C1_Levels: 3, C2_Qty: 1, C2_Name: \"Electronics\", C2_Package: \"Pallet\", C2_Length: 67, C2_Width: 45, C2_Height: 46, C2_Weight: 163, C2_Stackable: \"No\", C2_Levels: 1, C3_Qty: 4, C3_Name: \"Industrial Tools\", C3_Package: \"Pallet\", C3_Length: 20, C3_Width: 68, C3_Height: 17, C3_Weight: 225, C3_NMFC: \"49260\", C3_Stackable: \"Yes\", C3_Levels: 4, C4_Qty: 4, C4_Name: \"Medical Supplies\", C4_Package: \"Crate\", C4_Length: 27, C4_Width: 62, C4_Height: 47, C4_Weight: 200, C4_NMFC: \"109700\", C4_Stackable: \"Yes\", C4_Levels: 4, C5_Qty: 3, C5_Name: \"Medical Supplies\", C5_Package: \"Pallet\", C5_Length: 40, C5_Width: 34, C5_Height: 56, C5_Weight: 154, C5_NMFC: 56040, C5_Stackable: \"No\", C5_Levels: 3, PickupWindowFrom: \"08:00\", PickupWindowTo: \"17:00\", DeliveryWindowFrom: \"08:00\", DeliveryWindowTo: \"17:00\", HazmatContactName: \"Hazmat Contact\", HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }, enrichedData: { commodityDetails: [ { volume: 56.67, density: 3.94, freightClass: \"250\", hazmatInfo: null, nmfc: \"63321-02\" }, { volume: 80.26, density: 2.03, freightClass: \"250\", hazmatInfo: null, nmfc: null }, { volume: 13.38, density: 16.82, freightClass: \"70\", hazmatInfo: null, nmfc: \"49260-09\" }, { volume: 45.53, density: 4.39, freightClass: \"175\", hazmatInfo: null, nmfc: \"109700-04\" }, { volume: 44.07, density: 3.49, freightClass: \"250\", hazmatInfo: null, nmfc: \"56040-03\" } ], selectedAccessorials: [], originCity: \"DENVER\", originState: \"CO\", destinationCity: \"CHARLESTON\", destinationState: \"SC\" }, quoteNumber: 8921031, selectedCarrier: 1525 } }"
+      ]
+    }
+  ],
+  "duration": 38783,
+  "context": "API"
+}
