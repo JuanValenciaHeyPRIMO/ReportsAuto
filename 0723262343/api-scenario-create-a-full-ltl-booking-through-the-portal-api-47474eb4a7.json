@@ -1,0 +1,442 @@
+{
+  "id": "portal-ltl-booking-via-api;create-a-full-ltl-booking-through-the-portal-api",
+  "name": "Create a full LTL booking through the Portal API",
+  "title": "Create a full LTL booking through the Portal API",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Create a full LTL booking through the Portal API #1 - CaseID: Random",
+      "startTime": "2026-07-23T23:43:26.127Z",
+      "children": [
+        {
+          "number": 2,
+          "description": "Before",
+          "startTime": "2026-07-23T23:43:26.130Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 4,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "Given the actor is configured to call Portal APIs",
+          "startTime": "2026-07-23T23:43:26.134Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 4,
+          "description": "And I load the Excel file from &quot;src/models/TestCasesAPI.xlsx&quot;",
+          "startTime": "2026-07-23T23:43:26.136Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 155,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 5,
+          "description": "And I get test data for &quot;Random&quot;",
+          "startTime": "2026-07-23T23:43:26.292Z",
+          "children": [
+            {
+              "number": 6,
+              "description": "PRIMO Actor takes notes:\n- testData: { CaseID: &quot;TC-083&quot;, Mode: &quot;LTL&quot;, OriginZip: &quot;41011&quot;, DestinationZip: &quot;98101&quot;, OriginCompany: &quot;FrontierCargo Logistics&quot;, DestinationCompany: &quot;GoldenState Logistics&quot;, OriginAddress1: &quot;340 Main St&quot;, DeliveryAddress1: &quot;479 Market St&quot;, DeliveryAddress2: &quot;Dock 19&quot;, PickupContact: &quot;Mia Smith&quot;, PickupPhone: &quot;5558204754&quot;, PickupEmail: &quot;mia.smith@logistics.com&quot;, DeliveryContact: &quot;Robert White&quot;, DeliveryPhone: &quot;5557272027&quot;, DeliveryEmail: &quot;robert.white@logistics.com&quot;, AdditionalReference: &quot;ADD-REF&quot;, Reference#: &quot;59919&quot;, SelectedRate: &quot;Rate-5&quot;, C1_Qty: 5, C1_Name: &quot;Auto Parts&quot;, C1_Package: &quot;Pallet&quot;, C1_Length: 67, C1_Width: 22, C1_Height: 13, C1_Weight: 508, C1_Stackable: &quot;No&quot;, C1_Levels: 5, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &quot;08:00&quot;, PickupWindowTo: &quot;17:00&quot;, DeliveryWindowFrom: &quot;08:00&quot;, DeliveryWindowTo: &quot;17:00&quot;, HazmatContactName: &quot;Hazmat Contact&quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }",
+              "startTime": "2026-07-23T23:43:26.300Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 21,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 7,
+          "description": "When the actor resolves city and state for origin and destination",
+          "startTime": "2026-07-23T23:43:26.313Z",
+          "children": [
+            {
+              "number": 8,
+              "description": "PRIMO Actor resolves city and state for origin and destination",
+              "startTime": "2026-07-23T23:43:26.316Z",
+              "children": [
+                {
+                  "number": 9,
+                  "description": "PRIMO Actor resolves zip codes",
+                  "startTime": "2026-07-23T23:43:26.316Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 477,
+                  "result": "ERROR",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v1/address-search",
+                    "content": "{\"searchValue\":\"41011\",\"country\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer undefined\nUser-Agent: axios/1.13.5\nContent-Length: 38\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 401,
+                    "responseHeaders": "content-length: 0\nconnection: close\ndate: Thu, 23 Jul 2026 23:43:26 GMT\nserver: Microsoft-IIS/10.0\nwww-authenticate: Bearer error=\"invalid_token\"\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": ""
+                  },
+                  "exception": {
+                    "errorType": "Error",
+                    "message": "[ResolveZipCode] No address found for zip \"41011\". Response: \"\"",
+                    "stackTrace": [
+                      {
+                        "declaringClass": "",
+                        "methodName": "lookupZip()",
+                        "fileName": "/home/vsts/work/1/automation/src/tasks/api/ResolveZipCode.ts",
+                        "lineNumber": 27
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "processTicksAndRejections()",
+                        "fileName": "node:internal/process/task_queues",
+                        "lineNumber": 103
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async DynamicallyGeneratedInteraction.interaction()",
+                        "fileName": "/home/vsts/work/1/automation/src/tasks/api/ResolveZipCode.ts",
+                        "lineNumber": 40
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async PerformActivities.perform()",
+                        "fileName": "/home/vsts/work/1/automation/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+                        "lineNumber": 60
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async PerformActivities.perform()",
+                        "fileName": "/home/vsts/work/1/automation/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+                        "lineNumber": 60
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async World.<anonymous>()",
+                        "fileName": "/home/vsts/work/1/automation/features/api/common/api.steps.ts",
+                        "lineNumber": 60
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async wrapPromiseWithTimeout()",
+                        "fileName": "/home/vsts/work/1/automation/node_modules/@cucumber/cucumber/src/time.ts",
+                        "lineNumber": 55
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async Object.run()",
+                        "fileName": "/home/vsts/work/1/automation/node_modules/@cucumber/cucumber/src/user_code_runner.ts",
+                        "lineNumber": 86
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async Object.run()",
+                        "fileName": "/home/vsts/work/1/automation/node_modules/@cucumber/cucumber/src/runtime/step_runner.ts",
+                        "lineNumber": 58
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async TestCaseRunner.invokeStep()",
+                        "fileName": "/home/vsts/work/1/automation/node_modules/@cucumber/cucumber/src/runtime/test_case_runner.ts",
+                        "lineNumber": 151
+                      }
+                    ]
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 488,
+              "result": "ERROR"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 502,
+          "result": "ERROR"
+        },
+        {
+          "number": 10,
+          "description": "And the actor resolves density and class for each commodity",
+          "startTime": "2026-07-23T23:43:26.816Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 11,
+          "description": "And the actor resolves NMFC codes for all commodities",
+          "startTime": "2026-07-23T23:43:26.818Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 12,
+          "description": "And the actor resolves hazmat information for hazardous commodities",
+          "startTime": "2026-07-23T23:43:26.819Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 13,
+          "description": "And the actor resolves accessorials for the quote",
+          "startTime": "2026-07-23T23:43:26.819Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 14,
+          "description": "And the actor creates an LTL quote from origin to destination",
+          "startTime": "2026-07-23T23:43:26.820Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 15,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-23T23:43:26.821Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 16,
+          "description": "And the response contains a valid quote number",
+          "startTime": "2026-07-23T23:43:26.822Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 17,
+          "description": "When the actor books the Portal shipment",
+          "startTime": "2026-07-23T23:43:26.822Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 18,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-23T23:43:26.823Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 19,
+          "description": "And the response contains a BOL number",
+          "startTime": "2026-07-23T23:43:26.823Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 20,
+          "description": "And the response contains an order number",
+          "startTime": "2026-07-23T23:43:26.824Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 710,
+      "result": "ERROR"
+    }
+  ],
+  "userStory": {
+    "id": "portal-ltl-booking-via-api",
+    "storyName": "Portal LTL booking via API",
+    "displayName": "Portal LTL booking via API",
+    "path": "api/portal/booking",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "api",
+        "description": "Api"
+      },
+      {
+        "name": "portal",
+        "description": "Portal"
+      },
+      {
+        "name": "booking",
+        "description": "Booking"
+      }
+    ]
+  },
+  "dataTable": {
+    "scenarioOutline": "Given the actor is configured to call Portal APIs\nAnd I load the Excel file from \"src/models/TestCasesAPI.xlsx\"\nAnd I get test data for \"<CaseID>\"\nWhen the actor resolves city and state for origin and destination\nAnd the actor resolves density and class for each commodity\nAnd the actor resolves NMFC codes for all commodities\nAnd the actor resolves hazmat information for hazardous commodities\nAnd the actor resolves accessorials for the quote\nAnd the actor creates an LTL quote from origin to destination\nThen the response status should be 200\nAnd the response contains a valid quote number\nWhen the actor books the Portal shipment\nThen the response status should be 200\nAnd the response contains a BOL number\nAnd the response contains an order number",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 1
+      }
+    ],
+    "headers": [
+      "CaseID"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Random"
+        ],
+        "result": "ERROR"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": "2026-07-23T23:43:26.127Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Api",
+      "type": "theme",
+      "displayName": "Api"
+    },
+    {
+      "name": "Api/Portal",
+      "type": "capability",
+      "displayName": "Portal"
+    },
+    {
+      "name": "Api/Portal/Portal LTL booking via API",
+      "type": "feature",
+      "displayName": "Portal LTL booking via API"
+    },
+    {
+      "name": "api",
+      "type": "tag",
+      "displayName": "api"
+    },
+    {
+      "name": "portal",
+      "type": "tag",
+      "displayName": "portal"
+    },
+    {
+      "name": "browser:api",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Api/Portal/Portal LTL booking via API",
+    "type": "feature",
+    "displayName": "Portal LTL booking via API"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    },
+    {
+      "name": "PRIMO Actor",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: { testData: { CaseID: \"TC-083\", Mode: \"LTL\", OriginZip: \"41011\", DestinationZip: \"98101\", OriginCompany: \"FrontierCargo Logistics\", DestinationCompany: \"GoldenState Logistics\", OriginAddress1: \"340 Main St\", DeliveryAddress1: \"479 Market St\", DeliveryAddress2: \"Dock 19\", PickupContact: \"Mia Smith\", PickupPhone: \"5558204754\", PickupEmail: \"mia.smith@logistics.com\", DeliveryContact: \"Robert White\", DeliveryPhone: \"5557272027\", DeliveryEmail: \"robert.white@logistics.com\", AdditionalReference: \"ADD-REF\", \"Reference#\": \"59919\", SelectedRate: \"Rate-5\", C1_Qty: 5, C1_Name: \"Auto Parts\", C1_Package: \"Pallet\", C1_Length: 67, C1_Width: 22, C1_Height: 13, C1_Weight: 508, C1_Stackable: \"No\", C1_Levels: 5, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: \"08:00\", PickupWindowTo: \"17:00\", DeliveryWindowFrom: \"08:00\", DeliveryWindowTo: \"17:00\", HazmatContactName: \"Hazmat Contact\", HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 } } }"
+      ]
+    }
+  ],
+  "result": "ERROR",
+  "testFailureCause": {
+    "errorType": "Error",
+    "message": "[ResolveZipCode] No address found for zip \"41011\". Response: \"\"",
+    "stackTrace": [
+      {
+        "declaringClass": "",
+        "methodName": "lookupZip()",
+        "fileName": "/home/vsts/work/1/automation/src/tasks/api/ResolveZipCode.ts",
+        "lineNumber": 27
+      },
+      {
+        "declaringClass": "",
+        "methodName": "processTicksAndRejections()",
+        "fileName": "node:internal/process/task_queues",
+        "lineNumber": 103
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async DynamicallyGeneratedInteraction.interaction()",
+        "fileName": "/home/vsts/work/1/automation/src/tasks/api/ResolveZipCode.ts",
+        "lineNumber": 40
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async PerformActivities.perform()",
+        "fileName": "/home/vsts/work/1/automation/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+        "lineNumber": 60
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async PerformActivities.perform()",
+        "fileName": "/home/vsts/work/1/automation/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+        "lineNumber": 60
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async World.<anonymous>()",
+        "fileName": "/home/vsts/work/1/automation/features/api/common/api.steps.ts",
+        "lineNumber": 60
+      }
+    ]
+  },
+  "duration": 710,
+  "context": "API"
+}
