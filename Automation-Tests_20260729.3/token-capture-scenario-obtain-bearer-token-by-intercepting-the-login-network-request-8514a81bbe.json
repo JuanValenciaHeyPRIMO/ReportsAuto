@@ -1,0 +1,278 @@
+{
+  "id": "capture-portal-bearer-token-via-browser-login;obtain-bearer-token-by-intercepting-the-login-network-request",
+  "name": "Obtain bearer token by intercepting the login network request",
+  "title": "Obtain bearer token by intercepting the login network request",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Before",
+      "startTime": "2026-07-29T17:04:55.126Z",
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 15,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 2,
+      "description": "Given the user opens the Portal site",
+      "startTime": "2026-07-29T17:04:55.143Z",
+      "children": [
+        {
+          "number": 3,
+          "description": "User opens the site at &quot;https://portal.primofabric.com&quot;",
+          "startTime": "2026-07-29T17:04:55.373Z",
+          "children": [
+            {
+              "number": 4,
+              "description": "User navigates to &quot;https://portal.primofabric.com&quot;",
+              "startTime": "2026-07-29T17:04:55.556Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-chromium-145.0.7632.6-user-navigates-to-https-portal.pr-b5e1b111b8.png",
+                  "screenshotName": "photo-win32-chromium-145.0.7632.6-user-navigates-to-https-portal.pr-b5e1b111b8.png",
+                  "timeStamp": 1785344709393
+                }
+              ],
+              "duration": 13735,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 14041,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 14290,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 5,
+      "description": "When the user logs in with credentials",
+      "startTime": "2026-07-29T17:05:09.434Z",
+      "children": [
+        {
+          "number": 6,
+          "description": "User logs in as &quot;primo-it@heyprimo.com&quot;",
+          "startTime": "2026-07-29T17:05:09.437Z",
+          "children": [
+            {
+              "number": 7,
+              "description": "User enters &quot;primo-it@heyprimo.com&quot; into Email Field",
+              "startTime": "2026-07-29T17:05:09.467Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-chromium-145.0.7632.6-user-enters-primo-it-heyprimo.com-26061cb124.png",
+                  "screenshotName": "photo-win32-chromium-145.0.7632.6-user-enters-primo-it-heyprimo.com-26061cb124.png",
+                  "timeStamp": 1785344711560
+                }
+              ],
+              "duration": 2026,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 8,
+              "description": "User clicks on Login Button",
+              "startTime": "2026-07-29T17:05:11.603Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-chromium-145.0.7632.6-user-clicks-on-login-button-d1fe2d2fbc.png",
+                  "screenshotName": "photo-win32-chromium-145.0.7632.6-user-clicks-on-login-button-d1fe2d2fbc.png",
+                  "timeStamp": 1785344712087
+                }
+              ],
+              "duration": 429,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 9,
+              "description": "User enters &quot;Test1234#&quot; into Password Field",
+              "startTime": "2026-07-29T17:05:12.099Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-chromium-145.0.7632.6-user-enters-test1234-into-passwor-3368ba0eec.png",
+                  "screenshotName": "photo-win32-chromium-145.0.7632.6-user-enters-test1234-into-passwor-3368ba0eec.png",
+                  "timeStamp": 1785344712154
+                }
+              ],
+              "duration": 17,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 10,
+              "description": "User clicks on Login Button",
+              "startTime": "2026-07-29T17:05:12.178Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-chromium-145.0.7632.6-user-clicks-on-login-button-21850b5bb0.png",
+                  "screenshotName": "photo-win32-chromium-145.0.7632.6-user-clicks-on-login-button-21850b5bb0.png",
+                  "timeStamp": 1785344713155
+                }
+              ],
+              "duration": 622,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 3731,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 3748,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 11,
+      "description": "When the actor captures the Portal bearer token via login",
+      "startTime": "2026-07-29T17:05:13.182Z",
+      "children": [
+        {
+          "number": 12,
+          "description": "User obtains the Portal bearer token from browser storage after login",
+          "startTime": "2026-07-29T17:05:13.216Z",
+          "children": [
+            {
+              "number": 13,
+              "description": "User waits until the Portal OIDC access_token in localStorage does not equal &quot;&quot;",
+              "startTime": "2026-07-29T17:05:13.216Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-chromium-145.0.7632.6-user-waits-until-the-portal-oidc-acc-9699a1dba8.png",
+                  "screenshotName": "photo-win32-chromium-145.0.7632.6-user-waits-until-the-portal-oidc-acc-9699a1dba8.png",
+                  "timeStamp": 1785344719750
+                }
+              ],
+              "duration": 5627,
+              "result": "SUCCESS"
+            },
+            {
+              "number": 14,
+              "description": "User stores the Portal bearer token in notes and .env",
+              "startTime": "2026-07-29T17:05:19.785Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [
+                {
+                  "screenshot": "photo-win32-chromium-145.0.7632.6-user-stores-the-portal-bearer-token-6959067096.png",
+                  "screenshotName": "photo-win32-chromium-145.0.7632.6-user-stores-the-portal-bearer-token-6959067096.png",
+                  "timeStamp": 1785344719871
+                }
+              ],
+              "duration": 34,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 6672,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 6722,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 15,
+      "description": "And the bearer token should be captured",
+      "startTime": "2026-07-29T17:05:19.906Z",
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 2,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "capture-portal-bearer-token-via-browser-login",
+    "storyName": "Capture Portal bearer token via browser login",
+    "displayName": "Capture Portal bearer token via browser login",
+    "path": "ui/login/tokencapture",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "ui",
+        "description": "Ui"
+      },
+      {
+        "name": "login",
+        "description": "Login"
+      },
+      {
+        "name": "tokencapture",
+        "description": "Tokencapture"
+      }
+    ]
+  },
+  "startTime": "2026-07-29T17:04:55.114Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Ui",
+      "type": "theme",
+      "displayName": "Ui"
+    },
+    {
+      "name": "Ui/Login",
+      "type": "capability",
+      "displayName": "Login"
+    },
+    {
+      "name": "Ui/Login/Capture Portal bearer token via browser login",
+      "type": "feature",
+      "displayName": "Capture Portal bearer token via browser login"
+    },
+    {
+      "name": "token-capture",
+      "type": "tag",
+      "displayName": "token-capture"
+    },
+    {
+      "name": "browser:token-capture",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Ui/Login/Capture Portal bearer token via browser login",
+    "type": "feature",
+    "displayName": "Capture Portal bearer token via browser login"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "BrowseTheWeb (BrowseTheWebWithPlaywright)",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 10000 }",
+        "TakeNotes { notepad: { bearerToken: \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NTM0NDcxOCwiaWF0IjoxNzg1MzQ0NzE4LCJleHAiOjE3ODc5MzY3MTgsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg1MzQ0NzEyLCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiNjc4MDdBMEUxRTk5NUVEMUY5MEVCQkYzMDVGRjY0NjciLCJqdGkiOiIzN0RCMzEzNThBRUExMzMzMTRBNzlFRTVDRDFCN0MzMCJ9.RLjClG55Wwpw_5Ot6Q9S7XIxfUNQOjaWyG3xqDOZiS-J9RE2v_bQX3LZxwQrRHumMvnc9QmMj1F0TSLUngAWxrVLtwT-T3sa-_zvLBoLzOw7emNO_bMRGtoPrun0HXtqww1ILEjt6VAx-lJfgdZtPo3h1oV-Sosm8eCdNUxj_HBw0VGM6r83DTn4Avg038n6os4E0s9cZtkO3cPBBMrLvmt41eD1yu8g9ZnIw9QBOFS80aT7n7vkq2_r99u7amY2_a8Y54SyYlNlx1vV22mZ-PkEu79yxHC_nwiP59NSy0V9ZHTrgxfzl6xx3JjsoGmleluBLEK35Ehb6H0Lq6dGXQ\" } }"
+      ]
+    }
+  ],
+  "result": "SUCCESS",
+  "duration": 24850,
+  "context": "TOKEN-CAPTURE"
+}
