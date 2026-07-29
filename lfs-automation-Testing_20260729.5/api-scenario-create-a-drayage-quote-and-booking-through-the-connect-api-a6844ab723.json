@@ -1,0 +1,402 @@
+{
+  "id": "connect-drayage-quote-and-booking-via-api;create-a-drayage-quote-and-booking-through-the-connect-api",
+  "name": "Create a Drayage quote and booking through the Connect API",
+  "title": "Create a Drayage quote and booking through the Connect API",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Create a Drayage quote and booking through the Connect API #1 - Market: Mobile, AL, Warehouse: 36125",
+      "startTime": "2026-07-29T20:22:28.178Z",
+      "children": [
+        {
+          "number": 2,
+          "description": "Before",
+          "startTime": "2026-07-29T20:22:28.181Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 4,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "Given the actor is configured to call Connect Customer APIs",
+          "startTime": "2026-07-29T20:22:28.186Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 4,
+          "description": "When the actor obtains a Connect API token",
+          "startTime": "2026-07-29T20:22:28.188Z",
+          "children": [
+            {
+              "number": 5,
+              "description": "Connect Actor obtains a client API token",
+              "startTime": "2026-07-29T20:22:28.193Z",
+              "children": [
+                {
+                  "number": 6,
+                  "description": "Connect Actor calls the auth login endpoint",
+                  "startTime": "2026-07-29T20:22:28.194Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1102,
+                  "result": "ERROR",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://connect.primofabric.com/v1/auth/login",
+                    "content": "{\"clientId\":\"primo-customer-client\",\"secret\":\"\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nUser-Agent: axios/1.13.5\nContent-Length: 48\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 500,
+                    "responseHeaders": "connection: close\ncontent-type: application/problem+json\ndate: Wed, 29 Jul 2026 20:22:28 GMT\nserver: Microsoft-IIS/10.0\ncache-control: no-cache,no-store\nexpires: -1\npragma: no-cache\ntransfer-encoding: chunked\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.6.1\",\n    \"title\": \"lfs.Proxies.ProxyBadRequestException\",\n    \"status\": 500,\n    \"detail\": \"Invalid credentials\",\n    \"exception\": {\n        \"details\": \"lfs.Proxies.ProxyBadRequestException: Invalid credentials\\r\\n   at lfs.Proxies.PrimoProxyBase.GetToken(String clientId, String secret) in D:\\\\a\\\\1\\\\s\\\\lfs.Proxies\\\\PrimoProxyBase.cs:line 44\\r\\n   at lfs.api.PrimoConnect.Routing.AuthRoutes.<>c.<<Map>b__1_0>d.MoveNext() in D:\\\\a\\\\1\\\\s\\\\lfs.api.PrimoConnect\\\\Routing\\\\AuthRoutes.cs:line 14\\r\\n--- End of stack trace from previous location ---\\r\\n   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)\\r\\n   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass102_2.<<HandleRequestBodyAndCompileRequestDelegateForJson>b__2>d.MoveNext()\\r\\n--- End of stack trace from previous location ---\\r\\n   at lfs.Connect.Organizations.Application.Middleware.OrganizationResolverMiddleware.InvokeAsync(HttpContext context) in D:\\\\a\\\\1\\\\s\\\\lfs.Connect.Organizations\\\\Application\\\\Middleware\\\\OrganizationResolverMiddleware.cs:line 20\\r\\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)\\r\\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.HandleException(HttpContext context, ExceptionDispatchInfo edi)\\r\\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)\\r\\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\\r\\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\\r\\n   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)\\r\\n   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)\\r\\n   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)\",\n        \"headers\": {\n            \"Accept\": [\n                \"application/json, text/plain, */*\"\n            ],\n            \"Accept-Encoding\": [\n                \"gzip, compress, deflate, br\"\n            ],\n            \"Content-Length\": [\n                \"48\"\n            ],\n            \"Content-Type\": [\n                \"application/json\"\n            ],\n            \"Host\": [\n                \"connect.primofabric.com\"\n            ],\n            \"Max-Forwards\": [\n                \"10\"\n            ],\n            \"User-Agent\": [\n                \"axios/1.13.5\"\n            ],\n            \"X-ARR-LOG-ID\": [\n                \"1e059016-dade-4dad-89a7-bbf7ed5394be\"\n            ],\n            \"CLIENT-IP\": [\n                \"20.171.12.103:31744\"\n            ],\n            \"DISGUISED-HOST\": [\n                \"connect.primofabric.com\"\n            ],\n            \"X-SITE-DEPLOYMENT-ID\": [\n                \"lfs-connect-api-dev\"\n            ],\n            \"WAS-DEFAULT-HOSTNAME\": [\n                \"lfs-connect-api-dev.azurewebsites.net\"\n            ],\n            \"X-AppService-Proto\": [\n                \"https\"\n            ],\n            \"X-ARR-SSL\": [\n                \"2048|256|CN=GeoTrust TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US|CN=connect.primofabric.com\"\n            ],\n            \"X-Forwarded-TlsVersion\": [\n                \"1.3\"\n            ],\n            \"X-Original-Proto\": [\n                \"https\"\n            ],\n            \"X-Original-URL\": [\n                \"/v1/auth/login\"\n            ],\n            \"X-WAWS-Unencoded-URL\": [\n                \"/v1/auth/login\"\n            ],\n            \"X-Original-For\": [\n                \"20.171.12.103:31744\"\n            ]\n        },\n        \"path\": \"/v1/auth/login\",\n        \"endpoint\": null,\n        \"routeValues\": null\n    }\n}"
+                  },
+                  "exception": {
+                    "errorType": "Error",
+                    "message": "[ObtainClientToken] Auth failed (500): undefined",
+                    "stackTrace": [
+                      {
+                        "declaringClass": "",
+                        "methodName": "DynamicallyGeneratedInteraction.interaction()",
+                        "fileName": "/home/vsts/work/1/s/src/tasks/api/ObtainClientToken.ts",
+                        "lineNumber": 36
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "processTicksAndRejections()",
+                        "fileName": "node:internal/process/task_queues",
+                        "lineNumber": 103
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async PerformActivities.perform()",
+                        "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+                        "lineNumber": 60
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async PerformActivities.perform()",
+                        "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+                        "lineNumber": 60
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async World.<anonymous>()",
+                        "fileName": "/home/vsts/work/1/s/features/api/common/api.steps.ts",
+                        "lineNumber": 39
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async wrapPromiseWithTimeout()",
+                        "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/time.ts",
+                        "lineNumber": 55
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async Object.run()",
+                        "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/user_code_runner.ts",
+                        "lineNumber": 86
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async Object.run()",
+                        "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/runtime/step_runner.ts",
+                        "lineNumber": 58
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async TestCaseRunner.invokeStep()",
+                        "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/runtime/test_case_runner.ts",
+                        "lineNumber": 151
+                      },
+                      {
+                        "declaringClass": "",
+                        "methodName": "async TestCaseRunner.runStep()",
+                        "fileName": "/home/vsts/work/1/s/node_modules/@cucumber/cucumber/src/runtime/test_case_runner.ts",
+                        "lineNumber": 377
+                      }
+                    ]
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1113,
+              "result": "ERROR"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1130,
+          "result": "ERROR"
+        },
+        {
+          "number": 7,
+          "description": "And the actor resolves the Connect drayage market &quot;Mobile, AL&quot;",
+          "startTime": "2026-07-29T20:22:29.319Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 8,
+          "description": "And the actor resolves the warehouse zip &quot;36125&quot;",
+          "startTime": "2026-07-29T20:22:29.320Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 9,
+          "description": "And the actor resolves a drayage HS code via Connect",
+          "startTime": "2026-07-29T20:22:29.320Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 10,
+          "description": "And the actor resolves a drayage SSL code via Connect",
+          "startTime": "2026-07-29T20:22:29.322Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 11,
+          "description": "And the actor resolves drayage terminals via Connect",
+          "startTime": "2026-07-29T20:22:29.322Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 12,
+          "description": "And the actor creates a Connect drayage quote",
+          "startTime": "2026-07-29T20:22:29.323Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 13,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-29T20:22:29.323Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 14,
+          "description": "And the response contains a valid quote number",
+          "startTime": "2026-07-29T20:22:29.324Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 15,
+          "description": "When the actor books the Connect drayage shipment",
+          "startTime": "2026-07-29T20:22:29.325Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        },
+        {
+          "number": 16,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-29T20:22:29.326Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SKIPPED"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 1161,
+      "result": "ERROR"
+    }
+  ],
+  "userStory": {
+    "id": "connect-drayage-quote-and-booking-via-api",
+    "storyName": "Connect Drayage quote and booking via API",
+    "displayName": "Connect Drayage quote and booking via API",
+    "path": "api/connect/drayage",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "api",
+        "description": "Api"
+      },
+      {
+        "name": "connect",
+        "description": "Connect"
+      },
+      {
+        "name": "drayage",
+        "description": "Drayage"
+      }
+    ]
+  },
+  "dataTable": {
+    "scenarioOutline": "Given the actor is configured to call Connect Customer APIs\nWhen the actor obtains a Connect API token\nAnd the actor resolves the Connect drayage market \"<Market>\"\nAnd the actor resolves the warehouse zip \"<Warehouse>\"\nAnd the actor resolves a drayage HS code via Connect\nAnd the actor resolves a drayage SSL code via Connect\nAnd the actor resolves drayage terminals via Connect\nAnd the actor creates a Connect drayage quote\nThen the response status should be 200\nAnd the response contains a valid quote number\nWhen the actor books the Connect drayage shipment\nThen the response status should be 200",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 1
+      }
+    ],
+    "headers": [
+      "Market",
+      "Warehouse"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Mobile, AL",
+          "36125"
+        ],
+        "result": "ERROR"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": "2026-07-29T20:22:28.178Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Api",
+      "type": "theme",
+      "displayName": "Api"
+    },
+    {
+      "name": "Api/Connect",
+      "type": "capability",
+      "displayName": "Connect"
+    },
+    {
+      "name": "Api/Connect/Connect Drayage quote and booking via API",
+      "type": "feature",
+      "displayName": "Connect Drayage quote and booking via API"
+    },
+    {
+      "name": "api",
+      "type": "tag",
+      "displayName": "api"
+    },
+    {
+      "name": "connect",
+      "type": "tag",
+      "displayName": "connect"
+    },
+    {
+      "name": "drayage",
+      "type": "tag",
+      "displayName": "drayage"
+    },
+    {
+      "name": "browser:api",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Api/Connect/Connect Drayage quote and booking via API",
+    "type": "feature",
+    "displayName": "Connect Drayage quote and booking via API"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 30000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    },
+    {
+      "name": "Connect Actor",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://connect.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 30000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    }
+  ],
+  "result": "ERROR",
+  "testFailureCause": {
+    "errorType": "Error",
+    "message": "[ObtainClientToken] Auth failed (500): undefined",
+    "stackTrace": [
+      {
+        "declaringClass": "",
+        "methodName": "DynamicallyGeneratedInteraction.interaction()",
+        "fileName": "/home/vsts/work/1/s/src/tasks/api/ObtainClientToken.ts",
+        "lineNumber": 36
+      },
+      {
+        "declaringClass": "",
+        "methodName": "processTicksAndRejections()",
+        "fileName": "node:internal/process/task_queues",
+        "lineNumber": 103
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async PerformActivities.perform()",
+        "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+        "lineNumber": 60
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async PerformActivities.perform()",
+        "fileName": "/home/vsts/work/1/s/node_modules/@serenity-js/core/src/screenplay/abilities/PerformActivities.ts",
+        "lineNumber": 60
+      },
+      {
+        "declaringClass": "",
+        "methodName": "async World.<anonymous>()",
+        "fileName": "/home/vsts/work/1/s/features/api/common/api.steps.ts",
+        "lineNumber": 39
+      }
+    ]
+  },
+  "duration": 1161,
+  "context": "API"
+}
