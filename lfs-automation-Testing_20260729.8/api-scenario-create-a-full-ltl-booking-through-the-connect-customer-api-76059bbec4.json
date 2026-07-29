@@ -1,0 +1,549 @@
+{
+  "id": "connect-customer-ltl-booking-via-api;create-a-full-ltl-booking-through-the-connect-customer-api",
+  "name": "Create a full LTL booking through the Connect Customer API",
+  "title": "Create a full LTL booking through the Connect Customer API",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Create a full LTL booking through the Connect Customer API #1 - CaseID: Random",
+      "startTime": "2026-07-29T21:44:47.066Z",
+      "children": [
+        {
+          "number": 2,
+          "description": "Before",
+          "startTime": "2026-07-29T21:44:47.069Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 5,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "Given the actor is configured to call Connect Customer APIs",
+          "startTime": "2026-07-29T21:44:47.074Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 2,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 4,
+          "description": "And I load the Excel file from &quot;src/models/TestCasesAPI.xlsx&quot;",
+          "startTime": "2026-07-29T21:44:47.076Z",
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 194,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 5,
+          "description": "And I get test data for &quot;Random&quot;",
+          "startTime": "2026-07-29T21:44:47.271Z",
+          "children": [
+            {
+              "number": 6,
+              "description": "Connect Actor takes notes:\n- testData: { CaseID: &quot;TC-031&quot;, Mode: &quot;LTL&quot;, OriginZip: &quot;32801&quot;, DestinationZip: &quot;46225&quot;, OriginCompany: &quot;RedRock Logistics&quot;, DestinationCompany: &quot;Summit Logistics&quot;, OriginAddress1: &quot;410 Main St&quot;, DeliveryAddress1: &quot;241 Market St&quot;, DeliveryAddress2: &quot;Dock 11&quot;, PickupRef: &quot;PU-9296&quot;, PickupContact: &quot;Isabella Jackson&quot;, PickupPhone: &quot;5558200893&quot;, PickupEmail: &quot;isabella.jackson@shipco.com&quot;, DeliveryContact: &quot;Charlotte Thomas&quot;, DeliveryPhone: &quot;5557830035&quot;, DeliveryEmail: &quot;charlotte.thomas@freightmail.com&quot;, ThirdPartyReference: &quot;TP-REF&quot;, AdditionalReference: &quot;ADD-REF&quot;, Reference#: &quot;95384&quot;, SelectedRate: &quot;Rate-2&quot;, C1_Qty: 5, C1_Name: &quot;Consumer Goods&quot;, C1_Package: &quot;Pallet&quot;, C1_Length: 59, C1_Width: 67, C1_Height: 54, C1_Weight: 517, C1_Stackable: &quot;Yes&quot;, C1_Levels: 5, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: &quot;08:00&quot;, PickupWindowTo: &quot;17:00&quot;, DeliveryWindowFrom: &quot;08:00&quot;, DeliveryWindowTo: &quot;17:00&quot;, HazmatContactName: &quot;Hazmat Contact&quot;, HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }",
+              "startTime": "2026-07-29T21:44:47.284Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 4,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 28,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 7,
+          "description": "When the actor obtains a Connect API token",
+          "startTime": "2026-07-29T21:44:47.299Z",
+          "children": [
+            {
+              "number": 8,
+              "description": "Connect Actor obtains a client API token",
+              "startTime": "2026-07-29T21:44:47.302Z",
+              "children": [
+                {
+                  "number": 9,
+                  "description": "Connect Actor calls the auth login endpoint",
+                  "startTime": "2026-07-29T21:44:47.303Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 600,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://connect.primofabric.com/v1/auth/login",
+                    "content": "{\"clientId\":\"primo-customer-client\",\"secret\":\"Test1234#\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nUser-Agent: axios/1.13.5\nContent-Length: 57\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Wed, 29 Jul 2026 21:44:47 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:e8ff7109-164f-40ad-876d-a5d24cf0d07f\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NTM2MTQ4NywiaWF0IjoxNzg1MzYxNDg3LCJleHAiOjE3ODc5NTM0ODcsInNjb3BlIjpbImNvbm5lY3QtZHJheWFnZSIsImNvbm5lY3QtZHJheWFnZS1ib29raW5nIiwiY29ubmVjdC1kcmF5YWdlLXF1b3RpbmciLCJjb25uZWN0LWVudGVycHJpc2UtZHJheWFnZSIsImNvbm5lY3QtZW50ZXJwcmlzZS1vdHIiLCJjb25uZWN0LW90ciIsImNvbm5lY3Qtb3RyLWJvb2tpbmciLCJjb25uZWN0LW90ci1xdW90aW5nIiwiY29ubmVjdC1xdW90aW5nLWFwaSIsImNvbm5lY3QtcXVvdGluZy1sb2NhbC1hcGkiLCJjb25uZWN0LXRlbmRlci1mbG93IiwiY29ubmVjdC10ZW5kZXJpbmctYXBpIiwiY29ubmVjdC10cmFja2luZy1hcGkiLCJwb3J0YWwtYXBpIl0sImNsaWVudF9pZCI6InByaW1vLWN1c3RvbWVyLWNsaWVudCIsImNsaWVudF9vcmdhbml6YXRpb25fbnVtYmVyIjoiMSIsImNsaWVudF9jdXN0b21lcl9udW1iZXIiOiIxMjM1MTAwMjAyIiwianRpIjoiMDQ5MTBDQzg4MkI4NkM2MURDM0E5M0JDQkVGNTMwN0IifQ.GCNl-ev-rQ2vPJXETiCNH4KxnHtDmXnABvQnrABm6u5YISkuhPGaZAeNwBF7PA9FoUAgvuL8cUeL6rAC1mrOiS8h5ehtrmxIzapoIC_39vXWNU5kbySL5eGFZrjHgE1RLvmOM-7P12sXv9Zt3ez8eImMMDZjMa_QUAlBV6adaJqMqheztY_pPI2oEbJWqSghMMLcuiOW3WwOr9hyCc39ia8jk7zLpEAW2hQt2NF1LLDNuTWKhZR4kJfW1pwDnqr--tZ_b2VirZNDT3iqDWERkBDjijqBhzE7Wsf4nZ__mst7R-Wt3PXnXtbXZdoDqixlILyd_mB8tb-zzSfVAoyNiQ\"\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 611,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 625,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 10,
+          "description": "And the actor resolves city and state for origin and destination",
+          "startTime": "2026-07-29T21:44:47.925Z",
+          "children": [
+            {
+              "number": 11,
+              "description": "Connect Actor resolves city and state for origin and destination",
+              "startTime": "2026-07-29T21:44:47.927Z",
+              "children": [
+                {
+                  "number": 12,
+                  "description": "Connect Actor resolves zip codes",
+                  "startTime": "2026-07-29T21:44:47.928Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 1201,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://api.primofabric.com/portal/v1/address-search",
+                    "content": "{\"searchValue\":\"46225\",\"country\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NTM2MTQ3NywiaWF0IjoxNzg1MzYxNDc3LCJleHAiOjE3ODc5NTM0NzcsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJwb3J0YWwtYXBpIiwiQ3VzdG9tZXJOdW1iZXIiXSwiYW1yIjpbInB3ZCJdLCJjbGllbnRfaWQiOiJwcmltby1wb3J0YWwtY2xpZW50Iiwic3ViIjoiNDlkYTJhYTQtM2Q5Ni00NWRiLTgyNGMtM2FmMGNjMjVjNmZhIiwiYXV0aF90aW1lIjoxNzg1MzYxNDc2LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicHJpbW8taXRAaGV5cHJpbW8uY29tIiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJEVDJVRVJHWElGVklKVlEyRkJVQkFDNkE2NUg1UVNMMiIsInByZWZlcnJlZF91c2VybmFtZSI6InByaW1vLWl0QGhleXByaW1vLmNvbSIsIm5hbWUiOiJwcmltby1pdEBoZXlwcmltby5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tZXJfbnVtYmVyIjoiMTIzNTEwMDIwMiIsIm9yZ2FuaXphdGlvbl9udW1iZXIiOiIxIiwic2lkIjoiRDFCRDI5RjlCMDAxRjBDNUQzRDAwQkYzMjBGRkE2NUUiLCJqdGkiOiIwRDU2M0RGMTY4RTQxRkU5MUY5RUUwMkY2MDUxMTVFMCJ9.mKupfYsau30z6Y7Qvb59TnPlnHiG416U_VnZEHXIoZq375bWNwYclIDJGLpDspnbnqj9-cO4d6coobZoc3rwp8RDCPaLG0jZfm3KVkw7pk3QWCA46UduGsi2dNdWLJ1DvurQDSnbCNpNtZMch0DrEjkNsRa_Fk5cxajKTW0WLwoRtoPL2y_C-praJt1sBzQZdDp3FD-U7CWTuBf5EwhhDYBS4zVBAWIbGJnwa6ON10aggFpAWIH08EGhCcDA8Z1q8L5MrDqL5e_yhyyiQsgt0UeIwnH5r9ZvbdrtZsIMM944UI1isB_ygaOPKHaf0r07KpYRiYD_QMjPiNf1EXpBtQ\nUser-Agent: axios/1.13.5\nContent-Length: 38\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Wed, 29 Jul 2026 21:44:48 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:c6d844e4-2992-4165-80b4-9468db08cd13\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": [\n        {\n            \"companyName\": null,\n            \"displayName\": \"INDIANAPOLIS, IN 46225 US\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"INDIANAPOLIS\",\n            \"state\": \"IN\",\n            \"postalCode\": \"46225\",\n            \"country\": \"US\",\n            \"bsn\": null,\n            \"shippingAddressId\": null\n        }\n    ],\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 1212,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1225,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 13,
+          "description": "And the actor resolves density and class for each commodity via Connect API",
+          "startTime": "2026-07-29T21:44:49.150Z",
+          "children": [
+            {
+              "number": 14,
+              "description": "Connect Actor resolves volume, density and class for each commodity via Connect API",
+              "startTime": "2026-07-29T21:44:49.152Z",
+              "children": [
+                {
+                  "number": 15,
+                  "description": "Connect Actor calls Connect density endpoint per commodity",
+                  "startTime": "2026-07-29T21:44:49.152Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 502,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://connect.primofabric.com/v1/otr/density",
+                    "content": "{\"Length\":\"59\",\"Width\":\"67\",\"Height\":\"54\",\"Weight\":\"517\",\"Volume\":0,\"UOM\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NTM2MTQ4NywiaWF0IjoxNzg1MzYxNDg3LCJleHAiOjE3ODc5NTM0ODcsInNjb3BlIjpbImNvbm5lY3QtZHJheWFnZSIsImNvbm5lY3QtZHJheWFnZS1ib29raW5nIiwiY29ubmVjdC1kcmF5YWdlLXF1b3RpbmciLCJjb25uZWN0LWVudGVycHJpc2UtZHJheWFnZSIsImNvbm5lY3QtZW50ZXJwcmlzZS1vdHIiLCJjb25uZWN0LW90ciIsImNvbm5lY3Qtb3RyLWJvb2tpbmciLCJjb25uZWN0LW90ci1xdW90aW5nIiwiY29ubmVjdC1xdW90aW5nLWFwaSIsImNvbm5lY3QtcXVvdGluZy1sb2NhbC1hcGkiLCJjb25uZWN0LXRlbmRlci1mbG93IiwiY29ubmVjdC10ZW5kZXJpbmctYXBpIiwiY29ubmVjdC10cmFja2luZy1hcGkiLCJwb3J0YWwtYXBpIl0sImNsaWVudF9pZCI6InByaW1vLWN1c3RvbWVyLWNsaWVudCIsImNsaWVudF9vcmdhbml6YXRpb25fbnVtYmVyIjoiMSIsImNsaWVudF9jdXN0b21lcl9udW1iZXIiOiIxMjM1MTAwMjAyIiwianRpIjoiMDQ5MTBDQzg4MkI4NkM2MURDM0E5M0JDQkVGNTMwN0IifQ.GCNl-ev-rQ2vPJXETiCNH4KxnHtDmXnABvQnrABm6u5YISkuhPGaZAeNwBF7PA9FoUAgvuL8cUeL6rAC1mrOiS8h5ehtrmxIzapoIC_39vXWNU5kbySL5eGFZrjHgE1RLvmOM-7P12sXv9Zt3ez8eImMMDZjMa_QUAlBV6adaJqMqheztY_pPI2oEbJWqSghMMLcuiOW3WwOr9hyCc39ia8jk7zLpEAW2hQt2NF1LLDNuTWKhZR4kJfW1pwDnqr--tZ_b2VirZNDT3iqDWERkBDjijqBhzE7Wsf4nZ__mst7R-Wt3PXnXtbXZdoDqixlILyd_mB8tb-zzSfVAoyNiQ\nUser-Agent: axios/1.13.5\nContent-Length: 79\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Wed, 29 Jul 2026 21:44:49 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:e8ff7109-164f-40ad-876d-a5d24cf0d07f\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"totalCube\": 123.53,\n        \"totalWeight\": 517,\n        \"totalDensity\": 4.19,\n        \"freightClass\": 175,\n        \"cbm\": 3.498\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 513,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 526,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 16,
+          "description": "And the actor resolves accessorials via the Connect API",
+          "startTime": "2026-07-29T21:44:49.676Z",
+          "children": [
+            {
+              "number": 17,
+              "description": "Connect Actor resolves accessorials for the Connect quote",
+              "startTime": "2026-07-29T21:44:49.678Z",
+              "children": [
+                {
+                  "number": 18,
+                  "description": "Connect Actor calls Connect accessorials endpoint",
+                  "startTime": "2026-07-29T21:44:49.678Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 2,
+                  "result": "SUCCESS"
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 12,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 25,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 19,
+          "description": "And the actor creates a Connect LTL quote",
+          "startTime": "2026-07-29T21:44:49.701Z",
+          "children": [
+            {
+              "number": 20,
+              "description": "Connect Actor creates a Connect LTL quote",
+              "startTime": "2026-07-29T21:44:49.703Z",
+              "children": [
+                {
+                  "number": 21,
+                  "description": "Connect Actor sends the Connect quote request",
+                  "startTime": "2026-07-29T21:44:49.703Z",
+                  "children": [],
+                  "reportData": [],
+                  "screenshots": [],
+                  "duration": 16863,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://connect.primofabric.com/v1/otr/quote",
+                    "content": "{\"customerBranch\":1237100099,\"customerName\":\"Primo TEST\",\"requestingUser\":\"primo-it@heyprimo.com\",\"modes\":[\"LTL\"],\"declaredValue\":0,\"insurance\":{\"cargoValue\":0,\"isNewGoods\":true,\"goodsValue\":\"NEW\",\"addFreightCost\":false,\"addExtraCoverage\":false,\"insuredName\":\"\",\"insuredCountry\":\"\"},\"pickupDate\":null,\"origin\":{\"name\":null,\"address1\":null,\"address2\":null,\"city\":\"ORLANDO\",\"state\":\"FL\",\"postalCode\":\"32801\",\"country\":\"US\"},\"destination\":{\"name\":null,\"address1\":null,\"address2\":null,\"city\":\"INDIANAPOLIS\",\"state\":\"IN\",\"postalCode\":\"46225\",\"country\":\"US\"},\"items\":[{\"itemName\":\"Consumer Goods\",\"packageType\":100,\"quantity\":5,\"length\":59,\"width\":67,\"height\":54,\"weight\":517,\"volume\":123.53,\"commodityClass\":\"175\",\"numberOfPieces\":null,\"pieceType\":null,\"levels\":5,\"isStackable\":true}],\"accessorials\":[],\"service\":null,\"equipment\":null,\"equipmentLength\":null,\"UOM\":\"US\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NTM2MTQ4NywiaWF0IjoxNzg1MzYxNDg3LCJleHAiOjE3ODc5NTM0ODcsInNjb3BlIjpbImNvbm5lY3QtZHJheWFnZSIsImNvbm5lY3QtZHJheWFnZS1ib29raW5nIiwiY29ubmVjdC1kcmF5YWdlLXF1b3RpbmciLCJjb25uZWN0LWVudGVycHJpc2UtZHJheWFnZSIsImNvbm5lY3QtZW50ZXJwcmlzZS1vdHIiLCJjb25uZWN0LW90ciIsImNvbm5lY3Qtb3RyLWJvb2tpbmciLCJjb25uZWN0LW90ci1xdW90aW5nIiwiY29ubmVjdC1xdW90aW5nLWFwaSIsImNvbm5lY3QtcXVvdGluZy1sb2NhbC1hcGkiLCJjb25uZWN0LXRlbmRlci1mbG93IiwiY29ubmVjdC10ZW5kZXJpbmctYXBpIiwiY29ubmVjdC10cmFja2luZy1hcGkiLCJwb3J0YWwtYXBpIl0sImNsaWVudF9pZCI6InByaW1vLWN1c3RvbWVyLWNsaWVudCIsImNsaWVudF9vcmdhbml6YXRpb25fbnVtYmVyIjoiMSIsImNsaWVudF9jdXN0b21lcl9udW1iZXIiOiIxMjM1MTAwMjAyIiwianRpIjoiMDQ5MTBDQzg4MkI4NkM2MURDM0E5M0JDQkVGNTMwN0IifQ.GCNl-ev-rQ2vPJXETiCNH4KxnHtDmXnABvQnrABm6u5YISkuhPGaZAeNwBF7PA9FoUAgvuL8cUeL6rAC1mrOiS8h5ehtrmxIzapoIC_39vXWNU5kbySL5eGFZrjHgE1RLvmOM-7P12sXv9Zt3ez8eImMMDZjMa_QUAlBV6adaJqMqheztY_pPI2oEbJWqSghMMLcuiOW3WwOr9hyCc39ia8jk7zLpEAW2hQt2NF1LLDNuTWKhZR4kJfW1pwDnqr--tZ_b2VirZNDT3iqDWERkBDjijqBhzE7Wsf4nZ__mst7R-Wt3PXnXtbXZdoDqixlILyd_mB8tb-zzSfVAoyNiQ\nUser-Agent: axios/1.13.5\nContent-Length: 864\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Wed, 29 Jul 2026 21:45:05 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:e8ff7109-164f-40ad-876d-a5d24cf0d07f\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"quoteNumber\": 8921719,\n        \"mileage\": 977,\n        \"referenceQuoteNumber\": \"13952799\",\n        \"carrierQuotes\": [\n            {\n                \"rateNumber\": 1525,\n                \"carrierNumber\": 80336,\n                \"carrierName\": \"Forward Air\",\n                \"laneName\": \"FORWARD AIR INC\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/forward-air.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"FWDN\",\n                \"carrierRemarks\": [\n                    \"<span style=\\\"font-family: Calibri, sans-serif; font-size: 14.6667px;\\\">TSA CARRIER</span><br>This rate is not valid for liquid drums. Return fees may apply\"\n                ],\n                \"transitDays\": 2,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 345.24,\n                \"quoteExpirationDate\": \"2026-08-13T21:45:05.7833556+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Base\",\n                        \"chargeCode\": 1000,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 345.24,\n                        \"isWaived\": false\n                    }\n                ],\n                \"suggestedRate\": 345.24\n            },\n            {\n                \"rateNumber\": 1550,\n                \"carrierNumber\": 80336,\n                \"carrierName\": \"Forward Air\",\n                \"laneName\": \"FORWARD AIR INC\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/forward-air.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"FWDN\",\n                \"carrierRemarks\": [\n                    \"<span style=\\\"font-family: Calibri, sans-serif; font-size: 14.6667px;\\\">TSA CARRIER</span><br>This rate is not valid for liquid drums. Return fees may apply\"\n                ],\n                \"transitDays\": 2,\n                \"mode\": \"LTL\",\n                \"service\": \"Guaranteed\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload - Guaranteed Service\",\n                \"totalAmount\": 456.39,\n                \"quoteExpirationDate\": \"2026-08-13T21:45:05.9785241+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Base\",\n                        \"chargeCode\": 1000,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 456.39,\n                        \"isWaived\": false\n                    }\n                ],\n                \"suggestedRate\": 456.39\n            },\n            {\n                \"rateNumber\": 1575,\n                \"carrierNumber\": 87082,\n                \"carrierName\": \"Central Transport\",\n                \"laneName\": \"CENTRAL TRANSPORT\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/central-transport.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"CTII\",\n                \"carrierRemarks\": [\n                    \"Oversize Pallets. Please double check rate with the carrier directly\",\n                    \"Freight re-classed in accordance with the vendor's density rules\"\n                ],\n                \"transitDays\": 2,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 864.12,\n                \"quoteExpirationDate\": \"2026-08-13T21:45:05.975+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Base\",\n                        \"chargeCode\": 1000,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 864.12,\n                        \"isWaived\": false\n                    }\n                ],\n                \"suggestedRate\": 864.12\n            },\n            {\n                \"rateNumber\": 1600,\n                \"carrierNumber\": 87082,\n                \"carrierName\": \"Central Transport\",\n                \"laneName\": \"Central Transport Pallet\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/central-transport.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"CTII\",\n                \"carrierRemarks\": [\n                    \"Oversize Pallets. Please double check rate with the carrier directly\",\n                    \"Pallet Rates\",\n                    \"Freight re-classed in accordance with the vendor's density rules\"\n                ],\n                \"transitDays\": 2,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 1083.8,\n                \"quoteExpirationDate\": \"2026-08-13T21:45:05.9834324+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Base\",\n                        \"chargeCode\": 1000,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 1083.8,\n                        \"isWaived\": false\n                    }\n                ],\n                \"suggestedRate\": 1083.8\n            },\n            {\n                \"rateNumber\": 1625,\n                \"carrierNumber\": 58625,\n                \"carrierName\": \"ABF Freight System\",\n                \"laneName\": \"ABF FREIGHT SYSTEM INC\",\n                \"carrierLogoUrl\": \"https://lfsratestoragedev.blob.core.windows.net/carrierlogoscontainer/abf-freight.png?sv=2021-04-10&st=2022-09-07T01%3A38%3A45Z&se=2099-09-08T01%3A38%3A00Z&sr=c&sp=r&sig=A%2BvrUChlCBil9j2h0EmN5AAnpgPetwmwol%2BWwl8%2BD94%3D\",\n                \"carrierScac\": \"ABFS\",\n                \"carrierRemarks\": [\n                    \"<a target=\\\"_blank\\\" href=\\\"https://info.lfs-inc.com/ltl-lanes\\\" style=\\\"background-color: rgb(255, 255, 255);\\\">Check lanes</a><br><span style=\\\"font-size: 12px; background-color: rgb(255, 0, 255);\\\">Remarks</span><br><b style=\\\"font-size: 12px;\\\">ABC</b>\",\n                    \"Shipment weight needs to be calculated using 6 pounds per cubic foot\",\n                    \"Freight re-classed in accordance with the vendor's density rules\"\n                ],\n                \"transitDays\": 3,\n                \"mode\": \"LTL\",\n                \"service\": \"Standard\",\n                \"accessorials\": [],\n                \"serviceDescription\": \"Less than Truckload\",\n                \"totalAmount\": 1462.35,\n                \"quoteExpirationDate\": \"2026-08-05T21:45:05.9903446+00:00\",\n                \"equipment\": null,\n                \"equipmentLength\": null,\n                \"charges\": [\n                    {\n                        \"displayName\": \"Base\",\n                        \"chargeCode\": 1000,\n                        \"chargeNumber\": null,\n                        \"chargePoint\": null,\n                        \"amount\": 1462.35,\n                        \"isWaived\": false\n                    }\n                ],\n                \"suggestedRate\": 1462.35\n            }\n        ]\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 16873,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 16886,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 22,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-29T21:45:06.587Z",
+          "children": [
+            {
+              "number": 23,
+              "description": "Connect Actor ensures that the status of the last response does equal 200",
+              "startTime": "2026-07-29T21:45:06.591Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 16,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 24,
+          "description": "And the response contains a valid quote number",
+          "startTime": "2026-07-29T21:45:06.604Z",
+          "children": [
+            {
+              "number": 25,
+              "description": "Connect Actor ensures that quote number does have value greater than 0",
+              "startTime": "2026-07-29T21:45:06.606Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 14,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 26,
+          "description": "When the actor books the Connect Customer shipment",
+          "startTime": "2026-07-29T21:45:06.619Z",
+          "children": [
+            {
+              "number": 27,
+              "description": "Connect Actor books the Connect Customer LTL shipment",
+              "startTime": "2026-07-29T21:45:06.620Z",
+              "children": [
+                {
+                  "number": 28,
+                  "description": "Connect Actor sends the Connect book request",
+                  "startTime": "2026-07-29T21:45:06.621Z",
+                  "children": [],
+                  "reportData": [
+                    {
+                      "id": "report-data-d1d2fd1fd0866e6136b8b174228b30c3a554642c",
+                      "isEvidence": false,
+                      "path": "",
+                      "title": "Connect Book Request Payload",
+                      "contents": "{\n    \"quoteNumber\": 8921719,\n    \"rateNumber\": 1525,\n    \"customerBranch\": 1237100099,\n    \"bookDate\": \"2026-07-29T21:45:06.625Z\",\n    \"bolInstructions\": \"\",\n    \"bolRemarks\": \"\",\n    \"freightDirection\": \"Outbound\",\n    \"referenceNumbers\": null,\n    \"movement\": {\n        \"quote\": {\n            \"lfsQuoteNumber\": 8921719,\n            \"selectedCarrier\": 1525,\n            \"equipmentType\": null,\n            \"serviceType\": null,\n            \"equipmentLength\": null,\n            \"leastCostReason\": null,\n            \"uom\": \"US\"\n        },\n        \"tender\": {\n            \"mode\": \"LTL\",\n            \"equipmentType\": null,\n            \"serviceType\": null,\n            \"equipmentLength\": null,\n            \"comments\": null,\n            \"accessorials\": []\n        },\n        \"declaredValue\": null,\n        \"estimatedPickupDate\": \"2026-07-30\",\n        \"estimatedDeliveryDate\": \"2026-08-03\",\n        \"commodities\": [\n            {\n                \"description\": \"Consumer Goods\",\n                \"packageType\": \"Pallet\",\n                \"quantity\": 5,\n                \"length\": 59,\n                \"width\": 67,\n                \"height\": 54,\n                \"weight\": 517,\n                \"density\": 4.19,\n                \"freightClass\": \"175\",\n                \"levels\": 5,\n                \"isStackable\": true\n            }\n        ],\n        \"pickupAddress\": {\n            \"name\": \"RedRock Logistics\",\n            \"address1\": \"410 Main St\",\n            \"address2\": null,\n            \"city\": \"ORLANDO\",\n            \"state\": \"FL\",\n            \"postalCode\": \"32801\",\n            \"country\": \"US\",\n            \"customerBsn\": null\n        },\n        \"deliveryAddress\": {\n            \"name\": \"Summit Logistics\",\n            \"address1\": \"241 Market St\",\n            \"address2\": \"Dock 11\",\n            \"city\": \"INDIANAPOLIS\",\n            \"state\": \"IN\",\n            \"postalCode\": \"46225\",\n            \"country\": \"US\",\n            \"customerBsn\": null\n        },\n        \"thirdPartyAddress\": null,\n        \"stopAddress\": null,\n        \"pickupInformation\": {\n            \"instructions\": null,\n            \"referenceNumber\": \"PU-9296\",\n            \"contact\": {\n                \"name\": \"Isabella Jackson\",\n                \"phone\": \"5558200893\",\n                \"email\": \"isabella.jackson@shipco.com\"\n            },\n            \"shippingWindowTimeFrom\": \"08:00\",\n            \"shippingWindowTimeTo\": \"17:00\",\n            \"appointment\": null\n        },\n        \"deliveryInformation\": {\n            \"instructions\": null,\n            \"referenceNumber\": \"\",\n            \"contact\": {\n                \"name\": \"Charlotte Thomas\",\n                \"phone\": \"5557830035\",\n                \"email\": \"charlotte.thomas@freightmail.com\"\n            },\n            \"shippingWindowTimeFrom\": \"08:00\",\n            \"shippingWindowTimeTo\": \"17:00\",\n            \"appointment\": null\n        },\n        \"hazardousContact\": null\n    },\n    \"glCoding\": {\n        \"enterpriseTag\": null,\n        \"district\": null,\n        \"glCode\": null\n    },\n    \"isInsured\": false,\n    \"notificationEmails\": \"isabella.jackson@shipco.com\"\n}"
+                    }
+                  ],
+                  "screenshots": [],
+                  "duration": 38838,
+                  "result": "SUCCESS",
+                  "restQuery": {
+                    "method": "POST",
+                    "path": "https://connect.primofabric.com/v1/otr/book",
+                    "content": "{\"quoteNumber\":8921719,\"rateNumber\":1525,\"customerBranch\":1237100099,\"bookDate\":\"2026-07-29T21:45:06.625Z\",\"bolInstructions\":\"\",\"bolRemarks\":\"\",\"freightDirection\":\"Outbound\",\"referenceNumbers\":null,\"movement\":{\"quote\":{\"lfsQuoteNumber\":8921719,\"selectedCarrier\":1525,\"equipmentType\":null,\"serviceType\":null,\"equipmentLength\":null,\"leastCostReason\":null,\"uom\":\"US\"},\"tender\":{\"mode\":\"LTL\",\"equipmentType\":null,\"serviceType\":null,\"equipmentLength\":null,\"comments\":null,\"accessorials\":[]},\"declaredValue\":null,\"estimatedPickupDate\":\"2026-07-30\",\"estimatedDeliveryDate\":\"2026-08-03\",\"commodities\":[{\"description\":\"Consumer Goods\",\"packageType\":\"Pallet\",\"quantity\":5,\"length\":59,\"width\":67,\"height\":54,\"weight\":517,\"density\":4.19,\"freightClass\":\"175\",\"levels\":5,\"isStackable\":true}],\"pickupAddress\":{\"name\":\"RedRock Logistics\",\"address1\":\"410 Main St\",\"address2\":null,\"city\":\"ORLANDO\",\"state\":\"FL\",\"postalCode\":\"32801\",\"country\":\"US\",\"customerBsn\":null},\"deliveryAddress\":{\"name\":\"Summit Logistics\",\"address1\":\"241 Market St\",\"address2\":\"Dock 11\",\"city\":\"INDIANAPOLIS\",\"state\":\"IN\",\"postalCode\":\"46225\",\"country\":\"US\",\"customerBsn\":null},\"thirdPartyAddress\":null,\"stopAddress\":null,\"pickupInformation\":{\"instructions\":null,\"referenceNumber\":\"PU-9296\",\"contact\":{\"name\":\"Isabella Jackson\",\"phone\":\"5558200893\",\"email\":\"isabella.jackson@shipco.com\"},\"shippingWindowTimeFrom\":\"08:00\",\"shippingWindowTimeTo\":\"17:00\",\"appointment\":null},\"deliveryInformation\":{\"instructions\":null,\"referenceNumber\":\"\",\"contact\":{\"name\":\"Charlotte Thomas\",\"phone\":\"5557830035\",\"email\":\"charlotte.thomas@freightmail.com\"},\"shippingWindowTimeFrom\":\"08:00\",\"shippingWindowTimeTo\":\"17:00\",\"appointment\":null},\"hazardousContact\":null},\"glCoding\":{\"enterpriseTag\":null,\"district\":null,\"glCode\":null},\"isInsured\":false,\"notificationEmails\":\"isabella.jackson@shipco.com\"}",
+                    "contentType": "application/json",
+                    "requestHeaders": "Accept: application/json, text/plain, */*\nContent-Type: application/json\nAuthorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NTM2MTQ4NywiaWF0IjoxNzg1MzYxNDg3LCJleHAiOjE3ODc5NTM0ODcsInNjb3BlIjpbImNvbm5lY3QtZHJheWFnZSIsImNvbm5lY3QtZHJheWFnZS1ib29raW5nIiwiY29ubmVjdC1kcmF5YWdlLXF1b3RpbmciLCJjb25uZWN0LWVudGVycHJpc2UtZHJheWFnZSIsImNvbm5lY3QtZW50ZXJwcmlzZS1vdHIiLCJjb25uZWN0LW90ciIsImNvbm5lY3Qtb3RyLWJvb2tpbmciLCJjb25uZWN0LW90ci1xdW90aW5nIiwiY29ubmVjdC1xdW90aW5nLWFwaSIsImNvbm5lY3QtcXVvdGluZy1sb2NhbC1hcGkiLCJjb25uZWN0LXRlbmRlci1mbG93IiwiY29ubmVjdC10ZW5kZXJpbmctYXBpIiwiY29ubmVjdC10cmFja2luZy1hcGkiLCJwb3J0YWwtYXBpIl0sImNsaWVudF9pZCI6InByaW1vLWN1c3RvbWVyLWNsaWVudCIsImNsaWVudF9vcmdhbml6YXRpb25fbnVtYmVyIjoiMSIsImNsaWVudF9jdXN0b21lcl9udW1iZXIiOiIxMjM1MTAwMjAyIiwianRpIjoiMDQ5MTBDQzg4MkI4NkM2MURDM0E5M0JDQkVGNTMwN0IifQ.GCNl-ev-rQ2vPJXETiCNH4KxnHtDmXnABvQnrABm6u5YISkuhPGaZAeNwBF7PA9FoUAgvuL8cUeL6rAC1mrOiS8h5ehtrmxIzapoIC_39vXWNU5kbySL5eGFZrjHgE1RLvmOM-7P12sXv9Zt3ez8eImMMDZjMa_QUAlBV6adaJqMqheztY_pPI2oEbJWqSghMMLcuiOW3WwOr9hyCc39ia8jk7zLpEAW2hQt2NF1LLDNuTWKhZR4kJfW1pwDnqr--tZ_b2VirZNDT3iqDWERkBDjijqBhzE7Wsf4nZ__mst7R-Wt3PXnXtbXZdoDqixlILyd_mB8tb-zzSfVAoyNiQ\nUser-Agent: axios/1.13.5\nContent-Length: 1835\nAccept-Encoding: gzip, compress, deflate, br",
+                    "requestCookies": "",
+                    "statusCode": 200,
+                    "responseHeaders": "connection: close\ncontent-type: application/json; charset=utf-8\ndate: Wed, 29 Jul 2026 21:45:45 GMT\nserver: Microsoft-IIS/10.0\ntransfer-encoding: chunked\nvary: Accept-Encoding\nrequest-context: appId=cid-v1:e8ff7109-164f-40ad-876d-a5d24cf0d07f\nx-powered-by: ASP.NET",
+                    "responseCookies": "",
+                    "responseBody": "{\n    \"data\": {\n        \"orderNumber\": 20023032,\n        \"bolNumber\": \"1355687\",\n        \"documents\": [\n            {\n                \"docType\": \"BillOfLading\",\n                \"url\": \"https://dev.shipprimus.com//Documents.php?id=OTg0Mzcz&t=I8mXLhoUJLKo1WUTkGHErVGz_mr15eKQnDTtyrWU0bg\",\n                \"fileName\": \"BOL_1355687.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/x-download\"\n            },\n            {\n                \"docType\": \"ShippingLabel\",\n                \"url\": \"https://dev.shipprimus.com//Documents.php?idLabel=OTg0Mzcz&t=V9m9I1xD964cWQVr32c2P71mifWOvmhTPxNu9wbXcDw\",\n                \"fileName\": \"LABEL_1355687.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/x-download\"\n            },\n            {\n                \"docType\": \"Other\",\n                \"url\": \"https://lfsdatabrokerstoragedev.blob.core.windows.net/primo-documents/BookingDocuments/1235100202/20023032/Quotation_13952799.pdf\",\n                \"fileName\": \"Quotation_13952799.pdf\",\n                \"extension\": \".pdf\",\n                \"contentType\": \"application/pdf\"\n            }\n        ]\n    },\n    \"errors\": null\n}"
+                  }
+                }
+              ],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 38849,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 38861,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 29,
+          "description": "Then the response status should be 200",
+          "startTime": "2026-07-29T21:45:45.481Z",
+          "children": [
+            {
+              "number": 30,
+              "description": "Connect Actor ensures that the status of the last response does equal 200",
+              "startTime": "2026-07-29T21:45:45.487Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 2,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 19,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 31,
+          "description": "And the response contains a BOL number",
+          "startTime": "2026-07-29T21:45:45.501Z",
+          "children": [
+            {
+              "number": 32,
+              "description": "Connect Actor ensures that BOL number does become present",
+              "startTime": "2026-07-29T21:45:45.505Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 4,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 20,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 33,
+          "description": "And the response contains an order number",
+          "startTime": "2026-07-29T21:45:45.521Z",
+          "children": [
+            {
+              "number": 34,
+              "description": "Connect Actor ensures that booking order number does have value greater than 0",
+              "startTime": "2026-07-29T21:45:45.526Z",
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 3,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 19,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 58488,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "connect-customer-ltl-booking-via-api",
+    "storyName": "Connect Customer LTL booking via API",
+    "displayName": "Connect Customer LTL booking via API",
+    "path": "api/connect/booking",
+    "type": "feature",
+    "narrative": "",
+    "pathElements": [
+      {
+        "name": "api",
+        "description": "Api"
+      },
+      {
+        "name": "connect",
+        "description": "Connect"
+      },
+      {
+        "name": "booking",
+        "description": "Booking"
+      }
+    ]
+  },
+  "dataTable": {
+    "scenarioOutline": "Given the actor is configured to call Connect Customer APIs\nAnd I load the Excel file from \"src/models/TestCasesAPI.xlsx\"\nAnd I get test data for \"<CaseID>\"\nWhen the actor obtains a Connect API token\nAnd the actor resolves city and state for origin and destination\nAnd the actor resolves density and class for each commodity via Connect API\nAnd the actor resolves accessorials via the Connect API\nAnd the actor creates a Connect LTL quote\nThen the response status should be 200\nAnd the response contains a valid quote number\nWhen the actor books the Connect Customer shipment\nThen the response status should be 200\nAnd the response contains a BOL number\nAnd the response contains an order number",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 1
+      }
+    ],
+    "headers": [
+      "CaseID"
+    ],
+    "rows": [
+      {
+        "values": [
+          "Random"
+        ],
+        "result": "SUCCESS"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": "2026-07-29T21:44:47.066Z",
+  "testSource": "JS",
+  "tags": [
+    {
+      "name": "Api",
+      "type": "theme",
+      "displayName": "Api"
+    },
+    {
+      "name": "Api/Connect",
+      "type": "capability",
+      "displayName": "Connect"
+    },
+    {
+      "name": "Api/Connect/Connect Customer LTL booking via API",
+      "type": "feature",
+      "displayName": "Connect Customer LTL booking via API"
+    },
+    {
+      "name": "api",
+      "type": "tag",
+      "displayName": "api"
+    },
+    {
+      "name": "connect",
+      "type": "tag",
+      "displayName": "connect"
+    },
+    {
+      "name": "booking",
+      "type": "tag",
+      "displayName": "booking"
+    },
+    {
+      "name": "browser:api",
+      "type": "tag"
+    }
+  ],
+  "featureTag": {
+    "name": "Api/Connect/Connect Customer LTL booking via API",
+    "type": "feature",
+    "displayName": "Connect Customer LTL booking via API"
+  },
+  "actors": [
+    {
+      "name": "User",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://api.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 30000 }",
+        "TakeNotes { notepad: {} }"
+      ]
+    },
+    {
+      "name": "Connect Actor",
+      "can": [
+        "PerformActivities",
+        "AnswerQuestions",
+        "RaiseErrors",
+        "ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 5000 } } }",
+        "CallAnApi { baseURL: \"https://connect.primofabric.com\", headers: { common: { Accept: \"application/json, text/plain, */*\" } }, timeout: 30000 }",
+        "TakeNotes { notepad: { testData: { CaseID: \"TC-031\", Mode: \"LTL\", OriginZip: \"32801\", DestinationZip: \"46225\", OriginCompany: \"RedRock Logistics\", DestinationCompany: \"Summit Logistics\", OriginAddress1: \"410 Main St\", DeliveryAddress1: \"241 Market St\", DeliveryAddress2: \"Dock 11\", PickupRef: \"PU-9296\", PickupContact: \"Isabella Jackson\", PickupPhone: \"5558200893\", PickupEmail: \"isabella.jackson@shipco.com\", DeliveryContact: \"Charlotte Thomas\", DeliveryPhone: \"5557830035\", DeliveryEmail: \"charlotte.thomas@freightmail.com\", ThirdPartyReference: \"TP-REF\", AdditionalReference: \"ADD-REF\", \"Reference#\": \"95384\", SelectedRate: \"Rate-2\", C1_Qty: 5, C1_Name: \"Consumer Goods\", C1_Package: \"Pallet\", C1_Length: 59, C1_Width: 67, C1_Height: 54, C1_Weight: 517, C1_Stackable: \"Yes\", C1_Levels: 5, C2_Levels: 0, C3_Levels: 0, C4_Levels: 0, C5_Levels: 0, PickupWindowFrom: \"08:00\", PickupWindowTo: \"17:00\", DeliveryWindowFrom: \"08:00\", DeliveryWindowTo: \"17:00\", HazmatContactName: \"Hazmat Contact\", HazmatContactPhone: 2335538970, HazmatContractNumber: 243345 }, bearerToken: \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjIxQjlBNTEyQkMyMTIxMTE1MUVCRDcxNEM4MkYzRjYxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5LnByaW1vZmFicmljLmNvbSIsIm5iZiI6MTc4NTM2MTQ4NywiaWF0IjoxNzg1MzYxNDg3LCJleHAiOjE3ODc5NTM0ODcsInNjb3BlIjpbImNvbm5lY3QtZHJheWFnZSIsImNvbm5lY3QtZHJheWFnZS1ib29raW5nIiwiY29ubmVjdC1kcmF5YWdlLXF1b3RpbmciLCJjb25uZWN0LWVudGVycHJpc2UtZHJheWFnZSIsImNvbm5lY3QtZW50ZXJwcmlzZS1vdHIiLCJjb25uZWN0LW90ciIsImNvbm5lY3Qtb3RyLWJvb2tpbmciLCJjb25uZWN0LW90ci1xdW90aW5nIiwiY29ubmVjdC1xdW90aW5nLWFwaSIsImNvbm5lY3QtcXVvdGluZy1sb2NhbC1hcGkiLCJjb25uZWN0LXRlbmRlci1mbG93IiwiY29ubmVjdC10ZW5kZXJpbmctYXBpIiwiY29ubmVjdC10cmFja2luZy1hcGkiLCJwb3J0YWwtYXBpIl0sImNsaWVudF9pZCI6InByaW1vLWN1c3RvbWVyLWNsaWVudCIsImNsaWVudF9vcmdhbml6YXRpb25fbnVtYmVyIjoiMSIsImNsaWVudF9jdXN0b21lcl9udW1iZXIiOiIxMjM1MTAwMjAyIiwianRpIjoiMDQ5MTBDQzg4MkI4NkM2MURDM0E5M0JDQkVGNTMwN0IifQ.GCNl-ev-rQ2vPJXETiCNH4KxnHtDmXnABvQnrABm6u5YISkuhPGaZAeNwBF7PA9FoUAgvuL8cUeL6rAC1mrOiS8h5ehtrmxIzapoIC_39vXWNU5kbySL5eGFZrjHgE1RLvmOM-7P12sXv9Zt3ez8eImMMDZjMa_QUAlBV6adaJqMqheztY_pPI2oEbJWqSghMMLcuiOW3WwOr9hyCc39ia8jk7zLpEAW2hQt2NF1LLDNuTWKhZR4kJfW1pwDnqr--tZ_b2VirZNDT3iqDWERkBDjijqBhzE7Wsf4nZ__mst7R-Wt3PXnXtbXZdoDqixlILyd_mB8tb-zzSfVAoyNiQ\", enrichedData: { commodityDetails: [ { volume: 123.53, density: 4.19, freightClass: 175, hazmatInfo: null, nmfc: null } ], selectedAccessorials: [], originCity: \"ORLANDO\", originState: \"FL\", destinationCity: \"INDIANAPOLIS\", destinationState: \"IN\" }, quoteNumber: 8921719, selectedCarrier: 1525 } }"
+      ]
+    }
+  ],
+  "duration": 58488,
+  "context": "API"
+}
